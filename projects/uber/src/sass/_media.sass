@@ -1,0 +1,180 @@
+@media (max-width: 1200px)
+  .menu
+    &_item
+      padding-right: 20px
+    &_link
+      font-size: 13px
+  .promo
+    &_header
+      font-size: 50px
+  .cause_inner
+    .descr_wrapper
+      width: 400px
+      &_block
+        align-items: center
+        flex-direction: column
+      &_descr
+
+        margin-top: 20px
+@media (max-width: 991px)
+  .menu
+    &_item
+      padding-right: 8px
+    &_link
+      font-size: 10px
+  .subheader
+    &_logo
+      img
+        width: 100%
+    &_official
+      font-size: 11px
+    &_call
+      font-size: 10px
+    &_phone
+      font-size: 18px
+    &_btn
+      width: 100%
+      height: 40px
+      margin-top: 21px
+  .promo
+    &_header
+      font-size: 40px
+      &_subheader
+        font-size: 30px
+  .cause_inner
+    flex-direction: column
+    .descr_wrapper
+      width: 330px
+      margin-top: 20px
+@media (max-width: 576px)
+  nav
+    height: 40px
+    position: relative
+  .hamburger
+    display: block
+    position: absolute
+    right: 10px
+    top: 50%
+    transform: translateY(-50%)
+    width: 20px
+    z-index: 6
+    height: 12px
+    span
+      display: block
+      height: 2px
+      width: 100%
+      background-color: #fff
+      margin-bottom: 2px
+      transition: 0.5s all
+
+    &_active
+      span
+        margin-block: -2px
+        &:nth-child(1)
+          transform: translateY(3px) rotate(-45deg)
+        &:nth-child(2)
+          display: none
+        &:nth-child(3)
+          transform: translateY(3px) rotate(45deg)
+  .promo
+    &_promo_header
+      font-size: 40px
+      line-height: 35px
+    &_subheader
+      font-size: 25px
+      line-height: 35px
+  .menu
+    position: fixed
+    top: 0
+    left: -100%
+    width: 50%
+    height: 100vh
+    flex-direction: column
+    padding: 20px 15px
+    background-color: rgba(0,0,0, .8)
+    transition: 0.6s all
+    &_active
+      left: 0
+
+    &_item
+      padding-right: 0
+      border: none
+
+    &_link
+      font-size: 20px
+
+  .xs-hidden
+    display: none
+  .xs-visiable
+    display: block
+  .subheader
+    margin-top: 0
+    &_phone
+      font-size: 12px
+      font-family: "Roboto"
+      color: rgb(255, 255, 255)
+      text-transform: uppercase
+      text-align: center
+    &_btn
+
+      width: 200px
+      height: 40px
+      margin: 0 auto
+      margin-top: 10px
+  .choice
+    display: none
+@media (max-width: 575px)
+  nav
+    height: 30px
+  .subheader
+    margin-top: 0
+    height: 60px
+    &_official
+      display: none
+    &_logo
+      margin-top: 16px
+    &_phone
+      margin-top: 11px
+    &_btn
+      width: 110px
+      height: 22px
+      font-size: 10px
+      margin-top: 7px
+  .promo
+    min-height: 400px
+    &_descr
+      display: none
+    &_header
+      font-size: 30px
+      line-height: 35px
+    &_subheader
+      font-size: 20px
+      line-height: 30px
+      margin-top: 33px
+      padding: 0 10px
+    &_btn
+      width: 210px
+      height: 50px
+      margin-top: 72px
+  .menu
+    width: 85%
+    &_item
+      width: 100%
+      text-align: center
+      padding: 4px 0
+    &_link
+      display: block
+  .cause
+    padding: 22px 0 65px 0
+    .advantages
+      margin-top: 0
+    .title
+      margin-top: 15px
+      line-height: 16px
+      font-size: 16px
+    .cause_inner
+      margin-top: 26px
+      .descr_wrapper
+        width: 100%
+      .cause_subheader, .cause_descr
+        font-size: 16px
