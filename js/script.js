@@ -255,3 +255,27 @@ window.onload = function () {
   loop();
   setInterval(loop, 1000 / 60);
 };
+window.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('.menu'),
+    menuItem = document.querySelectorAll('.menu_item'),
+    hamburger = document.querySelector('.hamburger'),
+    light = document.querySelectorAll('.menu__top__img');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('hamburger_active');
+        menu.classList.toggle('menu_active'),
+        light.forEach(light => {
+            light.classList.toggle('menu__top__img_active');
+        });
+    });
+
+    menuItem.forEach(item => {
+        item.addEventListener('click', () => {
+            hamburger.classList.toggle('hamburger_active');
+            menu.classList.toggle('menu_active'),
+            light.forEach(light => {
+            light.classList.toggle('menu__top__img_active');
+        });
+        })
+    })
+})
