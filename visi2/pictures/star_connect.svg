@@ -1,0 +1,12 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="star/filled/thin">
+<path id="star/simple/thin" d="M20 0L20.693 19.307L40 20L20.693 20.693L20 40L19.307 20.693L0 20L19.307 19.307L20 0Z" fill="url(#paint0_linear_325_216)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_325_216" x1="40" y1="2.28174e-05" x2="-1.97522" y2="2.19301" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E8C25F"/>
+<stop offset="0.505208" stop-color="#F2E191"/>
+<stop offset="1" stop-color="#D3A647"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://myfonts.ru/myfonts?fonts=forwardad" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Резидентские визы в ОАЭ</title>
+</head>
+<body>
+
+<header class="header">
+
+    <div class="container">
+      <div class="header_intro">
+        <div class="logo">
+          <a href="#"> <img src="pictures/logo.png" alt="logo"></a>
+        </div>
+        <div class="currency_block">
+          <span class="currency_text">
+            Валюта
+          </span>
+          <button class="currency_button">
+            <span class="currency_name">AED</span>
+            <img class="currency_flag" src="pictures/AED.svg" alt="Flag">
+            <img class="btn_img" src="pictures/Vectorrot.svg" alt="Buttonimage">
+          </button>
+          <ul class="currency_list" id="currency" style="display: none;">
+            <li><span>AED</span><img class="currency_flag" src="pictures/AED.svg" alt="Flag"></li>
+            <li><span>USD</span><img class="currency_flag" src="pictures/USD.svg" alt="Flag"></li>
+            <li><span>RUB</span><img class="currency_flag" src="pictures/RUB.svg" alt="Flag"></li>
+          </ul>
+        </div>
+        <div class="network">
+          <div class="network_inner">
+            <a href="#" target="_blank" class="network_logo"><img src="pictures/tg.svg" alt="telegram"></a>
+            <a href="#" target="_blank" class="network_logo"><img src="pictures/wa.svg" alt="whatsapp"></a>
+          </div>
+          <div class="network_text">
+            Задайте свой вопрос, <span class="network_click"> в 1 клик </span>
+          </div>
+        </div>
+        <div class="phones">
+          <div class="phones_block">
+            <a href="tel:+74993453434"><img src="pictures/phone.svg" alt="whatsapp">
+            <span>+7 499 345-34-34</span>
+            </a>
+          </div>
+          <div class="phones_block">
+            <a href="tel:+971993453434">
+            <img src="pictures/phone.svg" alt="whatsapp">
+            <span>+971 (99) 345 34–34</span>
+            </a>
+          </div>
+        </div>
+        <a href="#" class="btn_call" data-modal="#connect_call">
+          <div class="call_text">
+            Обратный звонок
+          </div>
+        </a>
+      </div>
+      <div class="header_inner">
+        <div class="header_description">
+          <div class="description_tittle">
+            <h1>Резидентские визы в <span>ОАЭ</span></h1>
+          </div>
+          <div class="description_subtittle">
+              <a href="#" class="consultation" data-modal="#connect_call">
+                Получить консультацию
+              </a>
+            <div class="subtittle_wrapper">
+              
+              <div class="subtitle_chek">
+                <img src="pictures/star.svg" alt="chek_musk">
+              </div>
+              <div class="subtittle_text">До приглашения в ОAЭ, вам 
+                <span>не нужно будет выезжать</span><span id="city"> из Санкт-Петербурга</span>
+              </div>
+              
+              
+            </div>
+            <div class="header_pict mobile" id="mobile">
+              <img src="pictures/header_mobile.png" alt="">
+              <div class="pict_description">
+                Подпись к картинке
+              </div>
+            </div>
+
+          </div>
+          <div class="description_block">
+            <div class="description_price">
+              <img src="pictures/line_header.svg" class="line_desk" alt="line">
+              <img src="pictures/line_header_mobile.svg" class="line_mobile" alt="line">
+              <div class="description_text">
+                Стоимость:
+              </div>
+              <div class="description_content">
+                ОТ AED 2699
+              </div>
+            </div>
+            <div class="description_production">
+              <div class="description_text">
+                Сроки изготовления:
+              </div>
+              <div class="description_content">
+                ОТ 5 PAБОЧИХ ДНЕЙ
+              </div>
+            </div>
+            <div class="description_validity">
+              <div class="description_text">
+                Срок действия:
+              </div>
+              <div class="description_content">
+                до 10 лет
+              </div>
+            </div>
+            
+          </div>
+          <a href="#" class="mobile_cons" data-modal="#connect_call">
+            Получить консультацию
+          </a>
+          
+          
+        </div>
+        <div class="header_pict desk" id="desk">
+          <img src="pictures/header.png" alt="">
+          <div class="pict_description">
+            Подпись к картинке
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+</header>
+
+<section class="advantages">
+  <div class="container">
+
+      <div class="tittle">
+        
+        <h2>почему <span>выбирают нас</span></h2>
+       
+      </div>
+      
+      <div class="advantages_inner">
+        <div class="lvl">
+          <div class="advantages_item">
+            <div class="advantages_numb">
+              01
+            </div>
+            <div class="advantages_text">
+              без наценок на государственные пошлины
+            </div>
+          </div>
+        
+          <div class="advantages_item">
+            <div class="advantages_numb">
+              02
+            </div>
+            <div class="advantages_text">
+              аккредитованные партнёры в более 20 фризонах
+            </div>
+          </div>
+        </div>
+        <div class="lvl">
+          <div class="advantages_item">
+            <div class="advantages_numb">
+              03
+            </div>
+            <div class="advantages_text">
+              Русскоговорящая поддержка на всех этапах
+            </div>  
+          </div>
+          <div class="advantages_item">
+            <div class="advantages_numb">
+              04
+            </div>
+            <div class="advantages_text">
+              более 24 видов оплаты (любая крипта)
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</section>
+<section class="rates">
+  <div class="container">
+    <div class="rates_wrapper">
+      <div class="tittle">
+      
+        <h2>сравните простоту <span>получения внж</span></h2>
+       
+      </div>
+      <div class="rates_inner">
+ 
+          <div class="rates_block">
+            <div class="block_tittle">
+              самостоятельно
+            </div>
+            <div class="block_line">
+              <img src="pictures/rates_line.svg" alt="line">
+            </div>
+            <ul class="block_text">
+              <li>от 3 до 5 месяцев</li>
+              <li>от 50 000 AED</li>
+              <li>масксимум потраченных нервов</li>
+              <li>100+ неправильно заполненных документов</li>      
+            </ul>
+          </div>
+
+
+          <div class="rates_block">
+            <div class="block_tittle">
+              У нас в компании
+            </div>
+            <div class="block_line">
+              <img  src="pictures/rates_line.svg" alt="line">
+            </div>
+            <ul class="block_text">
+              <li>от 5 рабочих дней</li>
+              <li>от 2 600 AED</li>
+              <li>мы сделаем все за вас</li>
+              <li>0 неправильно заполненных документов</li>
+            </ul>
+            <a href="#" class="btn" data-modal="#connect_call">
+              ПОЛУЧИТЬ ВНЖ
+            </a>
+          </div>
+
+
+          <div class="rates_block">
+            <div class="block_tittle">             
+              с нашей инструкцией
+            </div>
+            <div class="block_line">
+              <img src="pictures/rates_line.svg" alt="line">
+            </div>
+            <ul class="block_text">
+              <li>3–4 недели</li>
+              <li>от 2000 AED</li>
+              <li>по минимуму потраченных нервов</li>
+              <li>у вас будут шаблоны для заполнения документов</li>
+            </ul>
+            <a href="#" class="btn" data-modal="#connect_call">
+              ПОЛУЧИТЬ ИНСТРУКЦИЮ
+            </a>
+          </div>
+      </div>   
+    </div>
+  </div>
+</section>
+<section class="calculator">
+  <div class="container">
+    <div class="tittle">
+  
+      <h2><span>Калькулятор стоимости</span> резидентской визы</h2>
+    
+    </div>
+    <div class="calculator_inner">
+      <div class="card active">
+        <div class="question_wrapper">
+          <div class="question">
+            1. При подаче заявки, вы будете находиться в ОАЭ?
+          </div>
+          
+        </div>
+        <div class="answer_wrapper">
+          <div class="answer">
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="1400" type="radio" id="chek_faulse">
+                Буду находиться в ОАЭ
+              </label>
+            </div>
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="chek" type="radio" id="radio2">
+                Буду находиться вне ОАЭ
+              </label>
+            </div>
+            
+          </div>
+          <div class="note_inner">
+            <div class="answer_price">
+              +1400 АED
+            </div>
+            <div class="note">
+              <div class="note_wrapper">
+                <img src="pictures/warning.svg" alt="warning">
+                Госпошлина за смену статуса
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ">
+        <div class="question_wrapper">
+          <div class="question">
+            2. Какое количество человек, на которых необходимо оформить резидентскую визу?
+          </div>
+    
+        </div>
+        <div class="answer_wrapper">
+          <div class="answer">
+            <div class="answer_item">
+              <label>
+                <input type="text" class="input_card" name="card" id="card">
+              </label>
+            </div>
+
+          </div>
+          <div class="note_inner">
+            <div class="answer_price" style="display: none;">
+              +1400 АED
+            </div>
+            <div class="note">
+              <div class="note_wrapper">
+                <img src="pictures/warning.svg" alt="warning">
+                Детей до 18 лет указывать не нужно
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="question_wrapper">
+          <div class="question">
+            3. Вы планируете официально зарабатывать в ОАЭ?
+          </div>
+ 
+        </div>
+        <div class="answer_wrapper warning">
+          <div class="answer  ">
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="15000" type="radio">
+                <span>Да, рассматриваю открытие компании.</span>
+              </label>
+              <div class="note_inner">
+                <div class="answer_price">
+                  +15000 АED
+                </div>
+                <div class="note">
+                  <div class="note_wrapper">
+                    <img src="pictures/warning.svg" alt="warning">
+                    <span>На получение лицензии компании</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="5000" type="radio">
+                <span>Да, рассматриваю трудоустройство.</span>
+              </label>
+              <div class="note_inner">
+                <div class="answer_price">
+                  +5000 АED
+                </div>
+                <div class="note">
+                  <div class="note_wrapper">
+                    <img src="pictures/warning.svg" alt="warning">
+                    На получение резидентской визы для трудоустройства
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="3000" type="radio">
+                  <span>Да, я фрилансер хочу оказывать услуги на территории ОАЭ.</span>
+              </label>
+              <div class="note_inner">
+                <div class="answer_price">
+                  +3000 АED
+                </div>
+                <div class="note">
+                  <div class="note_wrapper">
+                    <img src="pictures/warning.svg" alt="warning">
+                    На получение визы фрилансера
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="chek" type="radio">
+                <span>Нет, у меня есть доход за пределами ОАЭ.</span>
+              </label>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="card">
+        <div class="question_wrapper">
+          <div class="question">
+            4. Вы планируете открывать банковский счет?
+          </div>
+
+        </div>
+        <div class="answer_wrapper">
+          <div class="answer">
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="chek" type="radio">
+                Да
+              </label>
+            </div>
+            <div class="answer_item">
+              <label>
+                <input class="chek" name="chek" value="chek" type="radio">
+                Нет
+              </label>
+            </div>
+      
+          </div>
+          <div class="note_inner note_warning">
+            <div class="answer_price">
+              0 АED
+            </div>
+            <div class="note ">
+              <div class="note_wrapper">
+                <img src="pictures/warning.svg" alt="warning">
+                До конца октября эта услуга в подарок. Обычная стоимость AED 1 299
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card ">
+        <p class = "text_price">Стоимость Вашей резидентской визы, на 
+          1 человека - <span class="itog"> 8999 AED</span> или 
+        <span class="itog_usd">2465 USD </span> </p><br>
+        <p class="text_price"> Средние сроки изготовлений <br><span>7-8 рабочих дней</span></p>
+        <a href="#" class="consultation" data-modal="#connect_call">
+          <div class="consultation_wrapper">
+            <div class="consultation_text">
+              Получить консультацию
+            </div>
+          </div>
+        </a>
+      </div>
+      
+      
+      <div class="bottom_wrapper">
+        <div class="progress_wrapper">
+          <div class="quantity_mobile active">
+            Вопрос 1/4
+          </div>
+          <div class="quantity_mobile ">
+            Вопрос 2/4
+          </div>
+          <div class="quantity_mobile ">
+            Вопрос 3/4
+          </div>
+          <div class="quantity_mobile ">
+            Вопрос 4/4
+          </div>
+          <div class="line_progress">
+            <img class="progress_desk" src="pictures/progress.svg" alt="line">
+            <img class="progress_mobile" src="pictures/progress.svg" alt="line">
+            <div class="line_fill"></div>
+            <div class="line_fill_mobile"></div>
+          </div>
+        </div>
+        <button class="button_next">
+          Далее
+          <img src="pictures/Frame.svg" alt="frame">
+        </button>
+        <div class="summa_wrapper">
+          <div class="summa">
+            2599 АED
+          </div>
+          <div class="summa_text">
+            <img src="pictures/warning.svg" alt="warning">
+            стоимость визы на данном этапе
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+<section class="country">
+  <div class="container">
+    <div class="tittle">
+     
+      <h2>Почему стоит <span>выбрать ОАЭ</span></h2>
+     
+    </div>
+    <div class="country_dignity">
+      <div class="col-md-6 country_block">
+        <div class="dignity_item first_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Крутой климат: более 350 солнечных дней в году, в январе можно расслабиться на пляже
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Стабильная экономика: отсутствие инфляции, курс AED по отношению к доллару не меняется уже 25 лет
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Стоимость жилья можно сравнить с Москвой, но в Москве у вас не будет бассейна и тренажёрного зала в доме
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Юридическая безопасность: ОАЭ не раскрывает информацию о своих резидентах
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Ваши дети смогут учиться в британских школах (с акредитацией Гарварда) от 2 500 $ в год
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 country_block">
+        <div class="dignity_item ">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Дубай входит в топ-3 самых безопасных городов мира и топ-5 лучших городов
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            ОАЭ занимают 6-ое место в мире по уровню зарплат, вы не столкнётесь с коррупцией и разбитыми дорогами
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Не нужно платить налоги на экспорт, импорт, прибыль и НДС
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Доступ к иностранным ценным бумагам без риска блокировки
+          </div>
+        </div>
+        <div class="dignity_item">
+          <div class="h2">
+            <img src="pictures/star_connect.svg" alt="star">
+          </div>
+          <div class="dignity_text">
+            Возможность вводить и выводить капитал с минимальными проверками от банков
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+ 
+  </div>
+</section>
+<section class="crow">
+  <div class="container">
+    <div class="tittle">
+      
+  
+      <h2>без <span>белых ворон</span></h2>
+    
+    </div>
+    <div class="procent">
+      <div class="procent_inner">
+        <div class="procent_numb">
+          93.8 %
+        </div>
+        <div class="procent_text">
+          жителей эмирата Дубай — приезжие
+        </div>
+      </div>
+    </div>
+    <div class="crow_wrapper">
+      
+      <div class="crow_block">
+        
+        
+        <div class="crow_text">
+          <p>В ОАЭ повсеместно используется английский язык, поэтому 
+          <span>у вас не возникнет проблем в общении</span> с обслуживающим персоналом,
+          также все надписи в ОАЭ дублируют на английском языке (дорожные указатели, 
+          меню в ресторанах и т.д.).</p>
+        </div>
+        
+      </div>
+      <div class="crow_block">
+        <div class="crow_text">
+        
+          <p>Никто и никогда в ОАЭ не посмотрит на вас косо,
+            в связи с вашим переездом</p>
+        </div>
+        <a href="#" class="btn" data-modal="#connect_call">
+          <span>Узнать, как получить ВНЖ</span> 
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="connect">
+  <div class="container">
+    <div class="tittle">
+     
+      <h2>как с нами <span>связаться</span></h2>
+    
+    </div>
+    <div class="connect_wrapper">
+      <div class="connect_block">
+
+       <div class="lvl">
+        <div class="messengers">
+          <h3 class="connect_text_tittle">
+            Написать в мессенджере:
+          </h3>
+          <div class="app">
+            <a href="#"> <img src="pictures/whatsapp.svg" alt="whatsapp"></a>
+            <a href="#"> <img src="pictures/TG_connect.svg" alt="tg"></a>
+          </div>
+        </div>
+        <div class="phones_connect">
+          <h3 class="connect_text_tittle">
+            По номеру телефона:
+          </h3>
+          <div class="phones">
+            <div class="phones_block">
+              <a href="tel:+74993453434"><img src="pictures/phone.svg" alt="whatsapp">
+                <span>+7 499 345-34-34</span>
+              </a>
+            </div>
+            <div class="phones_block">
+              <a href="tel:+971993453434">
+                <img src="pictures/phone.svg" alt="whatsapp">
+                <span>+971 (99) 345 34–34</span>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+        
+      </div>
+      <div class="connect_description">
+        <img src="pictures/star_connect.svg" alt="star">
+        <div class="connect_text">
+          Все, кто напишет <span>до 21.08.23</span> получат материалы 
+          по самостоятельному получению или продлению резиденсткой
+          визы <span>абсолютно бесплатно</span>
+        </div>
+        
+      </div>
+      <div class="material">
+        <h3 class="connect_text_tittle">
+          Что входит в материалы:
+        </h3>
+        <ul class="material_text">
+          <li>Пошаговая процедура</li>
+          <li>Требования к заявителям</li>
+          <li>Условия получения</li>
+          <li>Ответы на частые вопросы</li>
+        </ul>
+      </div>
+      <a href="#" class="btn" data-modal="#connect_call">
+        Получить материалы
+      </a>
+    </div>
+  </div>
+</section>
+<div class="modal" id="connect_call">
+  <div class="modal_connect">
+    <div class="modal_wrapper">
+      <button class="close" type="button" data-close>
+        <img src="pictures/close.svg" alt="close">
+      </button>
+      <h2> Оставьте заявку <span>и получите бесплатную консультацию</span></h2>
+      <label>Введите номер телефона</label>
+      <input class="input" type="text" name="phone" id="phone" pattern="^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$" placeholder="+7 ___-___-__-__">
+      
+      
+      
+      <button type="submit" class="consultation close_cons">
+        <span class="consultation_wrapper">
+          <span class="consultation_text">
+            Получить консультацию
+          </span>
+        </span>
+      </button>
+      <div class="agreement">
+        <label>
+          <input class="chek" name="chek" value="chek" type="checkbox" id="#" >
+            <span class="agreement_text">
+              Отправляя заявку, я даю своё <a href="">согласие на обработку моих персональных
+              данных</a> в соответствии с <a href="#">Политикой конфиденциальности</a>
+            </span>
+        </label>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer_line"></div>
+    <div class="container">
+    <div class="header_intro">
+      <div class="logo">
+        <a href="#"><img src="pictures/logo.png" alt="logo"></a>
+      </div>
+      <div class="currency_block">
+        <span class="currency_text">
+          Валюта
+        </span>
+        <button class="currency_button">
+          <span class="currency_name">AED</span>
+          <img class="currency_flag" src="pictures/AED.svg" alt="Flag">
+          <img class="btn_img" src="pictures/Vectorrot.svg" alt="Buttonimage">
+        </button>
+        <ul class="currency_list" id="currency" style="display: none;">
+          <li><span>AED</span><img class="currency_flag" src="pictures/AED.svg" alt="Flag"></li>
+          <li><span>USD</span><img class="currency_flag" src="pictures/USD.svg" alt="Flag"></li>
+          <li><span>RUB</span><img class="currency_flag" src="pictures/RUB.svg" alt="Flag"></li>
+        </ul>
+      </div>
+      <div class="network">
+        <div class="network_inner">
+          <a href="#" target="_blank" class="network_logo desc_net"><img src="pictures/TG_connect.svg" alt="telegram"></a>
+          <a href="#" target="_blank" class="network_logo desc_net"><img src="pictures/whatsapp.svg" alt="whatsapp"></a>
+          <a href="#" target="_blank" class="network_logo mobile_net"><img src="pictures/TG_connect.svg" alt="telegram"></a>
+          <a href="#" target="_blank" class="network_logo mobile_net"><img src="pictures/whatsapp.svg" alt="whatsapp"></a>
+        </div>
+        <div class="network_text">
+          Задайте свой вопрос, <span class="network_click"> в 1 клик </span>
+        </div>
+      </div>
+    <div class="phones">
+      <div class="phones_block">
+        <a href="tel:+74993453434"><img src="pictures/phone.svg" alt="whatsapp">
+          <span>+7 499 345-34-34</span>
+        </a>
+      </div>
+      <div class="phones_block">
+        <a href="tel:+971993453434">
+          <img src="pictures/phone.svg" alt="whatsapp">
+          <span>+971 (99) 345 34–34</span>
+        </a>
+      </div>
+    </div>
+      <a href="#" class="btn_call" data-modal="#connect_call">
+        <div class="call_text">
+          Обратный звонок
+        </div>
+      </a>
+    </div>
+    <div class="footer_information">
+      <a href="#" class="information_item">Пользовательское соглашение</a>
+      <a href="#" class="information_item">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+<script src="js/java.js"> </script>
+
+
+<script src="https://unpkg.com/imask"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+/*Gilroy*/
+@font-face {
+  font-family: 'Gilroy Light';
+  src: url('../fonts/Gilroy-Light.eot');
+  src: url('../fonts/Gilroy-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Gilroy-Light.woff') format('woff'),
+    url('../fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Regular';
+  src: url('../fonts/Gilroy-Regular.eot');
+  src: url('../fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Gilroy-Regular.woff') format('woff'),
+    url('../fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Semibold';
+  src: url('../fonts/Gilroy-SemiBold.eot');
+  src: url('../fonts/Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Gilroy-SemiBold.woff') format('woff'),
+    url('../fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Bold';
+  src: url('../fonts/Gilroy-Bold.eot');
+  src: url('../fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Gilroy-Bold.woff') format('woff'),
+    url('../fonts/') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*Onest*/
+@font-face {
+  font-family: 'Onest Light';
+  src: url('../fonts/OnestLight1602-hint.eot');
+  src: url('../fonts/OnestLight1602-hint.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OnestLight1602-hint.woff') format('woff'),
+    url('../fonts/OnestLight1602-hint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Onest Regular';
+  src: url('../fonts/OnestRegular1602-hint.eot');
+  src: url('../fonts/OnestRegular1602-hint.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OnestRegular1602-hint.woff') format('woff'),
+    url('../fonts/OnestRegular1602-hint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Onest Bold';
+  src: url('../fonts/OnestBold1602-hint.eot');
+  src: url('../fonts/OnestBold1602-hint.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OnestBold1602-hint.woff') format('woff'),
+    url('../fonts/OnestBold1602-hint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Onest Medium';
+  src: url('../fonts/OnestMedium1602-hint.eot');
+  src: url('../fonts/OnestMedium1602-hint.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OnestMedium1602-hint.woff') format('woff'),
+    url('../fonts/OnestMedium1602-hint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Onest Thin';
+  src: url('../fonts/OnestThin1602-hint.eot');
+  src: url('../fonts/OnestThin1602-hint.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OnestThin1602-hint.woff') format('woff'),
+    url('../fonts/OnestThin1602-hint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*@font-face {
+  font-family: 'ForwardAd';
+  src: url('../fonts/ForwardAd.eot');
+  src: url('../fonts/ForwardAd.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ForwardAd.woff') format('woff'),
+    url('../fonts/ForwardAd.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+@font-face {
+  font-family: 'ForwardAd Regular';
+  src: url('../fonts/ForwardAdRegular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ForwardAd Bold';
+  src: url('../fonts/ForwardAdBold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Comfortaa Regular';
+  src: url('../fonts/Comfortaa-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
