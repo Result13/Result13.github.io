@@ -1,0 +1,30 @@
+<svg width="1151" height="1030" viewBox="0 0 1151 1030" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_268_701)">
+<ellipse cx="584.5" cy="515" rx="184.5" ry="115" fill="url(#paint0_linear_268_701)"/>
+</g>
+<defs>
+<filter id="filter0_f_268_701" x="0" y="0" width="1169" height="1030" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="200" result="effect1_foregroundBlur_268_701"/>
+</filter>
+<linearGradient id="paint0_linear_268_701" x1="400" y1="486.488" x2="785.839" y2="544.14" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0090BC"/>
+<stop offset="0.117896" stop-color="#0090BC"/>
+<stop offset="0.213837" stop-color="#008EBC"/>
+<stop offset="0.2912" stop-color="#008CBC"/>
+<stop offset="0.353363" stop-color="#0089BC"/>
+<stop offset="0.403704" stop-color="#0086BC"/>
+<stop offset="0.4456" stop-color="#0082BD"/>
+<stop offset="0.48243" stop-color="#007DBD"/>
+<stop offset="0.51757" stop-color="#0079BD"/>
+<stop offset="0.5544" stop-color="#0074BD"/>
+<stop offset="0.596296" stop-color="#006FBD"/>
+<stop offset="0.646637" stop-color="#006ABD"/>
+<stop offset="0.7088" stop-color="#0065BD"/>
+<stop offset="0.786163" stop-color="#0060BD"/>
+<stop offset="0.882104" stop-color="#005BBD"/>
+<stop offset="1" stop-color="#0057BD"/>
+</linearGradient>
+</defs>
+</svg>
