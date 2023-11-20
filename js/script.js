@@ -15,7 +15,7 @@ function init(elemid) {
   let canvas = document.getElementById(elemid),
     c = canvas.getContext("2d"),
     w = (canvas.width = window.innerWidth),
-    h = (canvas.height = 650);
+    h = (canvas.height = window.innerHeight);
   c.fillStyle = "rgba(30,30,30,1)";
   c.fillRect(0, 0, w, h);
   return { c: c, canvas: canvas };
@@ -25,7 +25,7 @@ window.onload = function () {
   let c = init("canvas").c,
     canvas = init("canvas").canvas,
     w = (canvas.width = window.innerWidth),
-    h = (canvas.height = 650),
+    h = (canvas.height = window.innerHeight),
     mouse = { x: false, y: false },
     last_mouse = {};
 
@@ -255,27 +255,173 @@ window.onload = function () {
   loop();
   setInterval(loop, 1000 / 60);
 };
-window.addEventListener('DOMContentLoaded', () => {
-    const menu = document.querySelector('.menu'),
-    menuItem = document.querySelectorAll('.menu_item'),
-    hamburger = document.querySelector('.hamburger'),
-    light = document.querySelectorAll('.menu__top__img');
+$(document).ready(function(){
+    const menu = $(".menu");
+    const menuItem = $(".menu__item");
+    const hamburger = $(".hamburger");
+    const light = $(".menu__top__img");
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('hamburger_active');
-        menu.classList.toggle('menu_active'),
-        light.forEach(light => {
-            light.classList.toggle('menu__top__img_active');
+    hamburger.click(function(){
+        hamburger.toggleClass('hamburger_active');
+        menu.toggleClass('menu_active');
+        light.each(function(){
+            $(this).toggleClass('menu__top__img_active');
         });
     });
 
-    menuItem.forEach(item => {
-        item.addEventListener('click', () => {
-            hamburger.classList.toggle('hamburger_active');
-            menu.classList.toggle('menu_active'),
-            light.forEach(light => {
-            light.classList.toggle('menu__top__img_active');
+    menuItem.each(function(){
+        $(this).click(function(){
+            hamburger.toggleClass('hamburger_active');
+            menu.toggleClass('menu_active');
+            light.each(function(){
+                $(this).toggleClass('menu__top__img_active');
+            });
         });
-        })
-    })
-})
+    });
+
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.menu').length && !$(event.target).closest('.hamburger').length) {
+            if (menu.hasClass('menu_active')) {
+                hamburger.removeClass('hamburger_active');
+                menu.removeClass('menu_active');
+                light.each(function(){
+                    $(this).removeClass('menu__top__img_active');
+                });
+            }
+        }
+    });
+});
+
+
+let menuItems = document.querySelectorAll('.hobby__menu__item');
+let turnButton = document.querySelector('.hobby__present__btn');
+let blocks = document.querySelectorAll('.hobby__present__inner');
+let gifs = document.querySelectorAll('.hobby__present__gif');
+
+let currentIndex = 0; // External variable to store the current index
+
+// Add event listeners for each li element
+menuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        activateBlock(index);
+    });
+});
+
+turnButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % blocks.length;
+    activateBlock(currentIndex);
+});
+
+function activateBlock(index) {
+    // Remove the active class from all blocks
+    menuItems.forEach(block => block.classList.remove('hobby__menu__item_active'));
+    blocks.forEach(block => block.classList.remove('hobby__present__inner_active'));
+
+    // Update the current index
+    currentIndex = index;
+
+    // Add the active class to the selected block
+    menuItems[index].classList.add('hobby__menu__item_active');
+    blocks[index].classList.add('hobby__present__inner_active');
+
+    // Rotate the button
+    turnButton.style.transform = `rotate(${45 * currentIndex}deg)`;
+
+    // Add the active class to the gif and remove it after 2 seconds
+    gifs[index].classList.add('hobby__present__gif_active');
+    setTimeout(() => {
+        gifs[index].classList.remove('hobby__present__gif_active');
+    }, 500);
+}
+
+/* window.addEventListener('DOMContentLoaded', () => {
+    const hobby = document.querySelector('.hobby'),
+    hobbyIn = document.querySelector('.hobby__inner'),
+    lightR = document.querySelectorAll('.hobby__img__light_red'),
+    btn = document.querySelector('.hobby__img__btn'),
+    lightG = document.querySelectorAll('.hobby__img__light_green'),
+    bottom = document.querySelector('.hobby__bottom');
+    btn.addEventListener('click', () => {
+        
+        hobby.classList.toggle('hobby_active'),
+        btn.classList.toggle('hobby__img__btn_active'),
+        
+        hobbyIn.classList.toggle('hobby__inner_active'),
+        bottom.classList.toggle('hobby__bottom_active'),
+        lightR.forEach(light => {
+          light.classList.toggle('hobby__img__light_red_active');
+        });
+        
+        lightG.forEach(light => {
+            light.classList.toggle('hobby__img__light_green_active');
+        });
+        
+    });
+    
+    
+}) */
+window.addEventListener('DOMContentLoaded', () => {
+    const hobby = document.querySelector('.hobby');
+    const btn = document.querySelector('.hobby__img__btn');
+    const hobbyIn = document.querySelector('.hobby__inner');
+    const bottom = document.querySelector('.hobby__bottom');
+    const lightR = document.querySelectorAll('.hobby__img__light_red');
+    const lightG = document.querySelectorAll('.hobby__img__light_green');
+
+    btn.addEventListener('click', () => {
+        toggleClasses();
+    });
+
+    function toggleClasses() {
+        hobby.classList.toggle('hobby_active');
+        btn.classList.toggle('hobby__img__btn_active');
+        hobbyIn.classList.toggle('hobby__inner_active');
+        bottom.classList.toggle('hobby__bottom_active');
+
+        lightR.forEach(light => {
+            light.classList.toggle('hobby__img__light_red_active');
+        });
+
+        lightG.forEach(light => {
+            light.classList.toggle('hobby__img__light_green_active');
+        });
+
+        if (!btn.classList.contains('hobby__img__btn_active')) {
+            bottom.classList.add('hobby__bottom_back');
+            hobbyIn.classList.add('hobby__inner_back');
+        } else {
+            bottom.classList.remove('hobby__bottom_back');
+            hobbyIn.classList.remove('hobby__inner_back');
+        }
+    }
+});
+ $(window).scroll(function(){
+    if ($(this).scrollTop()>800){
+      $('.pageup').fadeIn();
+    }
+    else{
+      $('.pageup').fadeOut();
+    }
+  });
+  $("a[href=#up]").click(function(){
+    const _href = $(this).attr("href");
+    $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+    return false;
+  })
+$(document).ready(function(){
+    $("a.menu__link").click(function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });
+});
+
+window.onload = function(){
+    $("ul.menu").on("click", "a.menu__link", function(event){
+        event.preventDefault();
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+    });
+};
+
+
