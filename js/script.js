@@ -363,6 +363,7 @@ function activateBlock(index) {
 window.addEventListener('DOMContentLoaded', () => {
     const hobby = document.querySelector('.hobby');
     const btn = document.querySelector('.hobby__img__btn');
+    const table = document.querySelector('.hobby__table');
     const hobbyIn = document.querySelector('.hobby__inner');
     const bottom = document.querySelector('.hobby__bottom');
     const lightR = document.querySelectorAll('.hobby__img__light_red');
@@ -371,10 +372,13 @@ window.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
         toggleClasses();
     });
-
+    table.addEventListener('click', () => {
+        toggleClasses();
+    });
     function toggleClasses() {
         hobby.classList.toggle('hobby_active');
         btn.classList.toggle('hobby__img__btn_active');
+        table.classList.toggle('hobby__table_active');
         hobbyIn.classList.toggle('hobby__inner_active');
         bottom.classList.toggle('hobby__bottom_active');
 
@@ -389,13 +393,18 @@ window.addEventListener('DOMContentLoaded', () => {
         if (!btn.classList.contains('hobby__img__btn_active')) {
             bottom.classList.add('hobby__bottom_back');
             hobbyIn.classList.add('hobby__inner_back');
-        } else {
+        } 
+        else if (!table.classList.contains('hobby__table_active')) {
+            bottom.classList.add('hobby__bottom_back');
+            hobbyIn.classList.add('hobby__inner_back');
+        }
+        else {
             bottom.classList.remove('hobby__bottom_back');
             hobbyIn.classList.remove('hobby__inner_back');
         }
     }
 });
- $(window).scroll(function(){
+  $(window).scroll(function(){
     if ($(this).scrollTop()>800){
       $('.pageup').fadeIn();
     }
@@ -403,6 +412,7 @@ window.addEventListener('DOMContentLoaded', () => {
       $('.pageup').fadeOut();
     }
   });
+  /*
   $("a[href=#up]").click(function(){
     const _href = $(this).attr("href");
     $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
@@ -422,6 +432,6 @@ window.onload = function(){
         const _href = $(this).attr("href");
         $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
     });
-};
+}; */
 
 
