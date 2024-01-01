@@ -360,6 +360,7 @@ function activateBlock(index) {
     
     
 }) */
+
 window.addEventListener('DOMContentLoaded', () => {
     const hobby = document.querySelector('.hobby');
     const btn = document.querySelector('.hobby__img__btn');
@@ -412,26 +413,3 @@ window.addEventListener('DOMContentLoaded', () => {
       $('.pageup').fadeOut();
     }
   });
-  /*
-  $("a[href=#up]").click(function(){
-    const _href = $(this).attr("href");
-    $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-    return false;
-  })
-$(document).ready(function(){
-    $("a.menu__link").click(function(){
-        const _href = $(this).attr("href");
-        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-        return false;
-    });
-});
-
-window.onload = function(){
-    $("ul.menu").on("click", "a.menu__link", function(event){
-        event.preventDefault();
-        const _href = $(this).attr("href");
-        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-    });
-}; */
-
-
