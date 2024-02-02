@@ -1,0 +1,42 @@
+.content{
+  display: block;
+  padding-top: 40px;
+  &__wrapper{
+    
+  }
+  &__block{
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  &__descr{
+    display: block;
+    width: auto;
+    color:#fff;
+    font-size: 18px;
+    text-indent:40px;
+    &__small{
+      width: 65%;
+    }
+  }
+  &__img{
+    display: block;
+    width: 30%;
+    border-radius: 20px;
+    &__left{
+      margin-right: 40px;
+    }
+    &__right{
+      margin-left: 40px;
+    }
+    &__big{
+
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+  }
+}

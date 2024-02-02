@@ -1,0 +1,85 @@
+.promo{
+  display: block;
+  width: 100%;
+  height: 100svh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url('../pictures/спортсмен.jpg') no-repeat center center / cover;
+/*   background:url('../pictures/bg.png') no-repeat center center / cover; */
+
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100svh;
+    color:#fff;
+
+  }
+  &__block{
+    width: 55%;
+    padding-bottom: 5%;
+  }
+  &__img{
+    display: block;
+    width: 30%;
+    border-radius:30%;
+    transform: rotate(15deg);
+   
+  }
+  &__descr{
+    display: block;
+    margin-top: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 35px;
+    margin-bottom: 30px;
+  }
+  span{
+    font-weight: 600;
+    color:rgb(5, 186, 199);
+    
+  }
+  &__code{
+      text-decoration:underline;
+    }
+}
+.title{
+  
+  font-family: Roboto;
+  font-size: 46px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.subtitle{
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  &__inner{
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 32px;
+    color:#fff;
+    font-weight: 600;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 2;
+    background-color: #181818;
+  }
+  hr{
+    display: block;
+    width: 100%;
+    border: none;
+    height: 2px;
+    color:#fff;
+    position: absolute;
+    z-index: 1;
+    top:2%;
+    background: linear-gradient(90deg, #418600, #7aff52, #7aff52, #418600);
+  }
+
+
+
+}
