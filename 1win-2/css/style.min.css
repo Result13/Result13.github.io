@@ -903,13 +903,16 @@ h2 {
   font-size: 13px;
   padding: 0;
   color: #fff;
-  background-image: linear-gradient(90deg, hsla(219, 85%, 64%, 0.9) 30%, #240086 115.87%);
+  /* background-image: linear-gradient(90deg, hsla(219, 85%, 64%, 0.9) 30%, #240086 115.87%); */
   border: none;
   border-radius: 5px;
+  background-image: none;
+  background-color: #4f8f04;
 }
 .btn__menu:hover {
-  color: #54f1e9;
-  background-image: linear-gradient(90deg, hsla(219, 85%, 64%, 0.9) 6%, #240086 94%);
+  color: #ffffff;
+  background-color: #62b603;
+  /* background-image: linear-gradient(90deg, hsla(219, 85%, 64%, 0.9) 6%, #240086 94%); */
 }
 .btn__sign {
   width: auto;
