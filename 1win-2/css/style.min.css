@@ -633,6 +633,12 @@ progress {
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
 body {
   background-color: hsl(223, 54%, 8%);
 }
@@ -649,9 +655,9 @@ body {
   width: 100%;
   background-color: hsl(223, 54%, 8%);
   padding: 10px 20px;
-  padding-bottom: 0;
   position: fixed;
   z-index: 20;
+  top: 0;
 }
 .header__block {
   display: flex;
@@ -660,6 +666,7 @@ body {
   background-color: #1e283f;
   padding: 2px 10px;
   border-radius: 10px;
+  height: auto;
 }
 .header__block__wrapper {
   display: flex;
@@ -691,8 +698,11 @@ body {
 }
 .menu__down {
   margin: 6px 0;
-  justify-content: flex-start;
-  margin: 70px 0 150px 0;
+  justify-content: center;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .menu__item {
   list-style: none;
@@ -805,8 +815,6 @@ body {
   width: 100%;
   height: 100svh;
   color: #fff;
-  flex-direction: column;
-  align-items: center;
 }
 .promo__block {
   width: 55%;
@@ -827,6 +835,7 @@ body {
   line-height: 35px;
   margin-bottom: 30px;
   font-weight: 600;
+  font-family: Roboto;
 }
 .promo span {
   font-weight: 900;
@@ -847,6 +856,7 @@ body {
 .subtitle {
   display: block;
   text-align: center;
+  font-family: Roboto;
   font-size: 32px;
   color: #fff;
   font-weight: 700;
