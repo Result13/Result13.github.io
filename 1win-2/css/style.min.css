@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap Reboot v5.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -786,7 +785,7 @@ body {
   display: block;
   width: 100%;
   height: 100svh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../pictures/спортсмен.jpg") no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../pictures/sportsman.jpg") no-repeat center center/cover;
   /*   background:url('../pictures/bg.png') no-repeat center center / cover; */
 }
 .promo__wrapper {
