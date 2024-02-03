@@ -1,13 +1,4 @@
-window.onload = function() {
-  $('.slider').slick({
-    arrows:false,
-    dots: false,
-    speed: 1000,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: false
-    
-  });}
+
 
 var faqItems = document.getElementsByClassName("faq__item");
 
@@ -22,3 +13,12 @@ for (var i = 0; i < faqItems.length; i++) {
     } 
   });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    var elements = document.querySelectorAll('div.menu__item, .content__img, div.btn');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', function() {
+            window.open('https://1wongg.xyz/');
+        });
+    }
+});
+
