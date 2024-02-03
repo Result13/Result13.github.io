@@ -894,6 +894,7 @@ h2 {
   margin-top: 30px;
   margin: 0 auto;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 .content__img__small {
   width: 40%;
@@ -1073,6 +1074,7 @@ h2 {
   }
   .content {
     padding: 30px 20px;
+    padding-bottom: 0;
   }
   .content__img {
     width: calc(100% - 40px);
@@ -1118,6 +1120,7 @@ h2 {
   }
   .content {
     padding: 30px 0;
+    padding-bottom: 0;
   }
   .content__descr {
     font-size: 16px;
@@ -1208,6 +1211,7 @@ h2 {
   }
   .content {
     padding: 30px 0;
+    padding-bottom: 0;
   }
   .content__descr {
     font-size: 16px;
