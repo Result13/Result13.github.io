@@ -1022,7 +1022,7 @@ h2 {
      }
    } */
   .promo {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../pictures/var1.png") no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../pictures/var2.png") no-repeat center center/cover;
   }
   .promo__block {
     margin: 0 auto;
