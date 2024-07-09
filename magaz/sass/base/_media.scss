@@ -1,0 +1,259 @@
+@media (max-width: 1200px) {}
+@media (max-width: 1024px) {
+  .promo{
+    &__promotions{
+      display: none;
+    }
+  }
+  .slider{
+    width: 100%;
+    img{
+      border-radius: 10px;
+  }
+}
+}
+@media (max-width: 991px) {
+  
+    
+  .header{
+    
+    &__top{
+      display: none;
+    }
+    &__wrapper{
+      flex-wrap: wrap;
+      padding-top: 5px;
+    }
+    &__logo{
+      margin-left: 0;
+      &__mobile {
+          display: block;
+          img{
+            margin-right: auto;
+          }
+        }
+    }
+    &__searchbox{
+      width: 80%;
+      &__input{
+        width: 90%;
+      }
+      &__btn{
+        width: 10%;
+        img{
+          width: 40%;
+        }
+
+      }
+   
+    }
+    &__user{
+      display: none;
+      width: 80%;
+      justify-content: flex-end;
+    }
+    &__user-item{
+      margin-top: 10px;
+      font-size: 14px;
+      img{
+        max-width: 20px;
+      }
+    }
+    &__down{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+      padding: 0 5px;
+      .header__user{
+        display: flex;
+      }
+    }
+  }
+  .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      /* margin: 0 20px; */
+      padding: 10px 0;
+      width: 30px;
+      height: 20px;
+      align-items: center;
+      margin-top: 10px;
+      /* background-color: rgba(107, 107, 107, 0.8); */
+    /*   border-radius: 10px;
+      border: 1px solid #b6b6b6; */
+      span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+        margin-bottom: 2px;
+        transition: 0.5s all;
+        
+      }
+  
+      &_active {
+        span {
+          margin-block: -2px;
+  
+          &:nth-child(1) {
+            transform: translateY(3px) rotate(-45deg);
+          }
+  
+          &:nth-child(2) {
+            display: none;
+          }
+  
+          &:nth-child(3) {
+            transform: translateY(3px) rotate(45deg);
+          }
+        }
+      }
+  }
+  .catalog-item{
+    &__menu{
+      &__item{
+        a{
+          padding: 0 30px;
+        }
+      }
+    }
+    &__main{
+      width: 35%;
+    }
+    &__second{
+      width: 65%;
+    }
+  }
+  .close{
+    top:-6%;
+    right: -1.5%;
+    font-size: 20px;
+  }
+  .promo{
+    padding: 0 10px;
+    &__wrapper{
+      padding-top: 135px;
+    }
+  }
+  .catalog{
+    display: none;
+  }
+  .slider .slick-arrow{
+    display: none;
+  }
+}
+@media (max-width: 768px){
+  .promo {
+      padding: 0;
+      &__wrapper {
+        padding-top: 128px;
+      }
+    }
+  .slider{
+    img{
+      border-radius: 0;
+    } 
+  }
+  .close{
+    top:-6%;
+    right: -2.5%;
+  }
+  .catalog-item{
+    &__menu{
+      &__item{
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media (max-width: 576px){
+
+}
+@media (max-width: 575px){
+  .header{
+    &__searchbox {
+      width: 75%;
+
+  
+    }
+    &__searchbox{
+      width: 80%;
+      &__input{
+        width: 85%;
+      }
+      &__btn{
+        width: 15%;
+        img{
+          width: 40%;
+          margin-left: 30%;
+        }
+
+      }
+   
+    }
+}
+ .catalog-item {
+  &__wrapper{
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+   &__menu {
+     &__item {
+       a {
+         padding: 0 20px;
+         width: 100%;
+       }
+     }
+   }
+
+   &__main {
+     width: 40%;
+     margin-right: 15px;
+   }
+
+   &__second {
+     width: 58%;
+     padding-right: 10px;
+   }
+   &__submenu{
+    &__item{
+      a{
+        padding: 0 20px;
+        width: calc(100% - 40px);
+      }
+    }
+   }
+ }
+  .close {
+    top: -4%;
+    right: -1%;
+  }
+}
+@media (max-width: 400px) {
+  .header{
+    &__searchbox{
+      %__input{
+        width: 80%;
+      }
+      &__btn{
+        width: 20%;
+        img{
+          width: 50%;
+          margin-left: 20%;
+        }
+
+      }
+   
+    }
+    &__user-item{
+      margin-right: 10px;
+      font-size: 12px;
+    }
+  }
+  .promo{
+    &__wrapper {
+    padding-top: 126px;
+    }
+  }
+}

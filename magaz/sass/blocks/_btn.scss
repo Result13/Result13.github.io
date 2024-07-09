@@ -1,0 +1,39 @@
+.btn{
+  box-sizing:border-box;
+  width: 120px;
+  height: 36px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #9503b3;
+  border: 1px solid #9503b3;
+  transition: color, border .2s ease-in;
+  &:hover{
+    transition: color, border .2s ease-in;
+    color: #5f0072;
+    border: 1px solid #5f0072;
+  }
+  &__form{
+    
+    padding: 15px 5px;
+    height: auto;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-weight: 600;
+    background-color: #9901b8;
+    color: #fff;
+    transition: background-color 0.2s ease;
+    
+      &:hover {
+        color: #66d0fa;
+        background-color: transparent;
+        transition: color, border, background-color 0.2s ease;
+        border: 3px solid #cb11f0;
+        box-shadow: 3px 5px 13px #36c0f7;
+      }
+  }
+}

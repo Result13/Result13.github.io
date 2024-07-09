@@ -1,0 +1,104 @@
+.footer{
+  padding: 20px 0 40px 0;
+  position: relative;
+  background-image: url(../pictures/girls.jpg) ;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+  z-index: 1;
+  hr{
+    display: block;
+    width: 70%;
+    height: 2px;
+    color: #fff;
+    margin: 8px auto 10px auto;
+  }
+  &__wrapper{
+    display: flex;
+    align-items: flex-start;
+
+  }
+  &__block{
+    display: block;
+    box-sizing:border-box;
+    width: 33%;
+    color: #fff;
+  }
+  &__company{
+    margin-bottom: 20px;
+  }
+  &__menu{
+    display: block;
+    box-sizing:border-box;
+    width: 33%;
+    
+    &__wrapper{
+
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+    
+  }
+  &__item{
+    margin: 4px auto;
+    padding: 0;
+    width: 70%;
+  }
+  &__link{
+    color: #fff;
+    font-size: 18px;
+  }
+  &__title{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  &__contacts{
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+  }
+  &__time{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  &__address{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 18px;
+    align-items: center;  
+    margin-top: 10px;
+    &__link{
+      display: block;
+      margin: 0 6px 0 0;
+      color:#cb11f0;
+      transition: color 0.15s ease-in;
+      &:hover{
+        color: #42bdee;
+        transition: color 0.15s ease-in;
+      }
+    }
+    span {
+      display: block;
+      margin: 0 4px;
+    }
+  }
+ 
+
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .9);
+  z-index: -1;
+}

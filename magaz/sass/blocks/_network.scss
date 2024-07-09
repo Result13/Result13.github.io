@@ -1,0 +1,48 @@
+.phone {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  font-size: 18px;
+  &__footer{
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  a {
+    display: block;
+    text-align: right;
+  }
+}
+.network{
+  display: flex;
+  width: 210px;
+  justify-content: space-between;
+  align-items:center;
+  &__wrapper{
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__footer{
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 18px;
+    flex-direction: column;
+    justify-content: center;
+    span{
+      margin-bottom: 10px;
+    }
+  }
+}
+.network-item{
+  width: 35px;
+  transition: filter 0.15s ease-in;
+  img{
+    display: block;
+    width: 100%;
+    border-radius: 30%;
+  }
+  &:hover{
+    filter: brightness(85%);
+    transition: filter 0.15s ease-in;
+  }
+}

@@ -1,0 +1,30 @@
+@import 'libs/bootstrap-reboot';
+@import 'libs/animate';
+@import 'libs/slick';
+
+body {}
+
+.container {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+
+  &_mini {
+    overflow: hidden;
+    width: 1140px;
+  }
+
+}
+
+@import 'blocks/header';
+@import 'blocks/promo';
+@import 'blocks/filter';
+@import 'blocks/popular';
+@import 'blocks/title';
+@import 'blocks/new';
+@import 'blocks/slider';
+@import 'blocks/btn';
+@import 'blocks/network';
+@import 'blocks/footer';
+@import 'blocks/form';
+@import 'base/media';

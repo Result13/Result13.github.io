@@ -1,0 +1,119 @@
+.new, .hit{
+  padding: 40px 0;
+  position: relative;
+ /*  background-image: url(../pictures/girls.jpg) ; */
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+  background-color: #1b1b1b;
+  &__tabs{
+    margin-top: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  &__tab{
+    width: 220px;
+    height: 50px;
+    border: 2px solid #d710ff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 50px;
+    transform: skewX(-25deg);
+    font-style: italic;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: 0.5s all;
+    &:hover{
+      box-shadow: 3px 5px 13px #36c0f7;
+      transition: 0.5s all;
+      background-color: #370142;
+    }
+    div{
+      transform: skewX(25deg);
+    }
+    &_active{
+      color: #fff;
+      background-color: #9503b3;
+      &:hover{
+        background-color: #9503b3;
+      }
+
+    }
+  }
+  &__content{
+    padding-top: 40px;
+    display: none;
+    justify-content:flex-start;
+    align-items:center;
+    flex-wrap: wrap;
+    &_active{
+      display: flex;
+    }
+  }
+  &__item{
+    display: block;
+    box-sizing:border-box;
+    width: 23%;
+    background-color:#dbdbdb;
+    padding: 25px;
+    position: relative;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    margin: 0 10px;
+  }
+  &__favourite{
+    position: absolute;
+    display: block;
+
+    top: 1%;
+    right: 1%;
+    border: none;
+    color: rgb(156, 156, 156);
+    background: transparent;
+    
+    &:hover, &_active {
+        color: rgb(250, 34, 34);
+        /* Или любой другой цвет */
+      }
+  }
+  &__desc{
+    display: flex;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    color:#3d3d3d;
+    line-height: 18px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.15s ease-in;
+    &:hover{
+      transition: color 0.15s ease-in;
+      color: #84009e;
+    }
+  }
+  &__price{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 20px;
+    
+    span{
+      line-height: 22px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #000;
+      letter-spacing: -1px;
+    }
+  }
+}
+.hit{
+  padding: 20px 0 40px 0;
+}
