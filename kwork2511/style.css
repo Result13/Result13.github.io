@@ -46,6 +46,8 @@
     padding-bottom: 0;
     color:#fff;
     padding: 1.979vw;
+    padding-bottom: 0;
+    height: 100%;
   }
   .header {
     display: flex;
@@ -248,7 +250,7 @@
     font-family: 'Haval', sans-serif;
     padding: 0;
     /* padding-bottom: 10px; */
-    font-size: 1.3vw;
+    font-size: 1.5vw;
     padding-bottom: 0.5vw;
   }
   .custom-table tbody td{
@@ -257,7 +259,7 @@
     color: #acada5;
     font-family: 'TT Wellingtons', serif;
     /* padding: 10px 0; */
-    font-size: 1.3vw;
+    font-size: 1.5vw;
     padding: 0.5vw 0;
   }
   .custom-table col:nth-child(1) {
