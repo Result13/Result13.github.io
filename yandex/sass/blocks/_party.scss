@@ -1,0 +1,118 @@
+.party{
+    display: block;
+    padding: 100px 0 140px 0;
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    &__btns{
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        &__text{
+            font-size: 16px;
+            opacity: 1;
+            span{
+                opacity: 0.6;
+            }
+        }
+        
+        & button{
+           /*  all: unset;  */
+           padding: 0;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #313131;
+            
+            img{
+                display: block;
+                /* margin: 0 auto; */
+            }
+        }
+        &_prev{
+            
+        }
+        &_next{
+          
+        }
+
+    }
+    &__slider{
+        width: 100%;
+        display: block;
+        margin-top: 60px;
+        position: relative;
+  overflow: hidden;
+    }
+    &__list{
+        display: flex;
+  transition: transform 0.75s ease-in-out;
+
+    }
+    &__item{
+        display: inline-block;
+        margin: 0 7px;
+        padding: 0 37px;
+        width: 33.33%;
+        flex: 0 0 394px !important ;
+        max-width: 394px;
+
+        & img{
+            display: block;
+           /*  width: 320px;
+            height: 320px; */
+            width: 100%;
+            border-radius: 50%; 
+        }
+        &__name{
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 120%;
+            margin-top: 28px;
+            text-align: center;
+        }
+        &__desc{
+            opacity: 0.6;
+            line-height: 120%;
+            margin-top: 6px;
+            text-align: center;
+        }
+        &__more{
+            display: flex;
+            box-sizing: border-box;
+            margin: 0 auto;
+            margin-top: 20px;
+            outline: none;
+            width: 113px;
+            height: 35px;
+            border:1px solid #3057A2;
+            color:#3057A2;
+            font-weight: 500;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 62px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover{
+                transition: all 0.3s ease;
+                color: #fff;
+                background-color: #3057A2;;
+            }
+        }
+    }
+    & h2{
+        text-transform: uppercase;
+        font-size: 54px;
+        line-height: 120%;
+        font-weight: 400;
+    }
+}

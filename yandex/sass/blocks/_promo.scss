@@ -1,0 +1,150 @@
+
+  .promo{
+    
+    /* background-color: #E9DED4; */
+    height: 700px;
+    width: 100%;
+    padding-top: 26px;
+    position: relative;
+    overflow: hidden;
+    background: url(../pictures/1920.jpg) center / cover no-repeat;
+   /*  &::before{
+        position: absolute;
+        content:"";
+        background: url(../pictures/back-filter.png) center / cover no-repeat;
+        width: 100%;
+        height: 100%;
+        min-height: 700px;
+        min-width: 100vw;
+        top:0;
+        opacity: 0.22;
+        z-index: 5;
+        background-blend-mode: color-burn; 
+      
+    } */
+     
+    &__inner{
+        display: block;
+        width: 50%;
+        max-width: 542px;
+        margin-top: 62px;
+        z-index: 99;
+        position: relative;
+    }
+
+    &__subtitle{
+        display: block;
+        margin: 24px auto 0 auto;
+       
+        font-size: 18px;
+        line-height: 130%;
+        text-align: center;
+    }
+    &__btn{
+        display: flex;
+        margin-top: 40px;
+        width: 100%;
+        align-items:center ;
+        justify-content: space-between;
+        &__item{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            border:2px solid #1F1F1F;
+            width: 263px;
+            height: 72px;
+            border-radius: 66px;
+            text-decoration: none;
+            padding: 0 49px;
+            font-size: 16px;
+            line-height: 130%;
+            &:first-child{
+                background-color: #1F1F1F;
+                color:#fff;
+                transition: all 0.3s ease;
+                &:hover{
+                    transition: all 0.3s ease;
+                    color:#1F1F1F;
+                    background-color: #FBCE51;
+                    border-color: #FBCE51;
+
+                }
+            }
+            &:last-child{
+                color:#1F1F1F;
+                transition: all 0.3s ease;
+                &:hover{
+                    background-color: #1F1F1F;
+                    color:#fff;
+                }
+            }
+        }   
+    }
+}
+.logo{
+    display: block;
+    width: 245px;
+    height: 36px;
+}
+.city{
+    position: absolute;
+    bottom:0;
+    display: block;
+    z-index: 4;
+    right: calc(148.5px + (100vw - 1920px) / 2);
+    width: auto;
+
+}
+.castle{
+    position: absolute;
+    top:168.3px;
+    display: block;
+    z-index: 2;
+    right: calc(431.5px + (100vw - 1920px) / 2);
+    width: auto;
+    transform: translateY(200px);
+    animation: slideUpDown 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+.king{
+    position: absolute;
+    top:273.36px;
+    display: block;
+    z-index: 2;
+    right: calc(766.42px + (100vw - 1920px) / 2);
+    width: auto;
+    transform: translateY(100px);
+    animation: slideUp 0.5s ease-out forwards;
+}
+.horse{
+    position: absolute;
+    top:482.59px;
+    display: block;
+    z-index: 5;
+    right: calc(599.78px + (100vw - 1920px) / 2);
+    width: auto;
+    transform: translateY(100px) rotate(-45deg);
+    animation: slideUpHorse 0.5s ease-out forwards;
+    animation-delay: 0.1s;
+}
+.pawn{
+    position: absolute;
+    top:558.2px;
+    display: block;
+    z-index: 5;
+    right: calc(309px + (100vw - 1920px) / 2);
+    width: auto;
+    transform: translateX(300px);
+    animation: slideCentr 0.5s ease-out forwards;
+    animation-delay: 0.4s;
+}
+.ellipse{
+    position: absolute;
+    top:-43px;
+    display: block;
+    z-index: 1;
+    right: calc(298px + (100vw - 1920px) / 2);
+    width: auto;
+    animation: rotate 75s linear infinite;
+}
