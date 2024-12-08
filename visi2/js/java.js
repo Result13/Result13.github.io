@@ -29,10 +29,10 @@ document.querySelectorAll('.currency_button').forEach(function(button) {
     
     if (menu.style.display === "none") {
       menu.style.display = "block"; // Показать список валют
-      img.src = "../pictures/Vector.svg"; // Перевернуть картинку
+      img.src = "/visi2/pictures/Vector.svg"; // Перевернуть картинку
     } else {
       menu.style.display = "none"; // Скрыть список валют
-      img.src = "../pictures/Vectorrot.svg"; // Вернуть картинку в исходное положение
+      img.src = "/visi2/pictures/Vectorrot.svg"; // Вернуть картинку в исходное положение
     }
   });
 });
@@ -49,13 +49,13 @@ document.querySelectorAll('.currency_list li').forEach(function(li) {
     // Изменить название валюты и изображение флага
     var currencyName = this.textContent.trim(); 
     currencyBlock.querySelector('.currency_name').textContent = this.textContent;
-    currencyBlock.querySelector('.currency_flag').src = "../pictures/" + this.textContent+".svg";
+    currencyBlock.querySelector('.currency_flag').src = "/visi2/pictures/" + this.textContent+".svg";
     
     // Скрыть список валют
     this.parentElement.style.display = "none";
     
     // Вернуть картинку в исходное положение
-    currencyBlock.querySelector('.currency_button .btn_img').src = "../pictures/Vectorrot.svg";
+    currencyBlock.querySelector('.currency_button .btn_img').src = "/visi2/pictures/Vectorrot.svg";
     document.querySelector('.description_content').textContent = "ОТ " + currencyName + " " + prices[currencyName];
     document.querySelector('.summa').textContent = currencyName + " " + prices[currencyName] + currencyName;
   });

@@ -41,7 +41,7 @@ scale.addEventListener('click', (event) => {
   event.stopPropagation();
   if (filterMenu.classList.contains('filter__menu_active')) {
     arrow[0].style.transform = 'rotate(180deg)';
-    filterMenu.style.zIndex = '1'; // Добавлено
+    filterMenu.style.zIndex = '2'; // Добавлено
   } else {
     arrow[0].style.transform = 'rotate(0deg)';
     setTimeout(() => {
@@ -56,7 +56,7 @@ category.addEventListener('click', (event) => {
   event.stopPropagation();
   if (categoryMenu.classList.contains('filter__menu_active')) {
     arrow[1].style.transform = 'rotate(180deg)';
-    categoryMenu.style.zIndex = '1'; // Добавлено
+    categoryMenu.style.zIndex = '2'; // Добавлено
   } else {
     arrow[1].style.transform = 'rotate(0deg)';
     setTimeout(() => {
