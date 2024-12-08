@@ -84,6 +84,12 @@
   top:-28px;
   left: -28px;
   display: block;
+  scale: 0;
+  transition: all 0.3s ease-out;
+  &_visible{
+    transition: all 0.3s ease-out;
+    scale: 1;
+  }
 }
 .men{
   position: absolute;
@@ -91,12 +97,20 @@
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  animation: moveInCircle 2s linear infinite;
 }
 .hand{
   position: absolute;
   z-index: 3;
   bottom: -12px;
   right: -5px;
+  transform: translate(70px, -130px) rotate(45deg);
+  transition: all 0.3s ease-out;
+  &_visible{
+    rotate: 0deg;
+    transform: translate(0, 0) rotate(0deg);
+    transition: all 0.3s ease-out;
+  }
 }
 .cick-horse{
   position: absolute;
@@ -104,12 +118,12 @@
   bottom:0;
   left: -15px;
   z-index: 3;
-  rotate: 30deg;
-  transform: translate(26px, -44px);
+  
+  transform: translate(26px, -44px) rotate(30deg);
   transition: all 0.3s ease-out;
   &_visible{
-    rotate: 0deg;
-    transform: translate(0,0);
+  
+    transform: translate(0,0) rotate(0deg);
     transition: all 0.3s ease-out;
   }
 }
