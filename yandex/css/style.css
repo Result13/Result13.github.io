@@ -1249,6 +1249,27 @@ footer {
     footer {
         padding: 40px 0 60px 0
     }
+    .money {
+        width: 110px;
+        top: -24px;
+        right: -40px
+    }
+
+    .hand {
+        bottom: -37px;
+        width: 208px
+    }
+
+    .cick-horse {
+        bottom: -15px;
+        left: -18px;
+        width: 150px
+    }
+
+    .effect {
+        top: -50px;
+        width: 390px
+    }
 }
 
 @media(max-width:767px) {
