@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.min.css" />
+
+    <title>DropLine</title>
+  </head>
+  <style>
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  -webkit-filter: grayscale(100%) url(pictures/colorfilter.svg#colorfilter);
+  filter: grayscale(100%) url(pictures/colorfilter.svg#colorfilter);
+}
+
+  </style>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <a href="/" class="logo">
+            <img src="pictures/logo.svg" alt="Dropline" class="nav__logo" />
+          </a>
+          <div class="header__desc">
+            Крупнейший поставщик металлоконструкций различного назначения с
+            2013г
+          </div>
+          <a class="header__promo header__promo__address" href="#" target="_blank">
+            <img src="pictures/location.svg" alt="location" />
+            Рубежная д.2
+          </a>
+          <div class="header__promo ">
+            <img src="pictures/time.svg" alt="time" />
+            <div class="header__promo__text">
+              График работы ПН – ПТ с 9 до 20
+            </div>
+          </div>
+          <div class="header__btns">
+            <a href="#"><img src="pictures/wa.svg" alt="WhatsApp" /></a>
+            <div class="header__call">Перезвоните мне</div>
+          </div>
+          <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <!-- <div class="header__bottom">
+          <div class="header__nav">
+            <a href="/" class="header__nav__link">Главная</a>
+            <a href="#" class="header__nav__link">Продукция</a>
+            <a href="#" class="header__nav__link">Услуги</a>
+            <a href="#" class="header__nav__link">Оплата и доставка</a>
+            <a href="#" class="header__nav__link">Контакты</a>
+          </div>
+          <div class="header__phone">
+            <a href="tel:+7(495)123-45-67" class="header__phone-number">
+              8 (812) 309 02 90
+            </a>
+          </div>
+        </div> -->
+        <div class="menu">
+          <div class="nav">
+            <a href="/" class="nav__link">Главная</a>
+            <a href="#products" class="nav__link">Продукция</a>
+            <a href="#services" class="nav__link">Услуги</a>
+            <a href="#delivery" class="nav__link">Оплата и доставка</a>
+            <a href="#contacts" class="nav__link">Контакты</a>
+          </div>
+          <div class="phone">
+            <a href="tel:+74951234567" class="phone-number">
+              8 (812) 309 02 90
+            </a>
+          </div>
+        </div> 
+      </div>
+      <div class="mobile__menu">
+        <ul class="mobile__nav">
+          <li class="mobile__item">
+            <a href="/" class="mobile__link">Главная</a>
+          </li>
+          <li class="mobile__item">
+            <a href="#products" class="mobile__link">Продукция</a>
+          </li>
+          <li class="mobile__item">
+            <a href="#services" class="mobile__link">Услуги</a>
+          </li>
+          <li class="mobile__item">
+            <a href="#delivery" class="mobile__link">Оплата и доставка</a>
+          </li>
+          <li class="mobile__item">
+            <a href="#contacts" class="mobile__link">Контакты</a>
+          </li>
+          <li class="mobile__item mobile__item__phone">
+            <a href="tel:+74951234567" >
+              8 (812) 309 02 90
+            </a>
+          </li>
+        </ul>
+       
+      </div>
+    </header>
+   
+    <section class="promo">
+      <div class="container">
+        <div class="promo__wrapper">
+          <div class="promo__inner">
+            <h1>Металлоконструкции <br /><span>любой сложности</span></h1>
+            <div class="promo__subtitle">
+              Отправьте заявку и получите расчет стоимости вашей
+              металлоконструкции <span>прямо сейчас!</span>
+            </div>
+            <a href="#form" class="promo__btn">
+              <img src="pictures/calculate.png" alt="calculate" />
+              <div class="btn">Получить расчет</div>
+            </a>
+          </div>
+          <div class="promo__cart__wrapper">
+            <img
+              src="pictures/figure.svg"
+              alt="figure"
+              class="promo__cart__img"
+            />
+            <div class="promo__cart__block">
+              <div class="promo__cart__text">
+                <div class="promo__cart__circle">
+                  <div></div>
+                </div>
+                Точность размеров до миллиметра
+              </div>
+              <div class="promo__cart__text">
+                <div class="promo__cart__circle">
+                  <div></div>
+                </div>
+                Срок изготовления конструкции до
+              </div>
+              <div class="promo__cart__days">
+                <div class="promo__cart__circle"></div>
+                <img src="pictures/7.svg" alt="7" />
+                <div>Дней</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#products" class="arrow">
+        <span>Посмотреть нашу продукцию</span>
+        <img src="pictures/arrow.svg" alt="arrow" />
+      </a>
+    </section>
+    <section class="products" id="products">
+      <div class="container">
+        <h2 class="title">
+          Продукция <br />
+          <span>DropLine</span>
+        </h2>
+        <div class="products__wrapper">
+          <div class="products__item">
+            <div class="products__title">
+              Заборы, отбойники<br />
+              и ограничители
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item1.png" alt="product" />
+            </div>
+          </div>
+          <div class="products__item">
+            <div class="products__title">
+              Складское<br />
+              оборудование
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item2.png" alt="product" />
+            </div>
+          </div>
+          <div class="products__item">
+            <div class="products__title">
+              Металлические<br />
+              каркасы
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item3.png" alt="product" />
+            </div>
+          </div>
+          <div class="products__item">
+            <div class="products__title">
+              Строительные <br />
+              конструкции
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item4.png" alt="product" />
+            </div>
+          </div>
+          <div class="products__item">
+            <div class="products__title">
+              Ландшафтные<br />
+              конструкции
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item5.png" alt="product" />
+            </div>
+          </div>
+          <div class="products__item">
+            <div class="products__title">
+              Каркасные<br />
+              лестницы
+              <img src="pictures/arrow-product.svg" alt="arrow" />
+            </div>
+            <div class="products__img">
+              <img src="pictures/item6.png" alt="product" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="pictures/vishka.png" alt="img" class="products__img_left" />
+      <img src="pictures/figure3.png" alt="img" class="products__img_right" />
+    </section>
+    <section class="service" id="services">
+      <div class="container">
+        <h2 class="title">Улсуги <br /><span>DropLine</span></h2>
+        <div class="service__wrapper">
+          <div class="service__item">
+            <img src="pictures/paper.png" alt="paper" class="service__img" />
+            <div class="service__block">
+              <div class="service__title">
+                Изготовление конструкций по чертежам
+              </div>
+              <div class="service__desc">
+                Для любых отраслей в соответствии с ГОСТом и требованиям
+                заказчика
+              </div>
+              <a href="#" class="service__link"> Подробнее</a>
+            </div>
+          </div>
+          <div class="service__item">
+            <img
+              src="pictures/notebook.png"
+              alt="notebook"
+              class="service__img"
+            />
+            <div class="service__block">
+              <div class="service__title">
+                Проектирование металлоконструкций
+              </div>
+              <div class="service__desc">
+                Исключительно по ГОСТу с расчетом допустимой нагрузки,
+                устойчивости и запасом прочности
+              </div>
+              <a href="#" class="service__link"> Подробнее</a>
+            </div>
+          </div>
+          <div class="service__item">
+            <img src="pictures/stanok.png" alt="stanok" class="service__img" />
+            <div class="service__block">
+              <div class="service__title">Обработка металла</div>
+              <div class="service__desc">
+                На современном оборудовании с использованием современных
+                технологий
+              </div>
+              <a href="#" class="service__link"> Подробнее</a>
+            </div>
+          </div>
+          <div class="service__item">
+            <img
+              src="pictures/montazh.png"
+              alt="montazh"
+              class="service__img"
+            />
+            <div class="service__block">
+              <div class="service__title">Монтаж металлоконструкций</div>
+              <div class="service__desc">
+                Любой сложности с использованием рабочей <br />силы и
+                спецтехники
+              </div>
+              <a href="#" class="service__link"> Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="garant">
+      <div class="container">
+        <h2 class="title">
+          <span
+            >100% качество<br />
+            нашей продукции</span
+          >
+          <br />
+          гарантируют 5 фактов
+        </h2>
+        <div class="garant__wrapper">
+          <div class="garant__item">
+            <div class="garant__promo">
+              <div class="garant__promo__inner">
+                <div class="garant__promo__fact">Факт</div>
+                <div class="garant__promo__number"><span> № </span>01</div>
+                <img
+                  src="pictures/icon.svg"
+                  alt="icon"
+                  class="garant__promo__icon"
+                />
+              </div>
+              <img src="pictures/f1.png" alt="fact-1" class="garant__img" />
+            </div>
+            <div class="garant__text">
+              <div class="garant__title">
+                Контроль качества используемых материалов
+              </div>
+              <div class="garant__desc">
+                Контролю подвергаются все материалы входящие на производство
+                если в производстве не используется автоматизированное
+                оборудование, станки с ЧПУ.
+              </div>
+              <ul class="garant__list">
+                <li class="garant__list__item">сплавы и металлопрокат</li>
+                <li class="garant__list__item">
+                  антикоррозийные и покрасочные покрытия
+                </li>
+                <li class="garant__list__item">
+                  материалы используемые для обработки и сварки металла
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="garant__item">
+            <div class="garant__promo">
+              <div class="garant__promo__inner">
+                <div class="garant__promo__fact">Факт</div>
+                <div class="garant__promo__number"><span> № </span>02</div>
+                <img
+                  src="pictures/icon.svg"
+                  alt="icon"
+                  class="garant__promo__icon"
+                />
+              </div>
+              <img src="pictures/fact2.png" alt="fact-1" class="garant__img" />
+            </div>
+            <div class="garant__text">
+              <div class="garant__title">
+                Нормативно-техническая документация
+              </div>
+              <div class="garant__desc">
+                <p>
+                  При проектировании и изготовлении металлоконструкций
+                  соблюдаются требования нормативно-технической документации.
+                </p>
+                <p>
+                  Проектная, рабочая документация, чертежи КМД - ГОСТ 21.501,
+                  21.502, 21101, 23118.
+                </p>
+                <p>
+                  Входной контроль металлопроката, ЛКМ, крепежей, материалов для
+                  сварки - ГОСТ 24297.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="garant__item">
+            <div class="garant__promo">
+              <div class="garant__promo__inner">
+                <div class="garant__promo__fact">Факт</div>
+                <div class="garant__promo__number"><span> № </span>03</div>
+                <img
+                  src="pictures/icon.svg"
+                  alt="icon"
+                  class="garant__promo__icon"
+                />
+              </div>
+              <img src="pictures/fact3.png" alt="fact-3" class="garant__img" />
+            </div>
+            <div class="garant__text">
+              <div class="garant__title">
+                Требования к подготовке материалов
+              </div>
+              <div class="garant__desc">
+                <p>
+                  Для металлопроката после правки; отсутствие трещин, отслоений;
+                  предельный прогиб профильного проката - не более 0,001 на 10
+                  мм по всей длине.
+                </p>
+                <p>
+                  Для сварочных материалов: подача в упаковке с маркировкой в
+                  цех в объеме, необходимом для суточных работ.
+                </p>
+                <p>
+                  Для лококрасочных материалов для покраски или антикоррозийной
+                  обработки: состояние в соответствии с требованиями
+                  техрегламента или по технологической карте; подготовка ЛКМ.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="garant__item">
+            <div class="garant__promo">
+              <div class="garant__promo__inner">
+                <div class="garant__promo__fact">Факт</div>
+                <div class="garant__promo__number"><span> № </span>04</div>
+                <img
+                  src="pictures/icon.svg"
+                  alt="icon"
+                  class="garant__promo__icon"
+                />
+              </div>
+              <img src="pictures/fact4.png" alt="fact-4" class="garant__img" />
+            </div>
+            <div class="garant__text">
+              <div class="garant__title">Контроль на этапе производства</div>
+              <div class="garant__desc">
+                <p>
+                  Разметка, изготовление шаблонов - с помощью инструумента 2-го
+                  класса точности, если в производстве не используется
+                  автоматизированное оборудование, станки с ЧПУ.
+                </p>
+                <p>
+                  Резка металла, механическая обработка. Не допускаются трещины,
+                  заусенцы более 1мм для торцов заготовок и изделий из
+                  профильного металлопраката. Для контроля геометрических
+                  размеров и определения отклонений используется мерительный
+                  инструмент и щупы по ТУ 2-034-225-87.
+                </p>
+                <p>
+                  Гибка металла. При гибке по радиусу допустимый зазор между
+                  заготовкой и шаблоном составляет не более 2мм на 1м шаблона.
+                  Профильный прокат можно обрабатывать в кондукторах с нагревом
+                  и проковкой.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="garant__item">
+            <div class="garant__promo">
+              <div class="garant__promo__inner">
+                <div class="garant__promo__fact">Факт</div>
+                <div class="garant__promo__number"><span> № </span>05</div>
+                <img
+                  src="pictures/icon.svg"
+                  alt="icon"
+                  class="garant__promo__icon"
+                />
+              </div>
+              <img src="pictures/fact5.png" alt="fact-5" class="garant__img" />
+            </div>
+            <div class="garant__text">
+              <div class="garant__title">Контроль качества сварки</div>
+              <div class="garant__desc">
+                <p>
+                  Для сварных соединений требуется входной и операционный
+                  контроль качества, проводящиеся до окрашивания
+                  металлоконструкций.
+                </p>
+                <p>
+                  Основными видами контроля являются: визуально-измерительный -
+                  по РД 03-606-03; ультразвуковой - с помощью импульсного
+                  дефектоскопа или специализированного аппаратно-программного
+                  комплекса, преобразователей по ГОСТ 55725, настроечных
+                  образцов.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="pictures/most.png" alt="frame" class="garant_top" />
+      <img src="pictures/frame.png" alt="frame" class="garant_center" />
+      <img src="pictures/trinog.png" alt="frame" class="garant_down" />
+    </section>
+    <section class="form" id="form">
+      <img src="pictures/bg-form.png" alt="фон" class="form__bg" />
+      <div class="container">
+        <div class="form__wrapper">
+          <div class="form__text">
+            <h2 class="title title_left">
+              Заявка <br />
+              на расчет
+            </h2>
+            <div class="form__subtitle">
+              Закажите расчет изготовления <br />
+              металлоконструкции <span>прямо сейчас!</span>
+            </div>
+          </div>
+          <form action="" class="form__inner">
+            <input type="text" placeholder="Имя" required />
+            <input type="tel" name="tel" placeholder="Телефон" required />
+            <input type="email" placeholder="E-mail" required />
+            <input type="text" placeholder="Что хотите рассчитать?" required />
+            <button type="submit" class="btn">Получить расчет</button>
+            <div class="form__confid">
+              <label class="form__chek__wrapper">
+                <input
+                  type="checkbox"
+                  id="politic-writeeUs"
+                  class="form__chek"
+                />
+                <span></span>
+              </label>
+              <label for="politic-writeeUs" class="form__chek__link"
+                >Я принимаю условатя обработки
+                <a href="/policy">персональных данных </a>
+              </label>
+            </div>
+
+            <img src="pictures/icon-red.svg" alt="icon" class="form__icon" />
+          </form>
+          <img src="pictures/calculator-2.png" alt="icon" class="form__img" />
+        </div>
+      </div>
+    </section>
+    <section class="feature">
+      <div class="container">
+        <h2 class="title">
+          <span>Почему стоит</span> <br />
+          обратиться к нам
+        </h2>
+
+        <div class="feature__wrapper">
+          <img src="pictures/house.png" alt="house" class="feature__img" />
+          <div class="feature__item">
+            <div class="feature__item__circle">
+              <div class="feature__icon">
+                <img src="pictures/white-on.svg" alt="Галочка" />
+              </div>
+            </div>
+            <div class="feature__item__text">Более 10 лет на рынке</div>
+          </div>
+          <div class="feature__item">
+            <div class="feature__item__circle">
+              <div class="feature__icon">
+                <img src="pictures/white-on.svg" alt="Галочка" />
+              </div>
+            </div>
+            <div class="feature__item__text">
+              Имеем собственный склад с продукцией и материалами
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="feature__item__circle">
+              <div class="feature__icon">
+                <img src="pictures/white-on.svg" alt="Галочка" />
+              </div>
+            </div>
+            <div class="feature__item__text">
+              Ведем тотальный контроль на всех этапах производства
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="feature__item__circle">
+              <div class="feature__icon">
+                <img src="pictures/white-on.svg" alt="Галочка" />
+              </div>
+            </div>
+            <div class="feature__item__text">
+              Учавствуем в коммерческих и государственных контрактах
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="feature__item__circle">
+              <div class="feature__icon">
+                <img src="pictures/white-on.svg" alt="Галочка" />
+              </div>
+            </div>
+            <div class="feature__item__text">
+              Отвечаем юридически за свою работу
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="pictures/big-vishka.png" alt="decor" class="feature__frame" />
+    </section>
+    <section class="delivery" id="delivery">
+      <div class="container">
+        <h2 class="title">
+          <span>Осуществляем доставку<br /></span>
+          в любой город <br />
+          <span>России и СНГ</span>
+        </h2>
+        <div class="delivery__wrapper">
+          <div class="delivery__item">
+            <img
+              src="pictures/ellips.svg"
+              alt="ellips"
+              class="delivery__icon"
+            />
+            <div class="delivery__text">
+              При оформлении заказа <br/> рассчитаем сроки и стоимость
+            </div>
+          </div>
+          <div class="delivery__item">
+            <img
+              src="pictures/ellips.svg"
+              alt="ellips"
+              class="delivery__icon"
+            />
+            <div class="delivery__text">
+              Отправляем только <br/> проверенными компаниями
+            </div>
+          </div>
+          <div class="delivery__item">
+            <img
+              src="pictures/ellips.svg"
+              alt="ellips"
+              class="delivery__icon"
+            />
+            <div class="delivery__text">
+              Обязательно страхуем <br/>весь отправленный груз
+            </div>
+          </div>
+          <div class="delivery__item">
+            <img
+              src="pictures/ellips.svg"
+              alt="ellips"
+              class="delivery__icon"
+            />
+            <div class="delivery__text">
+              Возможна экспресс <br/> доставка авиалиниями
+            </div>
+          </div>
+        </div>
+        <img src="pictures/cars22.png" alt="cars" class="delivery__img">
+      </div>
+   
+    </section>
+    <section class="form-footer">
+      <img src="pictures/bg-form2.png" alt="фон" class="form-footer__bg" />
+      <div class="container">
+        <div class="form-footer__wrapper">
+          <h2 class="title title_light">
+            Остались вопросы?
+          </h2>
+          <form action="" class="form-footer__block">
+            <div class="form-footer__inputs">
+              <div class="form-footer__inner">
+                <input type="text" placeholder="Имя" required />
+                <input type="tel" name="tel" placeholder="Телефон" required />
+                <input type="email" placeholder="E-mail" required />
+              </div>
+              <textarea placeholder="Ваш вопрос"></textarea>
+
+            </div>
+            <button type="submit" class="btn">Отправить сообщение</button>
+            <div class="form__confid">
+              <label class="form__chek__wrapper">
+                <input
+                  type="checkbox"
+                  id="politic"
+                  class="form__chek"
+                />
+                <span></span>
+              </label>
+              <label for="politic" class="form__chek__link"
+                >Я принимаю условатя обработки
+                <a href="/policy">персональных данных </a>
+              </label>
+            </div>
+  
+           
+          </form>
+          <img src="pictures/icon-red.svg" alt="icon" class="form-footer__icon" />
+          <img src="pictures/man2.png" alt="icon" class="form-footer__man" />
+        </div>
+        
+      </div>
+      
+    </section>
+    <section class="map" id="contacts">
+      <div class="map__inner" id="map"></div>
+      
+      <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU"></script>
+    <!--   <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad25acdedfd441e7e665b6fede5e83604bd725f3a8ae80a0d7952e2701ef2b741&amp;width=100%25&amp;height=606&amp;lang=ru_RU&amp;scroll=true"></script> -->
+        <div class="map__contacts">
+          <div class="map__item">
+            <div class="map__title">
+              Контактный телефон
+            </div>
+            <a class="map__link" href="tel:+74951234567">
+              <img src="pictures/phone.svg" alt="phone">
+              8 (812) 309 02 90
+            </a>
+          </div>
+          <div class="map__item">
+            <div class="map__title">
+              электронная почта
+            </div>
+            <a class="map__link" href="mailto:info@dropmetall.ru">
+              <img src="pictures/mail.svg" alt="mail">
+              info@dropmetall.ru
+            </a>
+          </div>
+          <div class="map__item">
+            <div class="map__title">
+              Офис отдела продаж
+            </div>
+            <a class="map__link" href="#">
+              <img src="pictures/phone.svg" alt="phone">
+              Рубежная д.2
+            </a>
+            <div class="map__graphic">
+              График работы: ПН – ПТ с 9 до 20 
+            </div>
+          </div>
+        </div>
+      
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="menu">
+          <div class="nav">
+            <a href="/" class="nav__link">Главная</a>
+            <a href="#products" class="nav__link">Продукция</a>
+            <a href="#services" class="nav__link">Услуги</a>
+            <a href="#delivery" class="nav__link">Оплата и доставка</a>
+            <a href="#contacts" class="nav__link">Контакты</a>
+          </div>
+          <div class="phone">
+            <a href="tel:+74951234567" class="phone-number">
+              8 (812) 309 02 90
+            </a>
+          </div>
+        </div>
+        <div class="footer__logo__wrapper">
+          <a href="/" class="logo">
+            <img src="pictures/logo.svg" alt="Dropline" class="nav__logo" />
+          </a>
+          <div class="phone">
+            <a href="tel:+74951234567" class="phone-number">
+              8 (812) 309 02 90
+            </a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__company">© Dropline LTD 2022 - Крупнейший поставщик металлоконструкций различного назначения с 2013г</div>
+          <div class="footer__links">
+            <a href="#" class="footer__link__item">Юридическим лицам</a>
+            <a href="#" class="footer__link__item">Политика конфиденциальности</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
