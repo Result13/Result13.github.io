@@ -534,37 +534,37 @@ progress {
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-Bold.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-Bold.ttf) format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-DemiBold.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-DemiBold.ttf) format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-Medium.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-Medium.ttf) format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-Regular.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-Regular.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-Light.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-Light.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Firs Neue";
-  src: url(/fonts/TTFirsNeue-Thin.ttf) format("truetype");
+  src: url(../fonts/TTFirsNeue-Thin.ttf) format("truetype");
   font-weight: 200;
   font-style: normal;
 }
@@ -812,7 +812,7 @@ h6 {
 .promo {
   display: block;
   height: 930px;
-  background: url(/pictures/bg-1.png) center/cover no-repeat;
+  background: url(../pictures/bg-1.png) center/cover no-repeat;
   padding-top: 260px;
   color: #2a3039;
   position: relative;
@@ -938,7 +938,7 @@ h6 {
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  background: url(/pictures/texture.png) center/cover no-repeat;
+  background: url(../pictures/texture.png) center/cover no-repeat;
   width: 295px;
   height: 82px;
   color: #fff;
@@ -966,7 +966,7 @@ h6 {
   background-color: #1c2231;
   width: 104px;
   height: 132px;
-  background: url(/pictures/arrow.png) center/cover no-repeat;
+  background: url(../pictures/arrow.png) center/cover no-repeat;
   font-size: 14px;
   color: #fff;
   text-align: center;
@@ -988,7 +988,7 @@ h6 {
 }
 .products {
   display: block;
-  background: url(/pictures/clouds.jpg) center/cover no-repeat;
+  background: url(../pictures/clouds.jpg) center/cover no-repeat;
   padding: 260px 0 210px;
   margin-top: -30px;
   position: relative;
@@ -1054,7 +1054,7 @@ h6 {
 .service {
   display: block;
   padding: 225px 0 195px;
-  background: url(/pictures/bg4.png) center/cover no-repeat;
+  background: url(../pictures/bg4.png) center/cover no-repeat;
   color: #1c2231;
   position: relative;
   z-index: 2;
@@ -1101,7 +1101,7 @@ h6 {
   margin-top: 15px;
 }
 .garant {
-  background: url(/pictures/bg5.jpg) center/cover no-repeat;
+  background: url(../pictures/bg5.jpg) center/cover no-repeat;
   position: relative;
   z-index: 1;
   margin-top: -38px;
@@ -1296,7 +1296,7 @@ h6 {
   transform: translate(-50%, -50%);
   width: 10px;
   height: 8px;
-  background: url(/pictures/on.svg) center/contain no-repeat;
+  background: url(../pictures/on.svg) center/contain no-repeat;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -1376,7 +1376,7 @@ textarea:hover {
 .feature {
   display: block;
   padding: 230px 0;
-  background: url(/pictures/bg-feature.png) center/cover no-repeat;
+  background: url(../pictures/bg-feature.png) center/cover no-repeat;
   background-color: #fff;
   margin-top: -40px;
   position: relative;
@@ -1552,7 +1552,7 @@ textarea:hover {
 .delivery {
   display: block;
   padding: 200px 0;
-  background: url(/pictures/bg-cars.png) center/cover no-repeat;
+  background: url(../pictures/bg-cars.png) center/cover no-repeat;
   margin-top: -35px;
   position: relative;
   z-index: 2;
@@ -1600,7 +1600,7 @@ textarea:hover {
   gap: 30px;
   padding: 60px;
   flex-wrap: wrap;
-  background: url(/pictures/form-bg.png) center/cover no-repeat;
+  background: url(../pictures/form-bg.png) center/cover no-repeat;
   margin: 90px 0 0 auto;
 }
 .form-footer__inner {
@@ -1650,7 +1650,7 @@ textarea:hover {
   -webkit-backdrop-filter: blur(40px);
   backdrop-filter: blur(40px);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 93%);
-  background: url(/pictures/map.png) center/cover no-repeat;
+  background: url(../pictures/map.png) center/cover no-repeat;
 }
 .map__title {
   font-size: 10px;
@@ -1689,7 +1689,7 @@ textarea:hover {
 }
 .footer {
   display: block;
-  background: url(/pictures/footer.jpg) center/cover no-repeat;
+  background: url(../pictures/footer.jpg) center/cover no-repeat;
   background-color: #1c2231;
   padding: 74px 0;
 }
@@ -1740,12 +1740,12 @@ textarea:hover {
 }
 .footer__bottom a {
   color: #adaeb3;
-  transition: all 0.3 ease;
+ /*  transition: all 0.3 ease; */
   text-decoration: none;
 }
 .footer__bottom a:hover {
   color: #fff;
-  transition: all 0.3 ease;
+ /*  transition: all 0.3 ease; */
 }
 .footer__links {
   display: flex;
@@ -1997,7 +1997,7 @@ textarea:hover {
   .promo {
     height: 578px;
     padding-top: 150px;
-    background: url(/pictures/bg5.jpg) center/cover no-repeat;
+    background: url(../pictures/bg5.jpg) center/cover no-repeat;
   }
   .promo h1 {
     font-size: 34px;
