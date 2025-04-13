@@ -3,3 +3,31 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("body").classList.toggle("burger--open");
   });
 });
+
+$(".slider").slick({
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  autoplay:false,
+  speed:3000,
+  /*  centerPadding: "0px", */
+  responsive: [
+    {
+      breakpoint: 1199,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        /*  centerMode: true, */
+        /*  centerPadding: '-10px'  */
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+});

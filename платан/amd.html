@@ -1,9 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platan</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/stylesheet.css" />
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./img/favicon.ico" sizes="32x32">
+</head>
+
+<body class="body">
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <div class="header__top">
+            <a class="header__logo" href="/">
+              <img src="./img/platan_nowww1.png" alt="logo-head" />
+            </a>
+            <div class="header__contact">
+              <div class="header__office">
+                <span>Офис продаж</span>
+                <a href="tel:+74952520777">+74952520777</a>
+              </div>
+              <div class="header__mail">
+                <span>Почта</span>
+                <a href="mailto:IC@PLATAN.RU">IC@PLATAN.RU</a>
+              </div>
+            </div>
+            <button class="header__burger-btn" id="burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="header__bottom">
+        <div class="container">
+          <nav class="header__nav">
+            <ul class="header__item">
+              <li class="header__list">
+                <a class="header__link" href="/#supplier"> Поставщики </a>
+              </li>
+              <li class="header__list">
+                <a class="header__link" href="/#advantages">Наши приемущества </a>
+              </li>
+              <li class="header__list">
+                <a class="header__link" href="/#about">О компании</a>
+              </li>
+              <li class="header__list">
+                <a class="header__link" href="/#contact">Заказать образец</a>
+              </li>
+            </ul>
+            <div class="header__contact-mobile">
+              <div class="header__office-mobile">
+                <span>Офис продаж</span>
+                <a href="tel:+74952520777">+74952520777</a>
+              </div>
+              <div class="header__mail-mobile">
+                <span>Почта</span>
+                <a href="mailto:IC@PLATAN.RU">IC@PLATAN.RU</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="hero main__hero"></section>
+      <section class="company">
+        <div class="container">
+          <h2 class="title title_left">Компания AMD</h2>
+          <div class="company__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iusto odit voluptatem numquam aspernatur
+            porro sint, veritatis esse commodi. Possimus pariatur excepturi cum sint perferendis ipsum ullam nesciunt
+            voluptatum tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iusto odit voluptatem numquam aspernatur
+            porro sint, veritatis esse commodi. Possimus pariatur excepturi cum sint perferendis ipsum ullam nesciunt
+            voluptatum tempora?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iusto odit voluptatem numquam aspernatur
+            porro sint, veritatis esse commodi. Possimus pariatur excepturi cum sint perferendis ipsum ullam nesciunt
+            voluptatum tempora?
+          </div>
+          <div class="company__more">
+            <div class="company__more__title">
+              <b>Дополнительная информация</b>
+            </div>
+            <div class="company__links">
+              <div class="company__link">
+                - <a href="#"  > инструкция</a>  <img src="img/pdf.svg" alt="pdf">
+              </div>
+              <div class="company__link">
+                - <a href="#"  > инструкция</a> <img src="img/pdf.svg" alt="pdf">
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="notification">
+        <div class="container">
+          <h2 class="title title_left">Не нашли, что искали?</h2>
+          <div class="notification__text">
+            Оставьте <span class="notification__link">свой номер</span> и мы перезвоним вам!<br/>
+            Или посетите наш <a href="#" target="_blank" class="notification__link">наш интернет-магазин</a>
+          </div>
+
+        </div>
+      </section>
+
+
+      <section class="contact main__contact" id="contact">
+        <div class="container">
+          <div class="contact__inner">
+            <div class="about__content">
+              <h2 class="title">Заказать образец</h2>
+            </div>
+            <div class="contact__window">
+              <form class="contact__form">
+                <input class="contact__form-input" type="text" placeholder="Имя" />
+                <input class="contact__form-input" type="email" placeholder="Email" />
+                <input class="contact__form-input" type="tel" placeholder="Телефон" />
+                <textarea class="contact__form-text" type="text" placeholder="Коментарий"></textarea>
+                <button type="submit" class="buttom contact__button">
+                  Отправить
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <a class="footer__img" href="/">
+            <img src="./img/Platan_logo_W 1.png" alt="logo">
+          </a>
+          <div class="footer__nav">
+            <ul class="footer__item">
+              <li class="footer__list">
+                <a class="footer__link" href="/#about">
+                  О компании
+                </a>
+              </li>
+              <li class="footer__list">
+                <a class="footer__link" href="/#supplier">
+                  Наши поставщики
+                </a>
+              </li>
+              <li class="footer__list">
+                <a class="footer__link" href="/#advantages">
+                  Преимущества
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+  </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
