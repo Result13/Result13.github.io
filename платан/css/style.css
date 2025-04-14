@@ -37,13 +37,17 @@ html {
 .slider__item {
   display: flex !important;
   width: 100%;
-  background: var(--color-green);
-  padding: 60px 40px 30px 20px;
+ /*  background: var(--color-green); */
+
   border-radius: 30px;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1070px;
+  max-width: 1280px;
+  height: 398px;
+  border: 1px solid #dedede;
+  margin-bottom: 70px;
 }
+
 
 .slider .title {
   color: #fff;
@@ -79,7 +83,9 @@ html {
 
 .slider__img {
   display: block;
-
+  width: 100%;
+/*   object-fit: cover; */
+  border-radius: 30px;
   position: relative;
 
 }
@@ -568,7 +574,9 @@ html {
   text-decoration: underline;
   font-weight: 600;
 }
-
+.company__text p{
+  margin-bottom: 20px;
+}
 .company__link img {
   display: block;
   width: 26px;
@@ -631,9 +639,9 @@ html {
     max-width: calc(100% - 277px);
   }
 
-  .slick-slide img {
+ /*  .slick-slide img {
     max-width: 270px;
-  }
+  } */
 
   .slider__img::before {
 
@@ -651,6 +659,10 @@ html {
   .slider__inner {
     gap: 0;
   }
+  .header__link{
+    font-size: 16px;
+  }
+
 }
 
 @media (max-width: 991px) {
@@ -658,7 +670,13 @@ html {
     max-width: 720px;
     padding: 0;
   }
-
+  .header__item{
+    padding: 10px 0px;
+    gap: 15px;
+  }
+  .header__link{
+    font-size: 14px;
+  }
   .title {
     font-size: 36px;
   }
@@ -667,9 +685,6 @@ html {
     margin-bottom: 70px;
   }
 
-  .header__link {
-    font-size: 15px;
-  }
 
   .supplier__list {
     padding: 15px 10px;
@@ -718,7 +733,9 @@ html {
 
   .slider__item {
     flex-direction: column;
-
+    height: auto;
+    min-height: 212px;
+    margin-bottom: 50px;
   }
 
   .slider__inner {
@@ -889,9 +906,9 @@ html {
     padding-bottom: 20px;
   }
 
-  .slider__item {
+/*   .slider__item {
     padding: 30px;
-  }
+  } */
 
   .company__text {
     max-width: none;
@@ -904,6 +921,17 @@ html {
   .notification {
     padding: 60px 0;
   }
+  .slider__item{
+    min-height: 153px;
+    margin-bottom: 0;
+   
+  }
+  .slick-slide img{
+    border-radius: 20px;
+  }
+  .slick-slide {
+    margin: 0 10px;
+}
 }
 
 @media (max-width: 576px) {
@@ -960,7 +988,8 @@ html {
   }
 
   .slider__item {
-    padding: 30px;
+    /* padding: 30px; */
+    min-height: 130px;
   }
 
   .slider__img img {
@@ -1018,7 +1047,7 @@ html {
   }
 
   .slider__item {
-    padding: 20px;
+    min-height: 0;
   }
 
   .company {
@@ -1039,7 +1068,7 @@ html {
 @media (max-width: 380px) {
   .title {
     line-height: 120%;
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .contact__window {
