@@ -1,0 +1,1556 @@
+@media (max-width: 1199px) {
+    .container {
+        width: 950px;
+    }
+
+    .sign-up {
+        padding: 300px 0;
+
+        &__logo {
+            max-width: 460px;
+        }
+
+        &__title {
+            margin-top: 120px;
+        }
+    }
+
+    .form {
+        margin-top: 80px;
+        gap: 44px;
+    }
+
+    .base-settings {
+        &__item {
+            height: 150px;
+            padding: 24px 16px;
+            max-width: 304px;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__wrapper {
+            gap: 30px 18px;
+        }
+    }
+
+    .footer {
+        padding: 43px 0 29px;
+    }
+
+    .profit {
+        &__item {
+            padding: 0 10px;
+        }
+    }
+
+    .cash {
+        &__wrapper {
+            background-position: top center;
+            height: 754PX;
+
+            &__info {
+                &_big {
+                    padding-top: 215px;
+                }
+            }
+        }
+
+        &__token {
+            width: 300px;
+            height: 156px;
+        }
+
+        &__price {
+            font-size: 46PX;
+        }
+
+    }
+
+    .prize {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: 720px;
+    }
+
+    .sign-up {
+        padding: 230px 0;
+
+        &__title {
+            margin-top: 100px;
+            font-size: 50px;
+        }
+
+        &__hr {
+            margin-top: 60px;
+        }
+    }
+
+    .form {
+        margin-top: 80px;
+        gap: 40px;
+
+        &__show {
+            width: 55px;
+        }
+
+        &__img {
+            width: 35px;
+        }
+
+        &__input {
+            padding: 25px 86px 25px;
+        }
+
+        &__chek {
+            &__wrapper {
+                font-size: 18px;
+                padding-left: 60px;
+            }
+
+            &+label::before {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
+
+    .btn {
+        font-size: 36px;
+        height: 78px;
+    }
+
+    .header {
+        &__swap {
+            &__title {
+                font-size: 22px;
+            }
+
+            &__cours {
+                font-size: 20px;
+            }
+        }
+
+        &__reward {
+            font-size: 18px;
+            width: 250px;
+            border-radius: 18px;
+
+            &__total {
+                font-size: 26px;
+            }
+        }
+
+        &__link {
+            font-size: 20px;
+            height: auto;
+            width: 270px;
+            padding: 20px 9px 24px 28px;
+
+            & span {
+                font-size: 34px;
+            }
+
+            &:last-child {
+                padding-left: 60px;
+            }
+        }
+
+    }
+
+    .base-settings {
+        &__item {
+            height: 136px;
+            padding: 20px 16px;
+            max-width: 304px;
+        }
+
+        &__title {
+            font-size: 26px;
+        }
+
+        &__desc {
+            font-size: 20px;
+        }
+
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .choose {
+        margin-bottom: 120px;
+
+        &__promo {
+            gap: 20px;
+
+            & img {
+                width: 50px;
+            }
+
+            & span {
+                width: 155px;
+                font-size: 20px;
+            }
+        }
+
+        &__moove {
+            gap: 20px;
+        }
+
+        &__wrapper {
+            &__option {
+                gap: 16px 20px;
+            }
+        }
+
+        &__item {
+            padding: 20px 30px;
+        }
+
+        &__option {
+            font-size: 16px;
+            width: 128px;
+            height: 40px;
+
+            &_big {
+                width: 252px;
+                height: 92px;
+
+                span {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &__cpu {
+            gap: 24px;
+
+            &__item {
+                width: 67px;
+                height: 67px;
+
+                & svg {
+                    display: block;
+                    width: 60%;
+                    height: auto;
+                }
+
+                &:first-child {
+                    & svg {
+                        width: 20px;
+                    }
+                }
+            }
+        }
+
+        &__power {
+            &__input {
+                height: 67px;
+                width: 210px;
+                font-size: 34px;
+            }
+
+            & button {
+                width: 67px;
+                height: 67px;
+
+                & svg {
+                    width: auto;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .settings-bottom {
+        margin: 0px 0 80px;
+
+        &__wrapper {
+            gap: 20px;
+        }
+
+        &__block {
+            padding: 30px 20px;
+            height: 137px;
+
+            &:nth-child(1) {
+                width: 280px;
+            }
+
+            &:nth-child(2) {
+                gap: 10px;
+                width: calc(100% - 300px);
+                justify-content: space-between;
+            }
+        }
+
+        &__title {
+            font-size: 16px;
+        }
+
+        & button {
+            width: 40px;
+            height: 40px;
+
+            & svg {
+                width: auto;
+                height: auto;
+            }
+        }
+
+        &__input {
+            height: 40px;
+        }
+
+        &__item {
+            gap: 10px;
+            height: auto;
+        }
+
+        &__icon {
+            width: 50px;
+            height: 40px;
+
+            & img {
+                display: block;
+                width: 20px;
+            }
+        }
+    }
+
+    .footer {
+        padding: 24px 0;
+
+        &__item {
+            padding-bottom: 24px;
+
+            & svg {
+                width: 50px;
+                height: auto;
+            }
+
+            &_active,&:hover {
+                &:after {
+                    height: 6px;
+                }
+            }
+        }
+    }
+
+    .profit {
+        &__wrapper {
+            margin-top: 40px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+
+        &__desc {
+            font-size: 10px;
+        }
+    }
+
+    .settings {
+        &__item {
+            padding: 30px;
+            font-size: 24px;
+
+            & img {
+                width: 40px;
+                margin-right: 30px;
+            }
+        }
+
+        &__block {
+            margin-bottom: 100px;
+        }
+    }
+
+    .prize {
+        &__title {
+            font-size: 50px;
+        }
+
+        &__block {
+            margin-right: 40px;
+
+            &::before {
+                left: -60px;
+                height: 160px;
+            }
+        }
+
+        &__text {
+            font-size: 18px;
+        }
+
+        &__wrapper {
+            height: 160px;
+            padding: 10px 0;
+        }
+    }
+
+    .cash {
+        &__wrapper {
+            height: 568PX;
+
+            &__info {
+                &_big {
+                    padding-top: 175px;
+                }
+            }
+        }
+
+        &__row {
+            gap: 10px;
+
+            &_bottom {
+                margin-top: 35px;
+                gap: 20px 0;
+            }
+
+            & .form__input {
+
+                padding: 20px 18px;
+                font-size: 20px;
+            }
+
+            & label {
+                font-size: 20px;
+            }
+        }
+
+        &__token {
+            width: 230px;
+            height: 118px;
+            border-radius: 12px;
+        }
+
+        &__course {
+            font-size: 24px;
+        }
+
+        &__price {
+
+            font-size: 32px;
+        }
+
+        &__title {
+            font-size: 40px;
+        }
+
+        &__text {
+            font-size: 32px;
+        }
+
+        &__total {
+            font-size: 70px;
+        }
+
+        &__btns {
+            bottom: 55px;
+            left: 55px;
+            width: calc(100% - 110px);
+
+            &__item {
+                border-radius: 12px;
+                font-size: 24px;
+                max-width: 250px;
+                height: 80px;
+
+            }
+        }
+
+        &__back {
+            font-size: 32px;
+            margin-top: 40px;
+            height: 70px;
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 540px;
+    }
+
+    .sign-up {
+        padding: 120px 0;
+
+        &__title {
+            font-size: 32px;
+            margin-top: 80px;
+        }
+
+        &__wrapper {
+            padding: 0;
+        }
+
+        &__hr {
+            margin-top: 40px;
+        }
+    }
+
+    .form {
+        margin-top: 60px;
+        gap: 35px;
+
+        &__input {
+            padding: 20px 66px 20px;
+            font-size: 16px;
+        }
+
+        &__img {
+            width: 24px;
+            left: 24px;
+        }
+
+        &__show {
+            right: 16px;
+            width: 46px;
+        }
+
+        &__chek {
+            &__wrapper {
+                font-size: 14px;
+                padding-left: 38px;
+            }
+
+            &+label::before {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .btn {
+        font-size: 20px;
+        height: 54px;
+    }
+
+    .header {
+        &__swap {
+            &__title {
+                font-size: 20px;
+            }
+
+            &__cours {
+                font-size: 18px;
+            }
+        }
+
+        &__reward {
+            width: 220px;
+
+            &__total {
+                font-size: 26px;
+            }
+
+        }
+
+        &__link {
+            width: 220px;
+            font-size: 18px;
+            padding: 16px 9px 16px 24px;
+
+            & span {
+                font-size: 24px;
+            }
+
+            &__icon {
+                width: 35px;
+                height: 35px;
+                border-width: 3px;
+
+                & span {
+                    height: 3px;
+                    width: 16px;
+                }
+            }
+        }
+    }
+
+    .base-settings {
+        &__wrapper {
+            gap: 26px 17px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+
+        &__desc {
+            font-size: 16px;
+        }
+
+        &__item {
+            height: 95px;
+            padding: 15px 10px;
+            max-width: 304px;
+            border-radius: 12px;
+        }
+
+        &__btn {
+            width: 24px;
+            height: 25px;
+        }
+    }
+
+    .title {
+        font-size: 24px;
+
+        & img {
+            width: 36px;
+            margin-top: 4px;
+        }
+    }
+
+    .choose {
+        margin-top: 50px;
+        margin-bottom: 40px;
+
+        &__item {
+            padding: 20px 24px;
+            border-radius: 12px;
+        }
+
+        &__promo {
+            gap: 12px;
+
+            & span {
+                width: 120px;
+                font-size: 16px;
+            }
+
+            & img {
+                width: 40px;
+                max-height: 40px;
+                object-fit: contain;
+            }
+        }
+
+        &__option {
+            font-size: 14px;
+            width: 95px;
+            height: 30px;
+            border-radius: 5px;
+
+            &_big {
+                width: 200px;
+                height: 74px;
+            }
+
+            & span {
+                font-size: 15px;
+            }
+        }
+
+        &__moove {
+            gap: 12px;
+        }
+
+        &__wrapper {
+            gap: 20px;
+
+            &__option {
+                gap: 14px 12px;
+            }
+        }
+
+        &__cpu {
+            gap: 15px;
+
+            &__item {
+                width: 52px;
+                height: 52px;
+                border-radius: 5px;
+
+                &:first-child svg {
+                    width: 15px;
+                }
+            }
+        }
+
+        &__power {
+            gap: 15px;
+
+            & button {
+                width: 52px;
+                height: 52px;
+            }
+
+            &__input {
+                height: 52px;
+                width: 185px;
+                font-size: 28px;
+            }
+        }
+
+    }
+
+    .settings-bottom {
+        margin: 40px 0;
+        margin-top: 0;
+
+        &__title {
+            font-size: 14px;
+        }
+
+        & button {
+            width: 30px;
+            height: 30px;
+        }
+
+        &__input {
+            height: 30px;
+            font-size: 16px;
+            width: 80px;
+            border-radius: 5px;
+        }
+
+        &__block {
+            border-radius: 5px;
+            padding: 20px 10px;
+            height: 105px;
+
+            &:nth-child(1) {
+                width: 180px;
+            }
+
+            &:nth-child(2) {
+                width: calc(100% - 105px);
+                gap: 15px;
+                justify-content: center;
+            }
+        }
+
+        &__btns {
+            gap: 8px;
+        }
+
+        &__wrapper {
+            gap: 15px;
+        }
+
+        &__power {
+            gap: 6px;
+
+            &__btn {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &__icon {
+            width: 40px;
+            height: 30px;
+            border-radius: 5px;
+
+            & img {
+                width: 15px;
+            }
+        }
+    }
+
+    .footer {
+        padding: 20px 0;
+
+        &__item {
+            font-size: 16px;
+            padding-bottom: 15px;
+
+            & svg {
+                width: 40px;
+                height: auto;
+            }
+
+            &_active,&:hover {
+                &::after {
+                    height: 3px;
+                }
+            }
+        }
+    }
+
+    .profit {
+        &__wrapper {
+            flex-wrap: wrap;
+            gap: 20px
+        }
+
+        &__title {
+            font-size: 16px;
+        }
+
+        &__item {
+            height: 55px;
+            padding: 5px 10px;
+            width: 150px;
+            flex: none;
+            border-radius: 12px;
+        }
+
+        &__block {
+            border-radius: 12px;
+            height: 40px;
+            margin-top: 30px;
+        }
+
+        &__offer {
+            font-size: 14px;
+        }
+    }
+
+    .settings {
+        &__back {
+            width: 40px;
+        }
+
+        &__item {
+            padding: 20px;
+            font-size: 20px;
+
+            & img {
+                width: 30px;
+                margin-right: 20px;
+            }
+        }
+
+        &__wrapper {
+            margin-top: 20px;
+            border-radius: 12px;
+        }
+    }
+
+    .settings__page {
+        min-height: 100vh;
+    }
+
+    .footer_bottom {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .cash {
+        padding: 40px 0 20px;
+
+        &__wrapper {
+            height: 426PX;
+
+            &__info {
+                &_big {
+                    padding-top: 125px;
+                }
+            }
+        }
+
+        &__row {
+            gap: 5px;
+
+            & .form__input {
+                padding: 12px 12px;
+                font-size: 16px;
+            }
+
+            &_bottom {
+                margin-top: 24px;
+                gap: 20px 0;
+            }
+
+            & label {
+                font-size: 16px;
+            }
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__text {
+            font-size: 22px;
+        }
+
+        &__total {
+            font-size: 44px;
+        }
+
+        &__token {
+            width: 177px;
+            height: 92px;
+        }
+
+        &__course {
+            font-size: 18px;
+        }
+
+        &__price {
+            font-size: 24px;
+        }
+
+        &__btns {
+            bottom: 30px;
+            left: 50%;
+            width: calc(100% - 100px);
+            transform: translateX(-50%);
+
+            &__item {
+                border-radius: 5px;
+                font-size: 18px;
+                max-width: 188px;
+                height: 65px;
+            }
+        }
+
+        &__back {
+            font-size: 24px;
+            margin-top: 30px;
+            height: 50px;
+        }
+
+        &_big {
+            height: auto;
+            min-height: 100vh;
+        }
+
+    }
+
+    .prize {
+        &__title {
+            font-size: 30px;
+        }
+
+        &__text {
+            font-size: 16px;
+            max-width: 210px;
+        }
+
+        &__block {
+            margin-right: 30px;
+
+            &::before {
+                height: 120px
+            }
+        }
+
+        &__wrapper {
+            height: 120px;
+            border-radius: 12px;
+        }
+
+        &__promo {
+            max-width: 214px;
+        }
+
+        &__line {
+            max-width: 185px;
+        }
+    }
+
+    .graph {
+        margin: 30px 0;
+
+        & img {
+            border-radius: 15px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 0 24px;
+    }
+
+    .sign-up {
+        padding: 70px 0;
+
+        &__logo {
+            max-width: 188px;
+        }
+
+        &__title {
+            font-size: 18px;
+            margin-top: 60px;
+        }
+
+        &__hr {
+            margin-top: 21px;
+        }
+    }
+
+    .form {
+        margin-top: 40px;
+        gap: 20px;
+
+        &__input {
+            font-size: 14px;
+            padding: 12px 40px;
+        }
+
+        &__img {
+            width: 13.7px;
+            left: 16px;
+        }
+
+        &__show {
+            right: 12px;
+            width: 36px;
+        }
+
+        &__chek {
+            &__wrapper {
+                font-size: 12px;
+                padding-left: 30px;
+            }
+
+            &+label::before {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .btn {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .header {
+        &__reward {
+            width: 147px;
+            font-size: 14px;
+            border-radius: 12px;
+            height: auto;
+            padding: 3px 0;
+
+            &__total {
+                font-size: 20px;
+            }
+        }
+
+        &__swap {
+            &__title {
+                font-size: 14px;
+            }
+
+            &__cours {
+                font-size: 14px;
+            }
+        }
+
+        &__nav {
+            margin-top: 30px;
+
+        }
+
+        &__link {
+            width: 155px;
+            font-size: 16px;
+            padding: 9px 9px 10px 16px;
+            border-radius: 8px;
+
+            & span {
+                font-size: 20px;
+            }
+
+            &__icon {
+                width: 20px;
+                height: 20px;
+                border-width: 2px;
+
+                & span {
+                    height: 2px;
+                    width: 11px;
+                }
+            }
+
+            &:last-child {
+                padding-left: 36px;
+            }
+        }
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .base-settings {
+        &__wrapper {
+            margin-top: 24px;
+            gap: 17px;
+        }
+
+        &__item {
+            height: 90px;
+            padding: 15px 8px;
+            width: 47%;
+            border-radius: 5px;
+
+            &:nth-child(4),
+            &:nth-child(5) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        &__title {
+            font-size: 18px;
+        }
+
+        &__desc {
+            font-size: 14px;
+        }
+
+        &__btn {
+            width: 22px;
+            height: 22px;
+        }
+
+    }
+
+    .choose {
+        &__item {
+            padding: 20px 20px;
+            border-radius: 12px;
+            flex-direction: column;
+        }
+
+        &__promo {
+            gap: 6px;
+
+            & img {
+                width: 20px;
+                max-height: 20px;
+            }
+
+            & span {
+                width: auto;
+                font-size: 14px;
+            }
+        }
+
+        &__moove {
+            gap: 10px;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        &__wrapper {
+            &__option {}
+        }
+
+        &__option {
+            font-size: 14px;
+            width: calc(50% - 6px);
+            height: 30px;
+
+            &_big {
+                width: 100%;
+                height: 44px;
+            }
+        }
+
+        &__cpu {
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            &__item {
+                width: 40px;
+                height: 40px;
+
+                &:first-child svg {
+                    width: 10px;
+                }
+            }
+        }
+
+        &__power {
+            gap: 10px;
+
+            & button {
+                width: 40px;
+                height: 40px;
+            }
+
+            &__input {
+                height: 40px;
+                font-size: 16px;
+                width: 120px;
+            }
+        }
+    }
+
+    .title {
+        font-size: 20px;
+        max-width: 90%;
+    }
+
+    .settings-bottom {
+        &__wrapper {
+            flex-direction: column;
+            gap: 10px
+        }
+
+        &__block {
+            width: 100% !important;
+            padding: 14px 7px;
+            height: auto;
+        }
+
+        &__btns {
+            margin-top: 10px;
+        }
+    }
+
+    .footer {
+        padding: 12px 8px;
+
+        &__item {
+            font-size: 14px;
+            padding-bottom: 8px;
+
+            & svg {
+                width: 24px;
+            }
+
+            &_active::after,&:hover::after {
+                height: 2px;
+            }
+        }
+    }
+
+    .profit {
+        &__block {
+            border-radius: 5px;
+        }
+
+        &__item {
+            width: 30%;
+            border-radius: 5px;
+            height: 48px;
+        }
+
+        &__wrapper {
+            gap: 15px;
+        }
+
+        &__title {
+            font-size: 14px;
+        }
+
+        &__desc {
+            font-size: 8px;
+        }
+    }
+
+    .settings {
+        &__back {
+            width: 30px;
+            padding: 0;
+            margin: 40px 0 20px;
+        }
+
+        &__wrapper {
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        &__item {
+            padding: 13px;
+            font-size: 14px;
+
+            & img {
+                width: 20px;
+                margin-right: 13px;
+            }
+        }
+
+        &__block {
+            margin-bottom: 40px;
+        }
+
+    }
+
+    .cash {
+        padding-bottom: 0;
+
+        &__wrapper {
+            background: url(../pictures/active-mobile.svg) center / contain no-repeat;
+            background-position: top center;
+            &_big{
+                background: url(../pictures/active-monile_big.svg) center / contain no-repeat;
+                background-position: top center;
+                height: 69vw !important;
+            }
+            &__info {
+                &_big {
+                    padding: 19vw 3vw 0;
+                }
+            }
+        }
+
+        &__row {
+            & label {
+                font-size: 14px;
+            }
+
+            & .form__input {
+                padding: 10px 12px;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+
+            &_mini {
+                max-width: 33%;
+
+                &:nth-child(3) {
+                    max-width: 41%;
+                    margin: 0 auto;
+                }
+            }
+
+            &_bottom {
+                margin-top: 14px;
+                gap: 10px 0;
+            }
+        }
+
+        &__token {
+            width: 33%;
+            height: 13vw;
+            border-radius: 5px;
+
+        }
+
+        &__price {
+            font-size: 4vw;
+        }
+
+        &__course {
+            font-size: 3vw;
+        }
+
+        &__wrapper {
+            height: 60vw;
+        }
+
+        &__title {
+            font-size: 4.5vw;
+        }
+
+        &__text {
+            font-size: 3.5vw;
+        }
+
+        &__total {
+            font-size: 5vw;
+        }
+
+        &__btns {
+            bottom: 24px;
+            /*  left: 18px; */
+            bottom: 6vw;
+            width: calc(100% - 12vw);
+            max-width: 280px;
+
+            &__item {
+                border-radius: 5px;
+                font-size: 12px;
+                max-width: 118px;
+                height: 40px;
+            }
+
+        }
+
+        &__back {
+            font-size: 18px;
+            margin-top: 4vw;
+            height: 38px;
+        }
+    }
+
+    .prize {
+        &__title {
+            font-size: 5vw;
+        }
+
+        &__text {
+            font-size: 2.5vw;
+            max-width: 34vw;
+        }
+
+        &__block {
+            margin-right: 5vw;
+
+            &::before {
+                height: 21vw;
+                left: -6vw;
+            }
+        }
+
+        &__wrapper {
+            height: 21vw;
+            border-radius: 5px;
+        }
+
+        &__promo {
+            max-height: 21vw;
+        }
+
+        &__line {
+            max-width: 36vw;
+        }
+    }
+}
+@media(max-width:460px){
+    .cash__wrapper__info_big {
+        padding: 14vw 10px;
+    }
+}
+@media(max-width:410px){
+    .cash__wrapper__info_big {
+        padding: 11vw 10px;
+    }
+    .cash__row_mini {
+        max-width: 45%;
+    }
+    .cash__row_mini:nth-child(3) {
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+@media (max-width:390px){
+    .cash__wrapper_big {
+        background: url(../pictures/active-mobile_small.svg) center / contain no-repeat;
+        background-position: top center;
+        height: 79vw !important;
+    }
+
+    .cash__wrapper__info_big {
+        padding: 15vw 10px;
+    }
+}
+@media (max-width:360px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .header {
+        &__reward {
+            font-size: 12px;
+            width: 134px;
+
+            &__total {
+                font-size: 18px;
+            }
+        }
+
+        &__link {
+            width: 150px;
+            font-size: 14px;
+
+            & span {
+                font-size: 16px;
+            }
+        }
+
+    }
+
+    .cash {
+        &__token {
+            height: 13.5vw;
+        }
+
+        &__wrapper {
+            height: 62vw;
+            &_big{
+                height: 72vw !important;
+            }
+        }
+    }
+    .cash__wrapper_big {
+        height: 80vw !important;
+    }
+    
+   
+
+}
+
+@media (max-width:340px) {
+    .header {
+        &__link {
+            padding: 7px 9px 8px 16px;
+            width: 134px;
+
+            &:last-child {
+                padding-left: 30px;
+            }
+        }
+
+    }
+    .cash__wrapper__info_big {
+        padding: 12vw 10px;
+    }
+}
+
+/* @media (min-width:320px) {
+    .container {
+        width: 100%;
+        padding: 0 24px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width:380px) {}
+
+@media (min-width:576px) {
+    .container {
+        width: 540px;
+
+
+    }
+}
+
+@media (min-width:768px) {
+    .container {
+        width: 720px;
+
+
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        width: 720px;
+
+
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        width: 950px;
+        padding: 0
+    }
+}
+
+@media (min-width:1400px) {
+    .container {
+        width: 1032px;
+
+
+    }
+} */

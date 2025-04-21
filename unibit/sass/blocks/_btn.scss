@@ -1,0 +1,25 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 87px;
+    border-radius: 26px;
+    color: #161616;
+    transition: all 0.3s ease;
+    font-size: 40px;
+    border: 1px solid transparent;
+    font-weight: 500;
+    background-color: #FFA101;
+    cursor: pointer;
+    letter-spacing: 3px;
+    &:hover{
+        transition: all 0.3s ease;
+        border-color: #FFA101;
+        color: #FFA101;
+        background-color: transparent;
+    }
+    &:hover, &:active, &:focus{
+        outline: none;
+    }
+}

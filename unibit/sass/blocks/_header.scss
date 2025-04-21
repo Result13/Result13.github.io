@@ -1,0 +1,104 @@
+.header{
+    display: block;
+    padding-top: 48px;
+    &__info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__swap{
+        &__title{
+            font-size: 24px;
+            font-weight: 700;
+        }
+        &__cours{
+            font-weight: 300;
+            font-size: 22px;
+            margin-top: 5px;
+        }
+    }
+    &__reward{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #0F0F0F;
+        height: 65px;
+        width: 264px;
+        border-radius: 25px;
+        background-color: #FFA101;
+        font-size: 20px;
+        font-weight: 500;
+        &__total{
+            font-size: 30px;
+            & span{
+                font-weight: 600;
+                
+            }
+        }
+        
+    }
+    &__nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 38px;
+    }
+    &__link{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #FFA101;
+        border-radius: 25px;
+        color:#fff;
+        width: 313px;
+        height: 133px;
+        padding: 26px 9px 24px 32px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 24px;
+        align-items: center;
+        background-color: #100F15;
+        &__text{
+            text-align: center;
+        }
+        & span{
+            color: #FFA101;
+            display: block;
+            margin-top: 5px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 40px;
+        }
+        &:last-child{
+            color:#FFA101;
+            padding-left: 62px;
+            & span{
+                color: #fff;
+            }
+        }
+        &__icon{
+            border-radius: 50%;
+            border: 4px solid #FFA101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            position: relative;
+            & span{
+                display: block;
+                width: 20px;
+                background-color: #FFA101;
+                border-radius: 25px;
+                height: 4px;
+                margin: 0;
+                &:nth-child(2){  
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotateZ(90deg);
+                }
+            }
+        }
+    }   
+}
