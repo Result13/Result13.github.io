@@ -1,5 +1,13 @@
 
-
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.querySelector('.preloader').style.opacity = '0';
+        setTimeout(function() {
+            document.querySelector('.preloader').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 1500);
+    }, 1500); // Задержка перед исчезновением (в миллисекундах)
+});
 
 const config = JSON.parse(localStorage.getItem('rentConfig')) || {
     cpus: 0,
