@@ -1,0 +1,490 @@
+@media(max-width:1399px) {
+    .container {
+        width: 1140px
+    }
+
+    .promo {
+        &__block {
+            width: 70%;
+        }
+
+        &__img {
+            width: 685px;
+        }
+
+        &__desc {
+            font-size: 40px;
+        }
+    }
+
+    .promo__btn:hover {
+        transition: all .3s ease;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .features {
+        margin-top: 90px;
+    }
+
+    .features__desc {
+        max-width: 85%;
+    }
+
+    .features__item img {
+        display: block;
+        width: 60px;
+    }
+
+    .features__video img {
+        display: block;
+        width: 100%;
+    }
+
+    .features__sertificate img {
+        display: block;
+        width: 160px;
+    }
+
+    .cours__item {
+        width: calc(33% - 20px);
+        margin: 0 auto;
+        height: 570px;
+    }
+
+    .cours__wrapper {
+
+        margin-top: 30px;
+    }
+
+    .reviews__item {
+        height: 550px;
+    }
+
+    .blog {
+        margin: 90px 0;
+
+        &__link {
+            font-size: 16px;
+        }
+    }
+
+    .blog__title {
+        font-size: 18px;
+        height: 68px;
+        margin-bottom: 10px;
+    }
+
+    .blog__desc {
+        font-size: 16px;
+    }
+    .cours__item__desc {
+        height: 316px;
+    }
+}
+
+@media(max-width:1199px) {
+    .container {
+        width: 960px
+    }
+
+    .promo {
+        &__block {
+            width: 68%;
+        }
+
+        &__title {
+            font-size: 44px;
+        }
+    }
+
+    .promo__subtitle {
+        max-width: 488px;
+        font-size: 32px;
+    }
+
+    .promo__img {
+        width: 564px;
+        bottom: 85px
+    }
+
+    .promo__desc {
+        font-size: 32px;
+        height: 85px;
+    }
+
+    .cours__item {
+        width: calc(50% - 20px);
+        margin: 0 auto;
+        height: auto;
+        min-height: 0;
+    }
+
+    .btn_mini {
+        margin-top: 20px;
+    }
+
+    .reviews {
+        display: block;
+        margin-top: 90px;
+    }
+
+    .reviews__item {
+        height: 610px;
+    }
+    .cours__item__desc {
+        height: 280px;
+    }
+}
+
+@media(max-width:991px) {
+    .container {
+        width: 720px
+    }
+
+    .promo__title {
+        font-size: 36px;
+    }
+
+    .promo__subtitle {
+        max-width: 416px;
+        font-size: 26px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+
+    .promo__btn {
+
+        top: 316px;
+
+        width: 85px;
+    }
+
+    .promo__desc {
+        font-size: 24px;
+        height: 64px;
+    }
+
+    .promo__img {
+        width: 358px;
+        bottom: 64px;
+    }
+
+    .features {
+        margin-top: 70px;
+
+        &__wrapper {
+            margin-top: 20px;
+            gap: 20px;
+        }
+    }
+
+    .features__item img {
+        display: block;
+        width: 40px;
+    }
+
+    .features__video img {
+        display: block;
+        width: 100%;
+    }
+
+    .features__sertificate img {
+        display: block;
+        width: 160px;
+    }
+
+    .features__desc {
+        max-width: calc(100% - 50px);
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .cours {
+        margin-top: 70px;
+
+        &__wrapper {
+            gap: 10px;
+        }
+    }
+    .cours__item__desc {
+        height: 310px;
+    }
+    .cours__item {
+        width: calc(50% - 10px);
+        margin: 0 auto;
+    }
+
+    .reviews {
+        margin-top: 70px;
+    }
+
+    .reviews__item {
+        height: 489px;
+    }
+
+    .blog {
+        margin: 70px 0;
+    }
+}
+
+@media(max-width:768px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px
+    }
+
+    .promo__block {
+        width: 100%;
+    }
+
+    .promo__subtitle {
+        max-width: none;
+    }
+    .cours__item__desc {
+        height: auto;
+    }
+    .promo__desc {
+        margin-top: 210px;
+    }
+
+    .promo__btn {
+        top: 437px;
+        width: 85px;
+        left: 224px;
+    }
+
+    .promo__img {
+        width: 321px;
+        bottom: 55px;
+    }
+
+    .promo__desc {
+        font-size: 20px;
+        height: 55px;
+    }
+
+    .cours__item {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .reviews__wrapper {
+        margin-top: 20px;
+    }
+
+    .reviews__item {
+        height: auto;
+    }
+
+    .blog__item {
+        margin: 0 5px;
+        padding: 10px;
+        height: 215px;
+    }
+
+    .header__languages {
+
+        gap: 10px;
+
+    }
+    .header__languages__item {
+ 
+        width: 35px;
+
+    }
+    .header__logo {
+        display: block;
+        width: 160px;
+    }
+    .blog__title {
+        font-size: 14px;
+        height: 54px;
+    }
+
+    .blog__link {
+        font-size: 14px;
+    }
+
+    .blog__desc {
+        font-size: 14px;
+    }
+    .footer{
+
+        padding-bottom: 30px;
+    }
+    .footer__logo{
+        width: 200px;
+        & img{
+            display: block;
+            width: 100%;
+        }
+    }
+    .footer__contacts{
+        gap: 10px;
+    font-size: 16px;
+    }
+    .footer__contacts__item a img{
+        display: block;
+        width: 20px;
+    }
+    .footer__company{
+        margin-top: 30px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:576px){
+    .header__languages {
+        gap: 1vw;
+    }
+    .header__languages__item {
+        width: 7vw;
+        border-radius: 3px;
+    }
+    .header__logo {
+        display: block;
+        width: 35vw;
+    }
+    .promo {
+        margin-top: 30px;
+        display: block;
+    }
+    .promo__title {
+        font-size: 24px;
+    }
+    .promo__subtitle {
+        max-width: none;
+        font-size: 20px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    .btn{
+        margin: 0 auto;
+        width: 225px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .promo__desc {
+        font-size: 14px;
+        height: 40px;
+        margin-top: 187px;
+    }
+    .promo__img {
+        width: 220px;
+        bottom: 40px;
+    }
+    
+    .promo__btn {
+        top: 70%;
+        width: 15%;
+        left: 45%;
+    }
+    .features {
+        margin-top: 50px;
+    }
+    .title {
+        font-size: 22px;
+    }
+    .features__desc {
+        max-width: calc(100% - 40px);
+        font-size: 16px;
+    }
+    .features__video img {
+        display: block;
+        width: 100%;
+    }
+    .features__item img {
+        display: block;
+        width: 30px;
+    }
+    .features__sertificate img {
+        display: block;
+        width: 130px;
+    }
+    .cours {
+        margin-top: 50px;
+    }
+    .btn_mini {
+        margin-top: 20px;
+    }
+    .reviews{
+        margin-top: 50px;
+    }
+    .reviews__header {
+        display: flex;
+        flex-direction: column;
+    }
+    .reviews__img{
+        width: 80%;
+        border-radius: 12px;
+        height: 217px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .reviews__name{
+        text-align: center;
+    }
+    .reviews__desc {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    
+    .blog {
+        margin: 50px 0;
+    }    
+    .blog__title {
+        font-size: 20px;
+        height: 50px;
+    }
+    .blog__desc {
+        font-size: 16px;
+    }
+    .footer__logo {
+        width: 70%;
+        margin: 0 auto;
+    }
+    .footer__contacts {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .footer__company{
+        margin-top: 20px;
+    }
+    .cours__item__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .cours__item__desc p{
+        font-size: 16px;
+    }
+    .cours__item__desc p::before{
+        width: 8px;
+        height: 8px;
+    }
+    .features__video img {
+        display: block;
+        width: 100%;
+    }
+}
+@media(max-width:380px){
+    .promo{
+        margin-top: 20px;
+    }
+    .blog__title{
+        font-size: 14px;
+        height: 38px;
+    }
+    .blog__desc{
+        font-size: 14px;
+    }
+    .blog__item{
+        height: 190px;
+    }
+}

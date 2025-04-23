@@ -1,0 +1,60 @@
+.promo{
+    margin-top: 40px;
+    display: block;
+    &__wrapper{
+        position: relative;
+    }
+    &__block{
+        display: block;
+        width: 51%;
+        position: relative;
+        z-index: 5;
+    }
+    &__title{
+        font-size: 60px;
+        font-weight: 500;
+    }
+    &__subtitle{
+        max-width: 530px;
+        font-size: 40px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+    &__desc{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 55px;
+        background:url(../pictures/bg.jpg) center / cover no-repeat;
+        margin-top: 50px;
+        height: 107px;
+    }
+    &__img{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        bottom: 107px;
+        right: 0;
+        & img{
+            display: block;
+            width: 100%;
+        }
+    }
+    &__btn{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        border-radius: 50%;
+        &:hover{
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@import "base/animation";
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+p,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+.title{
+  font-size: 40px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+}
+body {
+  font-family: 'Montserrat';
+  font-size: 20px;
+  overflow-x: hidden;
+  background-color: #fff;
+
+  margin:0;
+}
+
+.container {
+  display: block;
+  width: 1366px;
+  margin: 0 auto
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 288px;
+  height: 54px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #FF8217;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: #000;
+  border: 1px solid #FF8217;
+  &:hover, &:focus{
+    background-color: transparent;
+    transition: all 0.3s ease;
+  }
+  &_mini{
+    width: 100%;
+    max-width: 254px;
+    height: 38px;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+}
+
+@import "blocks/header";
+@import "blocks/promo";
+@import "blocks/features";
+@import "blocks/cours";
+@import "blocks/reviews";
+@import "blocks/blog";
+@import "blocks/slider";
+@import "blocks/footer";
+@import "base/media";

@@ -1,0 +1,57 @@
+.cours {
+  margin-top: 90px;
+  display: block;
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  &__item {
+    border-radius: 5px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    width: calc(25% - 20px);
+    padding: 24px 20px;
+    min-height: 587px;
+    &__title {
+      font-size: 19px;
+      text-align: center;
+      margin-bottom: 20px;
+      & span {
+        font-weight: 500;
+      }
+    }
+    &__desc {
+      height: 336px;
+      & p {
+        margin-top: 10px;
+        font-size: 18px;
+        position: relative;
+        padding-left: 16px;
+        & span {
+          color: #ff8217;
+        }
+        &::before {
+          position: absolute;
+          top: 6px;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          content: "";
+          background-color: #8e0000;
+        }
+      }
+    }
+    &__price{
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+        & span{
+            font-weight: 500;
+        }
+    }
+  }
+}
