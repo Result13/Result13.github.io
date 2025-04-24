@@ -216,15 +216,6 @@ document.addEventListener('DOMContentLoaded', function () {
         saveConfig();
     }
 
-    function stopMining() {
-        config.miningActive = false;
-        clearInterval(miningInterval);
-
-        if (parametersBlock) parametersBlock.classList.add('settings__inner_active');
-        if (miningBlock) miningBlock.classList.remove('settings__inner_active');
-
-        saveConfig();
-    }
 
     function updateMiningStatus() {
         const remaining = config.miningEndTime - Date.now();
@@ -236,13 +227,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function toggleMining() {
-        if (config.miningActive) {
-            stopMining();
-        } else {
+       
             startMining();
+     
+    }
+    function updateMiningStatus() {
+        const remaining = config.miningEndTime - Date.now();
+        if (remaining <= 0) {
+            stopMining();
+            if (isAutoMode) {
+                setTimeout(() => {
+                    startMining(); // Автоматически перезапускаем майнинг
+                }, 1000); // небольшая пауза перед новым стартом
+            } else {
+                alert('Время аренды истекло!');
+            }
         }
     }
-
+    
     // ===== ВАЛИДАЦИЯ И ПРОВЕРКИ =====
     function validateBeforeMining() {
         if (!config.timeSelected) {
