@@ -294,7 +294,7 @@ html {
 }
 
 .header__address {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .header__address span {
