@@ -10,7 +10,8 @@ $(".slider").slick({
   slidesToScroll: 1,
   arrows: false,
   autoplay:true,
-  speed:3000,
+  centerMode:true,
+  speed:5000,
   /*  centerPadding: "0px", */
   responsive: [
     {

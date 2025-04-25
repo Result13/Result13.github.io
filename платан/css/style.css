@@ -139,7 +139,9 @@ html {
 .slider .title {
   color: #fff;
 }
-
+.slick-slide{
+  margin: 0 10px;
+}
 /* .slider__inner {
   max-width: 60%;
   display: flex;
@@ -821,6 +823,7 @@ html {
 
   .main__hero {
     margin-bottom: 70px;
+    margin-bottom: 40px;
   }
 
 
@@ -984,7 +987,7 @@ html {
   }
 
   .main__hero {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   .supplier__item {
@@ -1150,7 +1153,9 @@ html {
     height: 100px;
     transform: translate(-35%, -15%);
   }
-
+  .slick-slide {
+    margin: 0 5px;
+}
   .form__chek__link {
     font-size: 14px;
   }
