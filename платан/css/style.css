@@ -132,7 +132,7 @@ html {
   border-radius: 12px;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1070px;
+ /*  max-width: 1070px; */
   margin-bottom: 70px;
   overflow: hidden;
 }
