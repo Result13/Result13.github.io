@@ -11,7 +11,7 @@ $(".slider").slick({
   arrows: false,
   autoplay:true,
   centerMode:true,
-  speed:5000,
+  speed:7000,
   /*  centerPadding: "0px", */
   responsive: [
     {
