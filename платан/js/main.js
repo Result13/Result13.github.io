@@ -9,7 +9,7 @@ $(".slider").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: false,
-  autoplay:true,
+  autoplay:false,
   speed:3000,
   /*  centerPadding: "0px", */
   responsive: [
