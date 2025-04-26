@@ -1147,7 +1147,11 @@ html {
     max-width: none;
     max-height: 200px;
   }
-
+  .slick-slide{
+    width: 100%;
+    width: 320px;
+ /*    max-width:400px */
+  }
   .slider__img::before {
     width: 100px;
     height: 100px;
@@ -1252,5 +1256,13 @@ html {
 
   .slick-slide {
     margin: 0 5px;
+  }
+}
+
+@media (max-width:360px){
+  .slick-slide{
+    width: 100%;
+    width: 300px;
+ /*    max-width:400px */
   }
 }
