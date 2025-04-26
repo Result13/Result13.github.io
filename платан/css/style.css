@@ -1149,7 +1149,8 @@ html {
   }
   .slick-slide{
     width: 100%;
-    width: 320px !important;
+/*     width: 320px !important; */
+    width: calc(100vw - 40px) !important;
  /*    max-width:400px */
   }
   .slider__img::before {
@@ -1262,7 +1263,8 @@ html {
 @media (max-width:360px){
   .slick-slide{
     width: 100%;
-    width: 300px !important;
+ /*    width: 300px !important; */
+   /*  width: calc(100vw - 40px) !important; */
  /*    max-width:400px */
   }
 }
