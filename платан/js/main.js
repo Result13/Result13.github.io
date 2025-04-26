@@ -19,8 +19,7 @@ $(".slider").slick({
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        /*  centerMode: true, */
-        /*  centerPadding: '-10px'  */
+         
       },
     },
     {
@@ -28,6 +27,17 @@ $(".slider").slick({
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      /*      centerMode: false, // отключаем центрирование */
+        centerPadding: "0px",
+        variableWidth: true
+
       },
     },
   ],
