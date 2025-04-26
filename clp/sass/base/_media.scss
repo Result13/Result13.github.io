@@ -1,3 +1,14 @@
+@media(min-width:992px) {
+
+    .features__video .promo__desc{
+        margin: 0 auto !important;
+        max-width: 800px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        font-size: 32px;
+        height: 70px;
+    }
+}
 @media(max-width:1399px) {
     .container {
         width: 1140px
@@ -46,18 +57,20 @@
     }
 
     .cours__item {
-        width: calc(33% - 20px);
-        margin: 0 auto;
-        height: 570px;
+     /*    width: calc(33% - 20px);
+        margin: 0 auto; */
+     /*    height: 570px; */
     }
 
     .cours__wrapper {
 
         margin-top: 30px;
     }
-
+    .reviews__desc{
+        /* -webkit-line-clamp: 12; */
+    }
     .reviews__item {
-        height: 550px;
+   /*      height: 550px; */
     }
 
     .blog {
@@ -114,7 +127,7 @@
 
     .cours__item {
         width: calc(50% - 20px);
-        margin: 0 auto;
+      /*   margin: 0 auto; */
         height: auto;
         min-height: 0;
     }
@@ -126,11 +139,14 @@
     .reviews {
         display: block;
         margin-top: 90px;
+        &__desc{
+                 -webkit-line-clamp: 15;
+        }
     }
 
-    .reviews__item {
+ /*    .reviews__item {
         height: 610px;
-    }
+    } */
     .cours__item__desc {
         height: 280px;
     }
@@ -213,20 +229,23 @@
         height: 310px;
     }
     .cours__item {
-        width: calc(50% - 10px);
-        margin: 0 auto;
+       /*  width: calc(50% - 10px);
+        margin: 0 auto; */
     }
 
     .reviews {
         margin-top: 70px;
     }
 
-    .reviews__item {
+  /*   .reviews__item {
         height: 489px;
-    }
+    } */
 
     .blog {
         margin: 70px 0;
+    }
+    .reviews__desc{
+      /*   -webkit-line-clamp: 10; */
     }
 }
 
@@ -279,9 +298,9 @@
         margin-top: 20px;
     }
 
-    .reviews__item {
+  /*   .reviews__item {
         height: auto;
-    }
+    } */
 
     .blog__item {
         margin: 0 5px;
@@ -337,6 +356,12 @@
     .footer__company{
         margin-top: 30px;
         font-size: 14px;
+    }
+ /*    .reviews__item {
+        height: 616px;
+    } */
+    .reviews__desc{
+      /*  -webkit-line-clamp : 15; */
     }
 }
 
@@ -458,7 +483,7 @@
         margin-top: 20px;
     }
     .cours__item__title {
-        font-size: 20px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
     .cours__item__desc p{
@@ -471,6 +496,9 @@
     .features__video img {
         display: block;
         width: 100%;
+    }
+    .reviews__desc {
+       /*  -webkit-line-clamp: 14; */
     }
 }
 @media(max-width:380px){

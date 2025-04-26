@@ -31,6 +31,15 @@
             border-radius: 12px;
             max-width: 800px;
             margin-top: 20px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        & .promo__desc{
+            margin: 0 auto !important;
+            max-width: 800px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            
         }
     }
     &__sertificate{

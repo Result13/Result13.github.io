@@ -15,8 +15,10 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-    height: 497px;
+  /*   height: 497px; */
     margin: 0 10px;
+    height: auto;
+    min-height: 501px;
   }
   &__header {
     display: flex;
@@ -34,6 +36,14 @@
   }
   &__desc {
     margin-top: 20px;
+    display: -webkit-box;
+   /*  -webkit-line-clamp: 10; */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 18px;
+  }
+  & .slick-track{
+    display: flex;
   }
 }
