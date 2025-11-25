@@ -1,0 +1,67 @@
+@import "base/animation";
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  font-family: "ManifoldExtendedCF";
+}
+
+h1 {
+  font-size: 60px;
+  line-height: 110%;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+  width: 360px;
+  display: block;
+  margin: 0 auto;
+}
+
+.right {
+  text-align: right;
+  width: 100%;
+  display: block;
+}
+
+body {
+  font-family: 'Nunito';
+
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.container {
+  width: 91vw;
+  margin: 0 auto
+}
+
+@import "blocks/header";
+@import "blocks/promo";
+@import "base/media";

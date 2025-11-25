@@ -1,0 +1,98 @@
+/* Regular */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Regular.eot');
+  src: url('ManifoldExtendedCF-Regular.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Regular.woff') format('woff'),
+       url('ManifoldExtendedCF-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Medium.eot');
+  src: url('ManifoldExtendedCF-Medium.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Medium.woff') format('woff'),
+       url('ManifoldExtendedCF-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-SemiBold.eot');
+  src: url('ManifoldExtendedCF-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-SemiBold.woff') format('woff'),
+       url('ManifoldExtendedCF-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Bold.eot');
+  src: url('ManifoldExtendedCF-Bold.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Bold.woff') format('woff'),
+       url('ManifoldExtendedCF-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Light */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Light.eot');
+  src: url('ManifoldExtendedCF-Light.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Light.woff') format('woff'),
+       url('ManifoldExtendedCF-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Thin */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Thin.eot');
+  src: url('ManifoldExtendedCF-Thin.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Thin.woff') format('woff'),
+       url('ManifoldExtendedCF-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Heavy */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-Heavy.eot');
+  src: url('ManifoldExtendedCF-Heavy.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-Heavy.woff') format('woff'),
+       url('ManifoldExtendedCF-Heavy.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* ExtraBold */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-ExtraBold.eot');
+  src: url('ManifoldExtendedCF-ExtraBold.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-ExtraBold.woff') format('woff'),
+       url('ManifoldExtendedCF-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* DemiBold */
+@font-face {
+  font-family: 'ManifoldExtendedCF';
+  src: url('ManifoldExtendedCF-DemiBold.eot');
+  src: url('ManifoldExtendedCF-DemiBold.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-DemiBold.woff') format('woff'),
+       url('ManifoldExtendedCF-DemiBold.woff2') format('woff2');
+  font-weight: 650;
+  font-style: normal;
+}
