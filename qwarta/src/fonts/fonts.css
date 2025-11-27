@@ -23,10 +23,10 @@
 /* SemiBold */
 @font-face {
   font-family: 'ManifoldExtendedCF';
-  src: url('ManifoldExtendedCF-SemiBold.eot');
-  src: url('ManifoldExtendedCF-SemiBold.eot?#iefix') format('embedded-opentype'),
-       url('ManifoldExtendedCF-SemiBold.woff') format('woff'),
-       url('ManifoldExtendedCF-SemiBold.woff2') format('woff2');
+  src: url('ManifoldExtendedCF-DemiBold.eot');
+  src: url('ManifoldExtendedCF-DemiBold.eot?#iefix') format('embedded-opentype'),
+       url('ManifoldExtendedCF-DemiBold.woff') format('woff'),
+       url('ManifoldExtendedCF-DemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
