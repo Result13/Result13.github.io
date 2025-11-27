@@ -103,13 +103,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 ///
-document.querySelectorAll('.promo__btn, .promo__link').forEach(el => {
-  const hoverSound = new Audio('path/to/hover-sound.mp3');
-  el.addEventListener('mouseenter', () => {
-    hoverSound.currentTime = 0; // чтобы звук играл с начала
-    hoverSound.play();
+document.addEventListener('DOMContentLoaded', () => {
+  const hoverSound = new Audio('./sound/sound.mp3');
+  hoverSound.volume = 0.8;
+
+  // Кнопка для разрешения звука
+  const enableSoundBtn = document.getElementById('enable-sound-btn');
+  if (enableSoundBtn) {
+    enableSoundBtn.addEventListener('click', () => {
+      hoverSound.play()
+        .then(() => {
+          hoverSound.pause();
+          hoverSound.currentTime = 0;
+          enableSoundBtn.style.display = 'none';
+          console.log('✅ Звук включён');
+        });
+    });
+  }
+
+  document.querySelectorAll('.promo__btn, .promo__link').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play().catch(() => {
+        // Звук не разрешён
+      });
+    });
   });
 });
+
+
+
 
 
 const video = document.querySelector('.promo__video');
