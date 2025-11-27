@@ -123,7 +123,7 @@
   </header>
   <section class="promo">
     <div class="promo__video-wrapper">
-      <video class="promo__video" autoplay muted loop playsinline>
+      <video class="promo__video" autoplay muted loop playsinline webkit-playsinline preload="auto">
         <source src="pictures/first.mp4" type="video/mp4">
       </video>
       <div class="promo__video-blur"></div>
@@ -133,41 +133,323 @@
     <div class="container">
       <div class="promo__wrapper">
         <div class="promo__block">
-          <h1>
-            <span>WEB</span> <span>3</span> <span>AI</span> <span>инфраструктура,</span>
-            <span style=" color: #F7F7FF;">созданная</span>
-            <span>для</span> <span>коренного</span> <span>изменения</span> <span>бизнеса</span>
-          </h1>
+          <div class="promo__fade-up">
+            <h1>
+              <span>WEB</span> <span>3</span> <span>AI</span> <span>инфраструктура,</span>
+              <span style=" color: #F7F7FF;">созданная</span>
+              <span>для</span> <span>коренного</span> <span>изменения</span> <span>бизнеса</span>
+            </h1>
+          </div>
 
-          <div class="promo__subtitle">
-            <div class="promo__logo">
-              <img src="pictures/left-skob.svg" alt="(" class="promo__img">
-              CGB
-              <img style="transform: rotate(180deg);" src="pictures/left-skob.svg" alt="(" class="promo__img">
-            </div>
-            <div class="promo__subtitle__text">
-              <span>Мы</span> <span>делаем</span> <span>токенизацию</span> <span>и</span> <span>управление</span>
-              <span>активами</span> <span>при</span> <span>помощи</span> <span>первого</span> <span>в</span>
-              <span>мире</span> <span>нейроасестирующего</span> <span>интерфейса</span>
-            </div>
-            <div class="promo__subtitle__text promo__subtitle__text_small">
-              Мы вводим новый стандарт — CGB,
-              где подтвержденный опыт преобразуется в атомарные, исполняемые цифровые активы — «навыки», реализованные в
-              виде смарт-контрактов </div>
+          <div class="promo__fade-up_second">
+            <div class="promo__subtitle">
+              <div class="promo__logo">
+                <img src="pictures/left-skob.svg" alt="(" class="promo__img">
+                CGB
+                <img style="transform: rotate(180deg);" src="pictures/left-skob.svg" alt="(" class="promo__img">
+              </div>
+              <div class="promo__subtitle__text">
+                <span>Мы</span> <span>делаем</span> <span>токенизацию</span> <span>и</span> <span>управление</span>
+                <span>активами</span> <span>при</span> <span>помощи</span> <span>первого</span> <span>в</span>
+                <span>мире</span> <span>нейроасестирующего</span> <span>интерфейса</span>
+              </div>
+              <div class="promo__subtitle__text promo__subtitle__text_small">
+                Мы вводим новый стандарт — CGB,
+                где подтвержденный опыт преобразуется в атомарные, исполняемые цифровые активы — «навыки», реализованные
+                в
+                виде смарт-контрактов </div>
 
+            </div>
           </div>
         </div>
         <div class="promo__footer">
           <div class="promo__net">
-            <a href="#" class="promo__link"><img src="pictures/fac.svg" alt="facebook"></a>
-            <a href="#" class="promo__link"><img src="pictures/x.svg" alt="x"></a>
-            <a href="#" class="promo__link"><img src="pictures/in.svg" alt="linkedIn "></a>
-            <a href="#" class="promo__link"><img src="pictures/inst.svg" alt="linkedIn "></a>
+
+            <a href="#" class="promo__link"><!-- <img src="pictures/fac.svg" alt="facebook"> -->
+              <svg class="promo__link__skob-left" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.5 24.4489L3.63501 22.8919C1.70292 21.8419 0.5 19.8191 0.5 17.6201V7.13173C0.5 4.84254 1.80259 2.75283 3.85788 1.74478L6.5 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_1362_8782)">
+                  <path
+                    d="M10 7.27778H13L12.6667 8.5H10V14H8.66667V8.5H6V7.27778H8.66667V6.13378C8.66667 5.04417 8.79067 4.64878 9.02267 4.25033C9.25001 3.85666 9.6012 3.53473 10.0307 3.32633C10.4653 3.11367 10.8967 3 12.0853 3C12.4333 3 12.7387 3.03056 13 3.09167V4.22222H12.0853C11.2027 4.22222 10.934 4.26989 10.66 4.40433C10.4573 4.50333 10.3067 4.64144 10.1987 4.82722C10.052 5.07839 10 5.32467 10 6.13378V7.27778Z"
+                    fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1362_8782">
+                    <rect width="18" height="18" fill="currentColor" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <svg class="promo__link__skob-right" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.23877 24.4489L3.10376 22.8919C5.03585 21.8419 6.23877 19.8191 6.23877 17.6201V7.13173C6.23877 4.84254 4.93618 2.75283 2.88088 1.74478L0.23877 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+            </a>
+            <a href="#" class="promo__link"><!-- <img src="pictures/x.svg" alt="x"> -->
+              <svg class="promo__link__skob-left" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.5 24.4489L3.63501 22.8919C1.70292 21.8419 0.5 19.8191 0.5 17.6201V7.13173C0.5 4.84254 1.80259 2.75283 3.85788 1.74478L6.5 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+              <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12.9007 5H14.4335L11.068 8.81919L15 14H11.9144L9.4985 10.8517L6.73276 14H5.19993L8.76541 9.91513L5 5H8.16228L10.3449 7.87601L12.9007 5ZM12.3642 13.1033H13.2139L7.71576 5.86347H6.80273L12.3642 13.1033Z"
+                  fill="currentColor" />
+              </svg>
+              <svg class="promo__link__skob-right" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.23877 24.4489L3.10376 22.8919C5.03585 21.8419 6.23877 19.8191 6.23877 17.6201V7.13173C6.23877 4.84254 4.93618 2.75283 2.88088 1.74478L0.23877 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+            </a>
+            <a href="#" class="promo__link"><!-- <img src="pictures/in.svg" alt="linkedIn "> -->
+              <svg class="promo__link__skob-left" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.5 24.4489L3.63501 22.8919C1.70292 21.8419 0.5 19.8191 0.5 17.6201V7.13173C0.5 4.84254 1.80259 2.75283 3.85788 1.74478L6.5 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_1362_8794)">
+                  <path
+                    d="M9.34286 6.80286C9.91926 6.21389 10.6698 5.82857 11.5429 5.82857C12.4597 5.82857 13.3391 6.19281 13.9874 6.84115C14.6358 7.48949 15 8.36882 15 9.28571V14H13.7429V9.28571C13.7429 8.70224 13.5111 8.14266 13.0985 7.73008C12.6859 7.3175 12.1263 7.08571 11.5429 7.08571C10.9594 7.08571 10.3998 7.3175 9.98722 7.73008C9.57464 8.14266 9.34286 8.70224 9.34286 9.28571V14H8.08571V6.14286H9.34286V6.80286ZM4.94286 4.88571C4.6928 4.88571 4.45298 4.78638 4.27616 4.60956C4.09934 4.43274 4 4.19292 4 3.94286C4 3.6928 4.09934 3.45298 4.27616 3.27616C4.45298 3.09934 4.6928 3 4.94286 3C5.19292 3 5.43274 3.09934 5.60956 3.27616C5.78638 3.45298 5.88571 3.6928 5.88571 3.94286C5.88571 4.19292 5.78638 4.43274 5.60956 4.60956C5.43274 4.78638 5.19292 4.88571 4.94286 4.88571ZM4.31429 6.14286H5.57143V14H4.31429V6.14286Z"
+                    fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1362_8794">
+                    <rect width="18" height="18" fill="currentColor" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <svg class="promo__link__skob-right" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.23877 24.4489L3.10376 22.8919C5.03585 21.8419 6.23877 19.8191 6.23877 17.6201V7.13173C6.23877 4.84254 4.93618 2.75283 2.88088 1.74478L0.23877 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+            </a>
+            <a href="#" class="promo__link"><!-- <img src="pictures/inst.svg" alt="linkedIn "> -->
+              <svg class="promo__link__skob-left" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.5 24.4489L3.63501 22.8919C1.70292 21.8419 0.5 19.8191 0.5 17.6201V7.13173C0.5 4.84254 1.80259 2.75283 3.85788 1.74478L6.5 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9 15.1875C7.67325 15.1875 6.7185 15.1868 5.97412 15.1147C5.23828 15.0433 4.76756 14.9062 4.39191 14.6702C3.96256 14.4004 3.5995 14.0374 3.32972 13.6081C3.09375 13.2324 2.95659 12.7617 2.88534 12.0259C2.81316 11.2815 2.8125 10.3268 2.8125 9C2.8125 7.67325 2.81316 6.7185 2.88534 5.97412C2.95659 5.23828 3.09375 4.76756 3.32972 4.39191C3.59949 3.96255 3.96255 3.59949 4.39191 3.32972C4.76756 3.09375 5.23828 2.95659 5.97412 2.88534C6.71841 2.81316 7.67316 2.8125 9 2.8125C10.3268 2.8125 11.2815 2.81316 12.0259 2.88534C12.7617 2.95659 13.2324 3.09375 13.6081 3.32972C14.0374 3.5995 14.4004 3.96256 14.6702 4.39191C14.9062 4.76756 15.0433 5.23828 15.1147 5.97412C15.1868 6.7185 15.1875 7.67325 15.1875 9C15.1875 10.3268 15.1868 11.2815 15.1147 12.0259C15.0433 12.7617 14.9062 13.2324 14.6702 13.6081C14.4004 14.0374 14.0374 14.4004 13.6081 14.6702C13.2324 14.9062 12.7617 15.0433 12.0259 15.1147C11.2815 15.1868 10.3268 15.1875 9 15.1875Z"
+                  stroke="currentColor" stroke-width="1.125" />
+                <path
+                  d="M9 11.8125C10.5533 11.8125 11.8125 10.5533 11.8125 9C11.8125 7.4467 10.5533 6.1875 9 6.1875C7.4467 6.1875 6.1875 7.4467 6.1875 9C6.1875 10.5533 7.4467 11.8125 9 11.8125Z"
+                  stroke="currentColor" stroke-width="1.125" />
+                <path
+                  d="M12.6562 6.1875C13.1222 6.1875 13.5 5.80974 13.5 5.34375C13.5 4.87776 13.1222 4.5 12.6562 4.5C12.1903 4.5 11.8125 4.87776 11.8125 5.34375C11.8125 5.80974 12.1903 6.1875 12.6562 6.1875Z"
+                  fill="currentColor" />
+              </svg>
+              <svg class="promo__link__skob-right" width="7" height="25" viewBox="0 0 7 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.23877 24.4489L3.10376 22.8919C5.03585 21.8419 6.23877 19.8191 6.23877 17.6201V7.13173C6.23877 4.84254 4.93618 2.75283 2.88088 1.74478L0.23877 0.448914"
+                  stroke="currentColor" stroke-opacity="0.26" />
+              </svg>
+
+            </a>
           </div>
           <div class="promo__btn__wrapper">
             <div class="promo__btn">
               <span>записаться </span> <span>на </span> <span>демо </span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="intarface">
+    <div class="promo__video-wrapper">
+      <video class="promo__video" autoplay muted loop playsinline>
+        <source src="pictures/first.mp4" type="video/mp4">
+      </video>
+      <div class="promo__video-blur"></div>
+    </div>
+    <div class="container">
+      <div class="intarface__wrapper">
+        <div class="intarface__desc">
+          <div class="intarface__title">
+            <div class="intarface__fade-up">
+              <div class="intarface__text">
+                Милый — ИИ
+              </div>
+              <h2 class="title">
+                Впечатляющий <br>
+                интерфейс
+              </h2>
+            </div>
+          </div>
+          <div class="intarface__block">
+            <h3 class="intarface__subtitle">
+              QAIUI-интерфейс для управления целями и активами
+            </h3>
+            <div class="intarface__tabs">
+              <div class="intarface__tab intarface__tab_active">
+                <div class="intarface__tab__block">
+                  <img src="pictures/eye.svg" alt="eye">
+                </div>
+              </div>
+              <div class="intarface__tab ">
+                <div class="intarface__tab__block">
+                  <img src="pictures/hand.svg" alt="hand">
+                </div>
+
+              </div>
+              <div class="intarface__tab">
+                <div class="intarface__tab__block">
+                  <img src="pictures/brain.svg" alt="brain">
+                </div>
+
+              </div>
+              <div class="intarface__tab">
+                <div class="intarface__tab__block">
+                  <img src="pictures/valume.svg" alt="valume">
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="intarface__tabs__content">
+              <div class="intarface__tab__content intarface__tab__content_active">
+                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                построенный на основе передовых исследованиях мозга 1
+              </div>
+              <div class="intarface__tab__content ">
+                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                построенный на основе передовых исследованиях мозга 2
+              </div>
+              <div class="intarface__tab__content">
+                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                построенный на основе передовых исследованиях мозга 3
+              </div>
+              <div class="intarface__tab__content">
+                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                построенный на основе передовых исследованиях мозга 4
+              </div>
+            </div>
+            <div class="intarface__bottom">
+              <div class="intarface__bottom__img">
+                <div class="intarface__bottom__item animated-item">
+                  <img src="pictures/img1.png" alt="img">
+                </div>
+                <div class="intarface__bottom__item animated-item">
+                  <img src="pictures/img2.png" alt="img">
+                </div>
+                <div class="intarface__bottom__item animated-item">
+                  <img src="pictures/img3.png" alt="img">
+                </div>
+                <div class="intarface__bottom__item animated-item">
+                  <img src="pictures/img4.png" alt="img">
+                </div>
+              </div>
+              <div class="intarface__bottom__btn">
+                <span>Спросите NAI</span>
+                <img src="pictures/valume-btn.svg" alt="icon">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="intarface__right">
+          <div class="intarface__right__img">
+
+            <div class="intarface__svg">
+              <div class="intarface__svg-up">
+                <svg width="354" height="10" viewBox="0 0 354 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <foreignObject x="-132.462" y="-132.462" width="618.651" height="274.484">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter:blur(66.23px);clip-path:url(#bgblur_0_1362_8927_clip_path);height:100%;width:100%">
+                    </div>
+                  </foreignObject>
+                  <path data-figma-bg-blur-radius="132.462"
+                    d="M7.0712 7.07131L0 0.000109673H353.727L346.656 7.07131C345.062 8.66499 342.901 9.5603 340.647 9.5603H13.0802C10.8264 9.5603 8.66487 8.66498 7.0712 7.07131Z"
+                    fill="white" fill-opacity="0.07" />
+                  <defs>
+                    <clipPath id="bgblur_0_1362_8927_clip_path" transform="translate(132.462 132.462)">
+                      <path
+                        d="M7.0712 7.07131L0 0.000109673H353.727L346.656 7.07131C345.062 8.66499 342.901 9.5603 340.647 9.5603H13.0802C10.8264 9.5603 8.66487 8.66498 7.0712 7.07131Z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+
+
+              <div class="intarface__svg-center">
+                <svg width="100%" height="auto" viewBox="0 0 576 352" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <foreignObject x="-132.462" y="-132.462" width="839.951" height="616.615">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter:blur(66.23px);clip-path:url(#bgblur_0_1362_8917_clip_path);height:100%;width:100%">
+                    </div>
+                  </foreignObject>
+                  <path data-figma-bg-blur-radius="132.462"
+                    d="M539.088 0C558.937 0 575.027 16.0908 575.027 35.9395V315.752C575.027 335.6 558.937 351.691 539.089 351.691H474.478C473.439 351.691 472.39 351.401 471.678 350.645L461.624 339.97C460.093 338.345 457.959 337.423 455.727 337.423H117.413C115.326 337.423 113.32 338.228 111.812 339.671L100.04 350.941C99.4864 351.471 98.721 351.691 97.9547 351.691H35.9395C16.0908 351.691 6.99451e-05 335.601 0 315.752V35.9395C0 16.0908 16.0908 0 35.9395 0H95.25C97.0405 0.180217 98.729 0.951952 100.04 2.20703L111.812 13.4766C113.32 14.9197 115.326 15.7255 117.413 15.7256H455.727C457.959 15.7255 460.093 14.8039 461.624 13.1787L471.678 2.50488C473.02 1.08 474.825 0.196106 476.755 0H539.088Z"
+                    fill="url(#paint0_radial_1362_8917)" fill-opacity="0.35" />
+                  <defs>
+                    <clipPath id="bgblur_0_1362_8917_clip_path" transform="translate(132.462 132.462)">
+                      <path
+                        d="M539.088 0C558.937 0 575.027 16.0908 575.027 35.9395V315.752C575.027 335.6 558.937 351.691 539.089 351.691H474.478C473.439 351.691 472.39 351.401 471.678 350.645L461.624 339.97C460.093 338.345 457.959 337.423 455.727 337.423H117.413C115.326 337.423 113.32 338.228 111.812 339.671L100.04 350.941C99.4864 351.471 98.721 351.691 97.9547 351.691H35.9395C16.0908 351.691 6.99451e-05 335.601 0 315.752V35.9395C0 16.0908 16.0908 0 35.9395 0H95.25C97.0405 0.180217 98.729 0.951952 100.04 2.20703L111.812 13.4766C113.32 14.9197 115.326 15.7255 117.413 15.7256H455.727C457.959 15.7255 460.093 14.8039 461.624 13.1787L471.678 2.50488C473.02 1.08 474.825 0.196106 476.755 0H539.088Z" />
+                    </clipPath>
+                    <radialGradient id="paint0_radial_1362_8917" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                      gradientTransform="translate(287.513 176.598) rotate(90) scale(403.652 403.652)">
+                      <stop stop-color="white" />
+                      <stop offset="1" stop-color="white" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                </svg>
+                <img src="pictures/light.png" alt="light">
+                <img src="pictures/light-2.png" alt="light">
+              </div>
+              <div class="intarface__svg-down">
+                <svg width="354" height="10" viewBox="0 0 354 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <foreignObject x="-132.462" y="-132.462" width="618.651" height="274.484">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter:blur(66.23px);clip-path:url(#bgblur_0_1362_8926_clip_path);height:100%;width:100%">
+                    </div>
+                  </foreignObject>
+                  <path data-figma-bg-blur-radius="132.462"
+                    d="M7.0712 2.48899L0 9.56019H353.727L346.656 2.48899C345.062 0.895317 342.901 0 340.647 0H13.0802C10.8264 0 8.66487 0.89532 7.0712 2.48899Z"
+                    fill="white" fill-opacity="0.07" />
+                  <defs>
+                    <clipPath id="bgblur_0_1362_8926_clip_path" transform="translate(132.462 132.462)">
+                      <path
+                        d="M7.0712 2.48899L0 9.56019H353.727L346.656 2.48899C345.062 0.895317 342.901 0 340.647 0H13.0802C10.8264 0 8.66487 0.89532 7.0712 2.48899Z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+              </div>
+            </div>
+
+            <div class="intarface__right__img__text">
+              <div class="intarface__right__name">
+                ROI
+              </div>
+              <div class="intarface__right__perc">
+                300%
+              </div>
+            </div>
+          </div>
+          <div class="promo__fade-up_second">
+          <div class="intarface__right__bottom">
+            На смену класическим интерфейсам приходят AIUI
+            и AIGUI — интерфейсы, где ИИ сердце продукта,
+            а сам интерфейс порождается, адаптируется и развивается ИИ в реальном времени
+          </div>
           </div>
         </div>
       </div>
