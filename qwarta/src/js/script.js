@@ -1,13 +1,13 @@
-const headerBg = document.querySelector('.header__bg');
-const header = document.querySelector('.header');
+/* const headerBg = document.querySelector('.header__bg');
+const header = document.querySelector('.header'); */
 
 
-const resizeObserver = new ResizeObserver(() => {
+/* const resizeObserver = new ResizeObserver(() => {
   const bgHeight = headerBg.offsetHeight;
   header.style.height = `${bgHeight}px`;
 });
 
-resizeObserver.observe(headerBg);
+resizeObserver.observe(headerBg); */
 
 
 document.addEventListener('DOMContentLoaded', () => {
