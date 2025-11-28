@@ -20,76 +20,90 @@
 
 <body>
   <header class="header">
-    <svg class="header__bg" width="1920" height="71" viewBox="0 0 1920 71" fill="none"
+    <!-- ДЕСКТОП -->
+    <svg class="header__bg header__bg_desk" width="1920" height="71" viewBox="0 0 1920 71" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="bgblur_0_1362_8735_clip_path" transform="translate(53.6 53.6)">
+        <clipPath id="bgblur_desk_clip_path">
           <path
             d="M248.954 12.6H5.3C1.26832 12.6 -2 9.33168 -2 5.3C-2 1.26832 1.26835 -2 5.30003 -2H1914.7C1918.73 -2 1922 1.26832 1922 5.3C1922 9.33168 1918.73 12.6 1914.7 12.6H1667.96C1659.69 12.6 1651.79 16.0127 1646.12 22.0321L1608.88 61.5679C1603.21 67.5873 1595.31 71 1587.04 71L334.046 71C326.315 71 318.883 68.0159 313.299 62.67L269.701 20.93C264.117 15.5841 256.685 12.6 248.954 12.6Z" />
         </clipPath>
-        <radialGradient id="paint0_radial_1362_8735" cx="0" cy="0" r="1"
+        <filter id="blur_desk">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="25.8" />
+        </filter>
+        <radialGradient id="paint0_radial_desk" cx="0" cy="0" r="1"
           gradientTransform="matrix(0 -68.3895 -1788.1 -0.314512 960 66.3895)" gradientUnits="userSpaceOnUse">
           <stop stop-color="white" />
           <stop offset="1" stop-color="white" stop-opacity="0" />
         </radialGradient>
       </defs>
 
-      <foreignObject x="-53.6" y="-53.6" width="2027.2" height="176.2">
-        <div xmlns="http://www.w3.org/1999/xhtml"
-          style="backdrop-filter:blur(25.8px);clip-path:url(#bgblur_0_1362_8735_clip_path);height:100%;width:100%">
-        </div>
-      </foreignObject>
+      <g clip-path="url(#bgblur_desk_clip_path)" class="header__blur-group">
+        <rect x="-100" y="-100" width="2120" height="271" fill="rgba(0,0,0,0)" filter="url(#blur_desk)" />
+      </g>
 
       <path data-figma-bg-blur-radius="51.6"
         d="M248.954 12.6H5.3C1.26832 12.6 -2 9.33168 -2 5.3C-2 1.26832 1.26835 -2 5.30003 -2H1914.7C1918.73 -2 1922 1.26832 1922 5.3C1922 9.33168 1918.73 12.6 1914.7 12.6H1667.96C1659.69 12.6 1651.79 16.0127 1646.12 22.0321L1608.88 61.5679C1603.21 67.5873 1595.31 71 1587.04 71L334.046 71C326.315 71 318.883 68.0159 313.299 62.67L269.701 20.93C264.117 15.5841 256.685 12.6 248.954 12.6Z"
-        fill="url(#paint0_radial_1362_8735)" fill-opacity="0.1" />
+        fill="url(#paint0_radial_desk)" fill-opacity="0.1" />
     </svg>
+
+    <!-- ПЛАНШЕТ -->
     <div class="header__bg header__bg_lap">
       <svg width="768" height="57" viewBox="0 0 768 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <foreignObject x="-274.6" y="-51.6" width="1317.2" height="160.2">
-          <div xmlns="http://www.w3.org/1999/xhtml"
-            style="backdrop-filter:blur(25.8px);clip-path:url(#bgblur_0_1362_9009_clip_path);height:100%;width:100%">
-          </div>
-        </foreignObject>
-        <path data-figma-bg-blur-radius="51.6"
-          d="M16.798 14.6H-215.7C-219.732 14.6 -223 11.3317 -223 7.3C-223 3.26832 -219.732 0 -215.7 0H983.7C987.732 0 991 3.26832 991 7.3C991 11.3317 987.732 14.6 983.7 14.6H738.398C729.296 14.6 720.687 18.7318 714.993 25.8322L699.007 45.7678C693.313 52.8682 684.704 57 675.602 57H84.702C76.8785 57 69.3645 53.9438 63.7621 48.4831L37.7379 23.1169C32.1355 17.6562 24.6215 14.6 16.798 14.6Z"
-          fill="url(#paint0_radial_1362_9009)" fill-opacity="0.2" />
         <defs>
-          <clipPath id="bgblur_0_1362_9009_clip_path" transform="translate(274.6 51.6)">
+          <clipPath id="bgblur_lap_clip_path">
             <path
               d="M16.798 14.6H-215.7C-219.732 14.6 -223 11.3317 -223 7.3C-223 3.26832 -219.732 0 -215.7 0H983.7C987.732 0 991 3.26832 991 7.3C991 11.3317 987.732 14.6 983.7 14.6H738.398C729.296 14.6 720.687 18.7318 714.993 25.8322L699.007 45.7678C693.313 52.8682 684.704 57 675.602 57H84.702C76.8785 57 69.3645 53.9438 63.7621 48.4831L37.7379 23.1169C32.1355 17.6562 24.6215 14.6 16.798 14.6Z" />
           </clipPath>
-          <radialGradient id="paint0_radial_1362_9009" cx="0" cy="0" r="1"
+          <filter id="blur_lap">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="25.8" />
+          </filter>
+          <radialGradient id="paint0_radial_lap" cx="0" cy="0" r="1"
             gradientTransform="matrix(0 -68.3895 -1788.09 -0.314511 739 68.3895)" gradientUnits="userSpaceOnUse">
             <stop stop-color="white" />
             <stop offset="1" stop-color="white" stop-opacity="0" />
           </radialGradient>
         </defs>
+
+        <g clip-path="url(#bgblur_lap_clip_path)" class="header__blur-group">
+          <rect x="-300" y="-60" width="1368" height="177" fill="rgba(0,0,0,0)" filter="url(#blur_lap)" />
+        </g>
+
+        <path data-figma-bg-blur-radius="51.6"
+          d="M16.798 14.6H-215.7C-219.732 14.6 -223 11.3317 -223 7.3C-223 3.26832 -219.732 0 -215.7 0H983.7C987.732 0 991 3.26832 991 7.3C991 11.3317 987.732 14.6 983.7 14.6H738.398C729.296 14.6 720.687 18.7318 714.993 25.8322L699.007 45.7678C693.313 52.8682 684.704 57 675.602 57H84.702C76.8785 57 69.3645 53.9438 63.7621 48.4831L37.7379 23.1169C32.1355 17.6562 24.6215 14.6 16.798 14.6Z"
+          fill="url(#paint0_radial_lap)" fill-opacity="0.2" />
       </svg>
     </div>
+
+    <!-- МОБИЛЬНЫЙ -->
     <div class="header__bg header__bg_mb">
       <svg width="375" height="60" viewBox="0 0 375 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <foreignObject x="-289.6" y="-51.6" width="953.7" height="162.879">
-          <div xmlns="http://www.w3.org/1999/xhtml"
-            style="backdrop-filter:blur(25.8px);clip-path:url(#bgblur_0_1362_9204_clip_path);height:100%;width:100%">
-          </div>
-        </foreignObject>
-        <path data-figma-bg-blur-radius="51.6"
-          d="M3.94481 14.6H-230.7C-234.732 14.6 -238 11.3317 -238 7.3C-238 3.26832 -234.732 0 -230.7 0H605.2C609.232 0 612.5 3.26832 612.5 7.3C612.5 11.3317 609.232 14.6 605.2 14.6H355.292C349.114 14.6 343.283 17.455 339.495 22.3347L316.505 51.9448C312.717 56.8245 306.886 59.6795 300.708 59.6795H57.5552C51.229 59.6795 45.2758 56.6865 41.5024 51.6088L19.9976 22.6707C16.2242 17.593 10.271 14.6 3.94481 14.6Z"
-          fill="url(#paint0_radial_1362_9204)" fill-opacity="0.2" />
         <defs>
-          <clipPath id="bgblur_0_1362_9204_clip_path" transform="translate(289.6 51.6)">
+          <clipPath id="bgblur_mb_clip_path">
             <path
               d="M3.94481 14.6H-230.7C-234.732 14.6 -238 11.3317 -238 7.3C-238 3.26832 -234.732 0 -230.7 0H605.2C609.232 0 612.5 3.26832 612.5 7.3C612.5 11.3317 609.232 14.6 605.2 14.6H355.292C349.114 14.6 343.283 17.455 339.495 22.3347L316.505 51.9448C312.717 56.8245 306.886 59.6795 300.708 59.6795H57.5552C51.229 59.6795 45.2758 56.6865 41.5024 51.6088L19.9976 22.6707C16.2242 17.593 10.271 14.6 3.94481 14.6Z" />
           </clipPath>
-          <radialGradient id="paint0_radial_1362_9204" cx="0" cy="0" r="1"
+          <filter id="blur_mb">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="100" />
+          </filter>
+          <radialGradient id="paint0_radial_mb" cx="0" cy="0" r="1"
             gradientTransform="matrix(0 -68.3895 -1788.09 -0.314511 724 68.3895)" gradientUnits="userSpaceOnUse">
             <stop stop-color="white" />
             <stop offset="1" stop-color="white" stop-opacity="0" />
           </radialGradient>
         </defs>
+
+        <g clip-path="url(#bgblur_mb_clip_path)" class="header__blur-group">
+          <rect x="-300" y="-60" width="975" height="180" fill="rgba(0,0,0,0)" filter="url(#blur_mb)" />
+        </g>
+
+        <path data-figma-bg-blur-radius="51.6"
+          d="M3.94481 14.6H-230.7C-234.732 14.6 -238 11.3317 -238 7.3C-238 3.26832 -234.732 0 -230.7 0H605.2C609.232 0 612.5 3.26832 612.5 7.3C612.5 11.3317 609.232 14.6 605.2 14.6H355.292C349.114 14.6 343.283 17.455 339.495 22.3347L316.505 51.9448C312.717 56.8245 306.886 59.6795 300.708 59.6795H57.5552C51.229 59.6795 45.2758 56.6865 41.5024 51.6088L19.9976 22.6707C16.2242 17.593 10.271 14.6 3.94481 14.6Z"
+          fill="url(#paint0_radial_mb)" fill-opacity="0.2" />
       </svg>
     </div>
+
+
     <div class="container">
       <div class="header__wrapper">
         <nav class="header__nav">
@@ -276,7 +290,7 @@
   <section class="intarface">
     <div class="promo__video-wrapper">
       <video class="promo__video" autoplay muted loop playsinline>
-        <source src="pictures/first.mp4" type="video/mp4">
+        <source src="pictures/2screen.mp4" type="video/mp4">
       </video>
       <div class="promo__video-blur"></div>
     </div>
@@ -327,20 +341,28 @@
 
             <div class="intarface__tabs__content">
               <div class="intarface__tab__content intarface__tab__content_active">
-                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
-                построенный на основе передовых исследованиях мозга 1
+                <div class="intarfave__tab-text">
+                  Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                  построенный на основе передовых исследованиях мозга 1
+                </div>
               </div>
               <div class="intarface__tab__content ">
-                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
-                построенный на основе передовых исследованиях мозга 2
+                <div class="intarfave__tab-text">
+                  Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                  построенный на основе передовых исследованиях мозга 2
+                </div>
               </div>
               <div class="intarface__tab__content">
-                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
-                построенный на основе передовых исследованиях мозга 3
+                <div class="intarfave__tab-text">
+                  Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                  построенный на основе передовых исследованиях мозга 3
+                </div>
               </div>
               <div class="intarface__tab__content">
-                Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
-                построенный на основе передовых исследованиях мозга 4
+                <div class="intarfave__tab-text">
+                  Первый в мире поведенческий QAIUI-интерфейс для бизнеса,
+                  построенный на основе передовых исследованиях мозга 4
+                </div>
               </div>
             </div>
             <div class="intarface__bottom">
@@ -445,17 +467,60 @@
             </div>
           </div>
           <div class="promo__fade-up_second">
-          <div class="intarface__right__bottom">
-            На смену класическим интерфейсам приходят AIUI
-            и AIGUI — интерфейсы, где ИИ сердце продукта,
-            а сам интерфейс порождается, адаптируется и развивается ИИ в реальном времени
-          </div>
+            <div class="intarface__right__bottom">
+              На смену класическим интерфейсам приходят AIUI
+              и AIGUI — интерфейсы, где ИИ сердце продукта,
+              а сам интерфейс порождается, адаптируется и развивается ИИ в реальном времени
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!--   <section class="standart">
+    <div class="container">
+      <div class="standart__wrapper">
+        <div class="standart__title">
+          <h2 class="title title_dark">
+            Компания Qwatra IIT разработала новый
+            стандарт QAIUI
+            интерфейсов
+          </h2>
+          <div class="standart__subtitle">
+            Мы создали первый нейроассистирующий интерфейс, работающий согласованно
+            с человеческим мозгом, используя фрактальную вложенность информации и визуализацию, которые соответствуют
+            естественным
+            когнитивным моделям.
+          </div>
+        </div>
+        <div class="standart__interoco">
+          <div class="standart__interoco__logo">
+            <img src="pictures/interoco.svg" alt="interoco">
+          </div>
+          <div class="standart__interoco__desc">
+            Разработка зарегистрирована в INTEROCO (Берлин) — международном реестре авторских прав, действующий
+            по Бернской конвенции в 181 стране
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="standart__img">
+      <img src="pictures/men-profile.png" alt="men">
+      <img style="width: 1488;
+height: 1519;
+top: -150px;
+left: 432px;
+angle: 0 deg;
+opacity: 1;
+mix-blend-mode: Plus lighter;
+mix-blend-mode: plus-lighter;
+"  src="pictures/net.png" alt="network">
+    </div>
+  </section> -->
   <script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 </body>
 
 </html>
