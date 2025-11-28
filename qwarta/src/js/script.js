@@ -334,3 +334,56 @@ if (headerBg && headerBlurGroups.length > 0) {
 
 
 ///
+document.addEventListener('DOMContentLoaded', () => {
+  // ==================== ФИКСИРУЕМ ВЫСОТУ ЭКРАНА ====================
+  function setPromoHeight() {
+    const promos = document.querySelectorAll('.promo');
+    
+    promos.forEach(promo => {
+      // ✅ Фиксируем высоту один раз при загрузке
+      const height = promo.offsetHeight;
+      promo.style.minHeight = `${height}px`;
+      promo.style.height = `${height}px`;
+    });
+  }
+
+  // Вызываем после загрузки всех ресурсов
+  setPromoHeight();
+  window.addEventListener('load', setPromoHeight);
+  window.addEventListener('resize', setPromoHeight);
+
+  // ... остальной код
+});
+
+
+
+
+
+
+
+
+
+/////
+let scrolled = false;
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header__bg_mb');
+    if (window.scrollY > 100 && !scrolled) {
+        header.classList.add('scrolled');
+        scrolled = true;
+    } else if (window.scrollY <= 100 && scrolled) {
+        header.classList.remove('scrolled');
+        scrolled = false;
+    }
+});
+// Надёжный JS
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.remove('scrolled');
+        } else {
+            entry.target.classList.add('scrolled');
+        }
+    });
+}, { threshold: 0.1 });
+
+observer.observe(document.querySelector('.header__bg_mb'));
