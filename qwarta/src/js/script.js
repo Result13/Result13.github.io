@@ -47,24 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ////
 
-let ticking = false;
+/* let ticking = false;
 
-function updateHeight() {
-  const bgHeight = headerBg.offsetHeight;
-  header.style.height = `${bgHeight}px`;
-  ticking = false;
+function updateHeaderHeight() {
+  const header = document.querySelector('.header');
+  const headerBg = document.querySelector('.header__bg_lap, .header__bg_mb , .header__bg_desc');
+  
+  if (!header || !headerBg) return;
+
+  // 600ms = длительность анимации + буфер
+  setTimeout(() => {
+    header.style.height = `${headerBg.offsetHeight}px`;
+  }, 600);
 }
 
-function onScrollOrResize() {
-  if (!ticking) {
-    window.requestAnimationFrame(updateHeight);
-    ticking = true;
-  }
-}
+window.addEventListener('load', updateHeaderHeight);
+window.addEventListener('resize', updateHeaderHeight); */
 
-window.addEventListener('scroll', onScrollOrResize, { passive: true });
-window.addEventListener('resize', onScrollOrResize);
-window.addEventListener('load', updateHeight);
+/* window.addEventListener('load', updateHeight); */
 
 
 
@@ -310,28 +310,6 @@ window.addEventListener('scroll', () => {
 
 ///header
 // ==================== BLUR HEADER НА СКРОЛЛ ====================
-/* const headerBg = document.querySelector('.header__bg'); */
-const headerBlurGroups = document.querySelectorAll('.header__blur-group');
-
-if (headerBg && headerBlurGroups.length > 0) {
-  const headerHeight = headerBg.clientHeight || 71; // высота хедера
-
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-
-    headerBlurGroups.forEach(group => {
-      // ✅ blur включается, когда проскроллили больше высоты хедера
-      if (currentScrollY >= headerHeight) {
-        // Затемнение + blur
-        group.querySelector('rect').setAttribute('fill', 'rgba(28, 55, 89, 0.85)');
-      } else {
-        // Нет blur
-        group.querySelector('rect').setAttribute('fill', 'rgba(0,0,0,0)');
-      }
-    });
-  }, { passive: true });
-}
-
 
 ///
 document.addEventListener('DOMContentLoaded', () => {
@@ -365,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /////
 let scrolled = false;
-window.addEventListener('scroll', () => {
+/* window.addEventListener('scroll', () => {
     const header = document.querySelector('.header__bg_mb');
     if (window.scrollY > 100 && !scrolled) {
         header.classList.add('scrolled');
@@ -374,16 +352,30 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
         scrolled = false;
     }
-});
+}); */
 // Надёжный JS
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.remove('scrolled');
-        } else {
-            entry.target.classList.add('scrolled');
-        }
-    });
-}, { threshold: 0.1 });
 
-observer.observe(document.querySelector('.header__bg_mb'));
+
+document.addEventListener('DOMContentLoaded', () => {
+    const selectors = ['.header__bg_mb', '.header__bg_lap', '.header__bg_desk'];
+    const elements = selectors.map(selector => document.querySelector(selector)).filter(Boolean);
+
+    window.addEventListener('scroll', () => {
+        const isAtTop = window.scrollY === 0;
+        
+        elements.forEach(element => {
+            if (isAtTop) {
+                element.classList.remove('scrolled');
+            } else {
+                element.classList.add('scrolled');
+            }
+        });
+    }, { passive: true });
+});
+// Проверь, что элементы найдены
+console.log('Elements found:', document.querySelectorAll('.header__bg_mb, .header__bg_lap, .header__bg_desk'));
+
+// Проверь скролл
+window.addEventListener('scroll', () => {
+    console.log('ScrollY:', window.scrollY, 'Class added:', window.scrollY > 0);
+});
