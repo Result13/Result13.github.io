@@ -334,23 +334,3 @@ if (headerBg && headerBlurGroups.length > 0) {
 
 
 ///
-document.addEventListener('DOMContentLoaded', () => {
-  // ==================== ФИКСИРУЕМ ВЫСОТУ ЭКРАНА ====================
-  function setPromoHeight() {
-    const promos = document.querySelectorAll('.promo');
-    
-    promos.forEach(promo => {
-      // ✅ Фиксируем высоту один раз при загрузке
-      const height = promo.offsetHeight;
-      promo.style.minHeight = `${height}px`;
-      promo.style.height = `${height}px`;
-    });
-  }
-
-  // Вызываем после загрузки всех ресурсов
-  setPromoHeight();
-  window.addEventListener('load', setPromoHeight);
-  window.addEventListener('resize', setPromoHeight);
-
-  // ... остальной код
-});
