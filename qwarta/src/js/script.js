@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '.intarface__right__bottom',
     '.intarface__text',
     '.intarface__subtitle',
-    '.intarfave__tab-text'
+    '.intarfave__tab-text',
+    '.title'
     
   ]);
 });
@@ -202,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
 
   if (videoWrappers.length === 0) {
-    console.error('❌ Видео не найдено');
+    
     return;
   }
 
@@ -263,47 +264,175 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
 // ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
 // ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
-const sections = document.querySelectorAll('.promo, .intarface');
 let isScrolling = false;
-let hasTriggered = new Set();
+let lastScrollTop = 0;
+let lastManualScroll = 0;
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset;
+  const isScrollingDown = scrollTop > lastScrollTop;
+  
+  // 🔑 Если пользователь скроллит вручную, сбрасываем флаг
+  if (Math.abs(scrollTop - lastManualScroll) > 50) {
+    isScrolling = false;
+    lastManualScroll = scrollTop;
+  }
+
+  if (isScrolling) return;
+
+  lastScrollTop = scrollTop;
+
+  // Находим центральную секцию
+  const windowCenter = window.innerHeight / 2;
+  let currentIndex = -1;
+
+  for (let i = 0; i < sections.length; i++) {
+    const rect = sections[i].getBoundingClientRect();
+    if (rect.top <= windowCenter && rect.bottom > windowCenter) {
+      currentIndex = i;
+      break;
+    }
+  }
+
+  if (currentIndex === -1) return;
+
+  const section = sections[currentIndex];
+  const rect = section.getBoundingClientRect();
+  const visibility = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
+
+  // 🔽 ВНИЗ
+  if (isScrollingDown && visibility >= 60 && currentIndex < sections.length - 1) {
+    console.log(`✅ Магнит: ${currentIndex} → ${currentIndex + 1}`);
+    isScrolling = true;
+
+    window.scrollTo({
+      top: sections[currentIndex + 1].offsetTop,
+      behavior: 'smooth'
+    });
+
+    // 🔑 Разблокируем после плавного скролла + время на реакцию
+    setTimeout(() => { 
+      isScrolling = false; 
+      console.log(`Разблокирован`);
+    }, 1800);
+  }
+}, { passive: true });
+
+/* let isScrolling = false;
+let lastScrollTop = 0;
+let lastManualScroll = 0;
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset;
+  const isScrollingDown = scrollTop > lastScrollTop;
+  const isScrollingUp = scrollTop < lastScrollTop;
+  
+  // Сбрасываем флаг при ручном скролле
+  if (Math.abs(scrollTop - lastManualScroll) > 50) {
+    isScrolling = false;
+    lastManualScroll = scrollTop;
+  }
+
+  if (isScrolling) return;
+
+  lastScrollTop = scrollTop;
+
+  // Находим текущую секцию
+  const windowCenter = window.innerHeight / 2;
+  let currentIndex = -1;
+
+  for (let i = 0; i < sections.length; i++) {
+    const rect = sections[i].getBoundingClientRect();
+    if (rect.top <= windowCenter && rect.bottom > windowCenter) {
+      currentIndex = i;
+      break;
+    }
+  }
+
+  if (currentIndex === -1) return;
+
+  const section = sections[currentIndex];
+  const rect = section.getBoundingClientRect();
+  const visibility = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
+
+  console.log(`📍 Секция ${currentIndex}: ${visibility.toFixed(0)}%, скролл: ${isScrollingDown ? '🔽' : isScrollingUp ? '🔼' : '⏸'}`);
+
+  // 🔽 ВНИЗ - переходим если видна на 60%
+  if (isScrollingDown && visibility >= 60) {
+    if (currentIndex < sections.length - 1) {
+      console.log(`🔽 Переход: ${currentIndex} → ${currentIndex + 1}`);
+      isScrolling = true;
+
+      window.scrollTo({
+        top: sections[currentIndex + 1].offsetTop,
+        behavior: 'smooth'
+      });
+
+      setTimeout(() => { isScrolling = false; }, 1800);
+    }
+  }
+  
+  // 🔼 ВВЕРХ - переходим если видна на 60%
+  if (isScrollingUp && visibility >= 60) {
+    if (currentIndex > 0) {
+      console.log(`🔼 Переход: ${currentIndex} → ${currentIndex - 1}`);
+      isScrolling = true;
+
+      window.scrollTo({
+        top: sections[currentIndex - 1].offsetTop,
+        behavior: 'smooth'
+      });
+
+      setTimeout(() => { isScrolling = false; }, 1800);
+    }
+  }
+}, { passive: true }); */
+
+
+
+/* let isScrolling = false;
+const hasTriggered = new Set();
+const sections = document.querySelectorAll('section');
+let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
   if (isScrolling) return;
 
+  const scrollTop = window.pageYOffset;
+  const isScrollingDown = scrollTop > lastScrollTop;
+  lastScrollTop = scrollTop;
+
   sections.forEach((section, index) => {
     const rect = section.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    
     const visibilityPercent = Math.max(0, Math.min(100, 
       ((windowHeight - rect.top) / (windowHeight + rect.height)) * 100
     ));
 
-    console.log(`Секция ${index}: ${visibilityPercent.toFixed(0)}%`);
+    // Сбросить при скролле вверх
+    if (!isScrollingDown && hasTriggered.has(index)) {
+      hasTriggered.delete(index);
+    }
 
-    // ✅ Срабатывает ТОЛЬКО при 70% видимости
-    if (visibilityPercent >= 80 && !hasTriggered.has(index)) {
+    // Активировать при скролле вниз на 60%
+    if (isScrollingDown && visibilityPercent >= 60 && !hasTriggered.has(index)) {
       const nextSection = sections[index + 1];
       if (nextSection) {
-        console.log(`🎯 Доскролливаем до секции ${index + 1}`);
         hasTriggered.add(index);
-
         isScrolling = true;
-        const targetTop = nextSection.offsetTop;
         
         window.scrollTo({
-          top: targetTop,
+          top: nextSection.offsetTop,
           behavior: 'smooth'
         });
 
-        setTimeout(() => {
-          isScrolling = false;
-        }, 1500);
+        setTimeout(() => { isScrolling = false; }, 1500);
       }
     }
   });
-}, { passive: true });
-
-
+}, { passive: true }); */
 
 });
 
@@ -330,7 +459,163 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', setPromoHeight);
   window.addEventListener('resize', setPromoHeight);
 
-  // ... остальной код
+ 
+  
+
+
+
+
+document.querySelectorAll('.standart__arrow').forEach((arrow, index) => {
+    arrow.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.standart__arrow').forEach((a, i) => {
+            // ✅ Паузируем анимацию вместо остановки
+            a.style.animationPlayState = 'paused';
+            
+            const distance = Math.abs(i - index);
+            
+            if (i === index) {
+                a.style.transform = 'scale(1)';
+                a.style.opacity = '1';
+            } else if (distance === 1) {
+                a.style.transform = 'scale(0.698)';
+                a.style.opacity = '0.7';
+            } else {
+                a.style.transform = 'scale(0.358)';
+                a.style.opacity = '0.4';
+            }
+        });
+    });
+    
+    arrow.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.standart__arrow').forEach((a) => {
+            // ✅ Возобновляем анимацию
+            a.style.animationPlayState = 'running';
+            a.style.transform = '';
+            a.style.opacity = '';
+        });
+    });
+});
+
+
+////
+
+/*  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+        // Убираем активный класс со всех слайдов
+        slides.forEach(slide => {
+            slide.classList.remove('standart_active');
+        });
+        
+        // Добавляем активный класс нужному слайду
+        slides[index].classList.add('standart_active');
+        currentSlide = index;
+    }
+
+    // Обработчики на стрелки
+    document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
+    document.querySelector('.standart__arrow--2').addEventListener('click', () => goToSlide(1));
+    document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2));
+
+    // Клавиатурная навигация
+    document.addEventListener('keydown', (e) => {
+        if (e.key === '3') goToSlide(0);
+        if (e.key === '2') goToSlide(1);
+        if (e.key === '1') goToSlide(2);
+    });
+
+    // Инициализация
+    goToSlide(0); */
+const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
+let currentSlide = 0;
+let autoSlideTimer;
+
+function goToSlide(index) {
+    slides.forEach(slide => slide.classList.remove('standart_active'));
+    slides[index].classList.add('standart_active');
+    currentSlide = index;
+    resetAutoSlide();
+}
+
+function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+}
+
+/* function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(nextSlide, 25000);
+}
+ */
+// События
+document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
+document.querySelector('.standart__arrow--2').addEventListener('click', () => goToSlide(1));
+document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2));
+
+document.addEventListener('keydown', (e) => {
+    const keyMap = { '3': 0, '2': 1, '1': 2 };
+    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
+});
+
+// Пауза при наведении
+const container = document.querySelector('.standart__container');
+container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+container?.addEventListener('mouseleave', resetAutoSlide);
+
+// Старт
+goToSlide(0);
+resetAutoSlide();
+
+
+
+
+
+
+
+
+
+  ////
+  ///animation
+
+  
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.title', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible', delay: 0 },
+    { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible', delay: 0 },
+    { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible', delay: 0 },
+    { selector: '.intarface__text', visibleClass: 'intarface__text_visible', delay: 0 },
+    { selector: '.intarface__fade-up', visibleClass: 'intarface__fade-up_visible', delay: 0 },
+    { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible', delay: 0 },
+    { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible', delay: 0 },
+    { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible', delay: 0 },
+    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: 0 }
+  ];
+
+  function checkVisibility() {
+    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        // Пропускаем, если уже добавлен класс
+        if (element.classList.contains(visibleClass)) return;
+
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          if (delay) {
+            setTimeout(() => element.classList.add(visibleClass), delay);
+          } else {
+            element.classList.add(visibleClass);
+          }
+        }
+      });
+    });
+  }
+
+  window.addEventListener('scroll', checkVisibility);
+  checkVisibility(); // Проверка при загрузке страницы
 });
 
 
@@ -372,10 +657,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { passive: true });
 });
-// Проверь, что элементы найдены
+/* // Проверь, что элементы найдены
 console.log('Elements found:', document.querySelectorAll('.header__bg_mb, .header__bg_lap, .header__bg_desk'));
 
 // Проверь скролл
 window.addEventListener('scroll', () => {
     console.log('ScrollY:', window.scrollY, 'Class added:', window.scrollY > 0);
 });
+ */
