@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   
   // ==================== ВИДЕО ZOOM НА СКРОЛЛЕ (ДЛЯ ВСЕХ ВИДЕО) ====================
-  const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
+/*   const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
 
   if (videoWrappers.length === 0) {
     
@@ -225,7 +225,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ✅ Первый раз вызываем при загрузке
     updateZoom();
+  }); */
+
+  const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
+
+  if (videoWrappers.length === 0) {
+    return;
+  }
+
+  videoWrappers.forEach(videoWrapper => {
+    const video = videoWrapper.querySelector('.promo__video');
+    
+    if (!video) return;
+
+    video.style.transition = 'transform 0.6s ease-out';
+    
+    let ticking = false;
+
+    function updateZoom() {
+      const rect = videoWrapper.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // ✅ Зум работает, пока видео на странице или выше
+      if (rect.bottom > 0) {
+        let progress = 0;
+        
+        if (rect.top <= 0) {
+          // Видео прошло выше экрана - полный зум
+          progress = Math.min(1, Math.abs(rect.top) / (windowHeight / 2));
+        } else if (rect.top < windowHeight) {
+          // Видео на экране - плавный зум от 0 к 1
+          progress = 1 - (rect.top / windowHeight);
+        }
+        // Если rect.top >= windowHeight (видео ещё не вошло) - progress остается 0
+
+        const scale = 1 + Math.max(0, Math.min(progress, 1)) * 0.5;
+        video.style.transform = `scale(${scale})`;
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateZoom);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // ✅ Первый раз вызываем при загрузке
+    updateZoom();
   });
+
 
 
 
@@ -943,10 +994,10 @@ document.addEventListener('DOMContentLoaded', function () {
     goToSlide((currentSlide + 1) % slides.length);
   }
 
-/*   function resetAutoSlide() {
+  function resetAutoSlide() {
     clearInterval(autoSlideTimer);
     autoSlideTimer = setInterval(nextSlide, 25000);
-  } */
+  }
 
   document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
   document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
