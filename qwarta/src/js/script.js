@@ -10,38 +10,7 @@ const header = document.querySelector('.header');
 resizeObserver.observe(headerBg); */
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  function wrapWordsInSpans(selectors) {
-    selectors.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
 
-      elements.forEach(el => {
-        const text = el.innerText;
-        const words = text.split(/(\s+)/);
-
-        const html = words.map((word, index) => {
-          // Возвращаем пробелы без спанов
-          if (/^\s+$/.test(word)) {
-            return word;
-          }
-          return `<span style="animation-delay:${(index * 0.1).toFixed(1)}s">${word}</span>`;
-        }).join('');
-
-        el.innerHTML = html;
-      });
-    });
-  }
-
-  wrapWordsInSpans([
-    '.promo__subtitle__text_small',
-    '.intarface__right__bottom',
-    '.intarface__text',
-    '.intarface__subtitle',
-    '.intarfave__tab-text',
-    '.title'
-    
-  ]);
-});
 
 
 
@@ -619,7 +588,42 @@ resetAutoSlide();
   checkVisibility(); // Проверка при загрузке страницы
 });
  */
+document.addEventListener('DOMContentLoaded', () => {
+  function wrapWordsInSpans(selectors) {
+    selectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
 
+      elements.forEach(el => {
+        const text = el.innerText;
+        const words = text.split(/(\s+)/);
+
+        const html = words.map((word, index) => {
+          // Возвращаем пробелы без спанов
+          if (/^\s+$/.test(word)) {
+            return word;
+          }
+          return `<span style="animation-delay:${(index * 0.1).toFixed(1)}s">${word}</span>`;
+          
+        }).join('');
+
+        el.innerHTML = html;
+      });
+    });
+  }
+
+  wrapWordsInSpans([
+    '.promo__subtitle__text_small',
+    '.intarface__right__bottom',
+    '.intarface__text',
+    '.intarface__subtitle',
+    '.intarfave__tab-text',
+    '.title',
+    '.standart__subtitle',
+    '.standart__interoco__desc',
+    '.title-anim-th'
+    
+  ]);
+});
 document.addEventListener('DOMContentLoaded', function () {
   const elementsToAnimate = [
     { selector: '.title', visibleClass: 'title_visible', delay: 0 },
@@ -686,6 +690,278 @@ document.addEventListener('DOMContentLoaded', function () {
   checkVisibility();
   animateBottomItems();
 });
+/* document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.standart.title', visibleClass: 'standart, title_visible', delay: 0 },
+    { selector: '.standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
+    { selector: '.standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
+    { selector: '.standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
+    { selector: '.standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1200 },
+
+  ];
+
+  const bottomItemsSet = new Set(); // Для отслеживания анимированных элементов
+
+  function checkVisibility() {
+    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        if (element.classList.contains(visibleClass)) return;
+
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          if (delay) {
+            setTimeout(() => element.classList.add(visibleClass), delay);
+          } else {
+            element.classList.add(visibleClass);
+          }
+        }
+      });
+    });
+  }
+
+
+
+  window.addEventListener('scroll', () => {
+    checkVisibility();
+    animateBottomItems();
+  });
+
+  checkVisibility();
+  animateBottomItems();
+}); */
+
+/* document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.standart__first .title', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
+    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
+    { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
+    { selector: '.standart__second .title', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
+    { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
+  ];
+
+  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
+  let currentSlide = 0;
+  let autoSlideTimer;
+  let observerActive = true;
+
+  // Intersection Observer для отслеживания видимости
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    if (!observerActive) return;
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Найти соответствующий элемент в конфигурации
+        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+          if (entry.target.matches(selector) && !entry.target.classList.contains(visibleClass)) {
+            if (delay) {
+              setTimeout(() => entry.target.classList.add(visibleClass), delay);
+            } else {
+              entry.target.classList.add(visibleClass);
+            }
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  // Функция для запуска наблюдения за элементами активного слайда
+  function observeSlideElements(slideIndex) {
+    // Остановить старое наблюдение
+    document.querySelectorAll('[data-observed]').forEach(el => {
+      observer.unobserve(el);
+      el.removeAttribute('data-observed');
+    });
+
+    // Получить активный слайд
+    const activeSlide = slides[slideIndex];
+    
+    // Добавить наблюдение за всеми анимируемыми элементами в активном слайде
+    elementsToAnimate.forEach(({ selector }) => {
+      activeSlide.querySelectorAll(selector).forEach(element => {
+        if (!element.hasAttribute('data-observed')) {
+          observer.observe(element);
+          element.setAttribute('data-observed', 'true');
+        }
+      });
+    });
+  }
+
+  function goToSlide(index) {
+    slides.forEach(slide => slide.classList.remove('standart_active'));
+    slides[index].classList.add('standart_active');
+    currentSlide = index;
+    
+    // Очистить классы анимации в неактивных слайдах
+    slides.forEach((slide, i) => {
+      if (i !== index) {
+        elementsToAnimate.forEach(({ visibleClass }) => {
+          slide.querySelectorAll('.' + visibleClass).forEach(el => {
+            el.classList.remove(visibleClass);
+          });
+        });
+      }
+    });
+
+    // Запустить наблюдение для активного слайда
+    observeSlideElements(index);
+    resetAutoSlide();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+  /// function resetAutoSlide() {
+   // clearInterval(autoSlideTimer);
+   // autoSlideTimer = setInterval(nextSlide, 25000);
+  //} 
+
+  // События кликов по стрелкам
+  document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
+  document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
+  document.querySelector('.standart__arrow--1')?.addEventListener('click', () => goToSlide(2));
+
+  // Клавиатурное управление
+  document.addEventListener('keydown', (e) => {
+    const keyMap = { '3': 0, '2': 1, '1': 2 };
+    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
+  });
+
+  // Пауза при наведении
+  const container = document.querySelector('.standart__container');
+  container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+  container?.addEventListener('mouseleave', resetAutoSlide);
+
+  // Старт
+  goToSlide(0);
+});
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.standart__first .title-anim-first ', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
+    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
+    { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
+    { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
+    { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
+    { selector: '.standart__third .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
+     { selector: '.standart__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 1000 },
+     { selector: '.standart__third .title-anim-th', visibleClass: 'title_visible', delay: 2000 },
+  ];
+
+  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
+  let currentSlide = 0;
+  let autoSlideTimer;
+
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+          if (entry.target.matches(selector) && !entry.target.classList.contains(visibleClass)) {
+            if (delay) {
+              setTimeout(() => {
+                entry.target.classList.add(visibleClass);
+              }, delay);
+            } else {
+              entry.target.classList.add(visibleClass);
+            }
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  function observeSlideElements(slideIndex) {
+    document.querySelectorAll('[data-observed]').forEach(el => {
+      observer.unobserve(el);
+      el.removeAttribute('data-observed');
+    });
+
+    const activeSlide = slides[slideIndex];
+    
+    elementsToAnimate.forEach(({ selector }) => {
+      activeSlide.querySelectorAll(selector).forEach(element => {
+        if (!element.hasAttribute('data-observed')) {
+          observer.observe(element);
+          element.setAttribute('data-observed', 'true');
+        }
+      });
+    });
+  }
+
+  function resetAnimation(element) {
+    // Клонировать элемент для полного сброса анимации
+    const clone = element.cloneNode(true);
+    element.parentNode.replaceChild(clone, element);
+    return clone;
+  }
+
+  function goToSlide(index) {
+    // Очистить ВСЕ классы анимации ВО ВСЕХ слайдах
+    slides.forEach((slide) => {
+      elementsToAnimate.forEach(({ visibleClass }) => {
+        slide.querySelectorAll('.' + visibleClass).forEach(el => {
+          el.classList.remove(visibleClass);
+          // Клонируем элемент для полного сброса
+          resetAnimation(el);
+        });
+      });
+    });
+
+    // Переключить активный слайд
+    slides.forEach(slide => slide.classList.remove('standart_active'));
+    slides[index].classList.add('standart_active');
+    currentSlide = index;
+
+    // Запустить наблюдение для активного слайда
+    setTimeout(() => {
+      observeSlideElements(index);
+    }, 10);
+
+    resetAutoSlide();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+/*   function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(nextSlide, 25000);
+  } */
+
+  document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
+  document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
+  document.querySelector('.standart__arrow--1')?.addEventListener('click', () => goToSlide(2));
+
+  document.addEventListener('keydown', (e) => {
+    const keyMap = { '3': 0, '2': 1, '1': 2 };
+    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
+  });
+
+  const container = document.querySelector('.standart__container');
+  container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+  container?.addEventListener('mouseleave', resetAutoSlide);
+
+  goToSlide(0);
+});
+
 
 
 
