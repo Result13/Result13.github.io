@@ -852,12 +852,14 @@ document.addEventListener('DOMContentLoaded', function () {
     { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
     { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
     { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
-    { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 200 },
     { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
     { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
     { selector: '.standart__third .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-     { selector: '.standart__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 1000 },
-     { selector: '.standart__third .title-anim-th', visibleClass: 'title_visible', delay: 2000 },
+     { selector: '.standart__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 300 },
+     { selector: '.standart__third .title-anim-th', visibleClass: 'title_visible', delay: 500 },
+       { selector: '.standart__third .standart__natural__item', visibleClass: 'standart__natural__item_visible', delay: 2000 },
+       { selector: '.standart__third .standart__btn', visibleClass: 'standart__btn_visible', delay: 3400 },
   ];
 
   const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
