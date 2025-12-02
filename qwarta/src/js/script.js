@@ -148,20 +148,20 @@ video.addEventListener('ended', () => {
 ///
 document.addEventListener('DOMContentLoaded', () => {
   const sectionsConfig = [
-    {
+  /*   {
       selector: '.intarface',
       activeClass: 'animate-intarface',
       animateSelector: '.intarface__bottom__item',
       animationDelay: 2000,
       itemDelay: 200
-    },
-    {
+    }, */
+/*     {
       selector: '.intarface__bottom__btn',
       activeClass: 'start-btn-animation',
       animateSelector: null, 
       animationDelay: 2000,
       itemDelay: 0
-    }
+    } */
 
   ];
 
@@ -579,7 +579,7 @@ resetAutoSlide();
 
   
 });
-document.addEventListener('DOMContentLoaded', function () {
+/* document.addEventListener('DOMContentLoaded', function () {
   const elementsToAnimate = [
     { selector: '.title', visibleClass: 'title_visible', delay: 0 },
     { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible', delay: 0 },
@@ -590,7 +590,8 @@ document.addEventListener('DOMContentLoaded', function () {
     { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible', delay: 0 },
     { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible', delay: 0 },
     { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible', delay: 0 },
-    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: 0 }
+    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: 0 },
+    { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible', delay: 0 }
   ];
 
   function checkVisibility() {
@@ -617,8 +618,74 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', checkVisibility);
   checkVisibility(); // Проверка при загрузке страницы
 });
+ */
 
+document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.title', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible', delay: 0 },
+    { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible', delay: 0 },
+    { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible', delay: 0 },
+    { selector: '.intarface__text', visibleClass: 'intarface__text_visible', delay: 0 },
+    { selector: '.intarface__fade-up', visibleClass: 'intarface__fade-up_visible', delay: 0 },
+    { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible', delay: 0 },
+    { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible', delay: 0 },
+    { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible', delay: 0 },
+    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: .3 },
+    { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible', delay: 0 }
+  ];
 
+  const bottomItemsSet = new Set(); // Для отслеживания анимированных элементов
+
+  function checkVisibility() {
+    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        if (element.classList.contains(visibleClass)) return;
+
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          if (delay) {
+            setTimeout(() => element.classList.add(visibleClass), delay);
+          } else {
+            element.classList.add(visibleClass);
+          }
+        }
+      });
+    });
+  }
+
+  function animateBottomItems() {
+    const container = document.querySelector('.intarface__bottom');
+    if (!container) return;
+
+    const rect = container.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      const items = container.querySelectorAll('.intarface__bottom__item');
+      items.forEach((item, index) => {
+        // Пропускаем, если уже анимирован
+        if (bottomItemsSet.has(item)) return;
+
+        setTimeout(() => {
+          item.classList.add('intarface__bottom__item_visible');
+          bottomItemsSet.add(item); // Отмечаем как анимированный
+        }, index * 400); // 200ms между элементами
+      });
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    checkVisibility();
+    animateBottomItems();
+  });
+
+  checkVisibility();
+  animateBottomItems();
+});
 
 
 
