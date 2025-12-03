@@ -339,6 +339,7 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+
 /* let isScrolling = false;
 let lastScrollTop = 0;
 let lastManualScroll = 0;
@@ -485,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.querySelectorAll('.standart__arrow').forEach((arrow, index) => {
+/* document.querySelectorAll('.standart__arrow').forEach((arrow, index) => {
     arrow.addEventListener('mouseenter', () => {
         document.querySelectorAll('.standart__arrow').forEach((a, i) => {
             // ✅ Паузируем анимацию вместо остановки
@@ -515,7 +516,7 @@ document.querySelectorAll('.standart__arrow').forEach((arrow, index) => {
         });
     });
 });
-
+ */
 
 ////
 
@@ -568,14 +569,14 @@ function nextSlide() {
 }
  */
 // События
-document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
+/* document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
 document.querySelector('.standart__arrow--2').addEventListener('click', () => goToSlide(1));
-document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2));
+document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2)); */
 
-document.addEventListener('keydown', (e) => {
+/* document.addEventListener('keydown', (e) => {
     const keyMap = { '3': 0, '2': 1, '1': 2 };
     if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
-});
+}); */
 
 // Пауза при наведении
 const container = document.querySelector('.standart__container');
@@ -897,7 +898,7 @@ document.addEventListener('DOMContentLoaded', function () {
   goToSlide(0);
 });
  */
-document.addEventListener('DOMContentLoaded', function () {
+/* document.addEventListener('DOMContentLoaded', function () {
   const elementsToAnimate = [
     { selector: '.standart__first .title-anim-first ', visibleClass: 'title_visible', delay: 0 },
     { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
@@ -1013,9 +1014,171 @@ document.addEventListener('DOMContentLoaded', function () {
   container?.addEventListener('mouseleave', resetAutoSlide);
 
   goToSlide(0);
+}); */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const elementsToAnimate = [
+    { selector: '.standart__first .title-anim-first ', visibleClass: 'title_visible', delay: 0 },
+    { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
+    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
+    { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
+    { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 200 },
+    { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
+    { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
+    { selector: '.standart__third .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
+    { selector: '.standart__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 300 },
+    { selector: '.standart__third .title-anim-th', visibleClass: 'title_visible', delay: 500 },
+    { selector: '.standart__third .standart__natural__item', visibleClass: 'standart__natural__item_visible', delay: 2000 },
+    { selector: '.standart__third .standart__btn', visibleClass: 'standart__btn_visible', delay: 3400 },
+  ];
+
+  const standartSection = document.querySelector('.standart');
+  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
+  let currentSlide = 0;
+
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+          if (entry.target.matches(selector) && !entry.target.classList.contains(visibleClass)) {
+            if (delay) {
+              setTimeout(() => {
+                entry.target.classList.add(visibleClass);
+              }, delay);
+            } else {
+              entry.target.classList.add(visibleClass);
+            }
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  function observeSlideElements(slideIndex) {
+    document.querySelectorAll('[data-observed]').forEach(el => {
+      observer.unobserve(el);
+      el.removeAttribute('data-observed');
+    });
+
+    const activeSlide = slides[slideIndex];
+    
+    elementsToAnimate.forEach(({ selector }) => {
+      activeSlide.querySelectorAll(selector).forEach(element => {
+        if (!element.hasAttribute('data-observed')) {
+          observer.observe(element);
+          element.setAttribute('data-observed', 'true');
+        }
+      });
+    });
+  }
+
+  function goToSlide(index) {
+    slides.forEach((slide) => {
+      elementsToAnimate.forEach(({ visibleClass }) => {
+        slide.querySelectorAll('.' + visibleClass).forEach(el => {
+          el.classList.remove(visibleClass);
+        });
+      });
+    });
+
+    slides.forEach(slide => slide.classList.remove('standart_active'));
+    slides[index].classList.add('standart_active');
+    currentSlide = index;
+
+    observeSlideElements(index);
+  }
+
+  // ========== SCROLL-BASED SLIDE CHANGE ==========
+  let lastScrollTime = 0;
+  let scrollAccumulator = 0;
+  const scrollThreshold = 100;
+  const scrollDebounce = 1200; // ← Увеличил
+  const transitionDelay = 1500; // ← Задержка перед включением скролла
+  let isOverSection = false;
+  let wasOverSection = false;
+  let scrollEnabled = false; // ← Флаг для включения скролла
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    isOverSection = entry.isIntersecting;
+    
+    if (entry.isIntersecting && !wasOverSection) {
+      // КЛЮЧ: Мгновенно показываем первый слайд БЕЗ ЗАДЕРЖКИ
+      goToSlide(0);
+      
+      scrollAccumulator = 0;
+      lastScrollTime = Date.now();
+      scrollEnabled = false;
+      
+      setTimeout(() => {
+        scrollEnabled = true;
+      }, transitionDelay);
+    }
+    
+    wasOverSection = entry.isIntersecting;
+  });
+}, { threshold: 0.5 });  // ← Измени на 0.1, чтобы срабатывал раньше
+
+
+sectionObserver.observe(standartSection);
+
+
+  sectionObserver.observe(standartSection);
+
+  window.addEventListener('wheel', (e) => {
+    if (!isOverSection || !scrollEnabled) { // ← Проверяем оба флага
+      return;
+    }
+
+    const now = Date.now();
+    if (now - lastScrollTime < scrollDebounce) {
+      return;
+    }
+
+    scrollAccumulator += Math.abs(e.deltaY);
+
+    if (scrollAccumulator < scrollThreshold) {
+      e.preventDefault();
+      return;
+    }
+
+    scrollAccumulator = 0;
+    lastScrollTime = now;
+
+    e.preventDefault();
+
+    if (e.deltaY > 0) {
+      if (currentSlide < slides.length - 1) {
+        goToSlide(currentSlide + 1);
+      }
+    } else {
+      if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+      }
+    }
+  }, { passive: false });
+
+/*   document.addEventListener('keydown', (e) => {
+    if (!isOverSection || !scrollEnabled) return;
+    
+    if (e.key === 'ArrowDown' && currentSlide < slides.length - 1) {
+      goToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowUp' && currentSlide > 0) {
+      goToSlide(currentSlide - 1);
+    }
+  }); */
+
+/*   document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
+  document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
+  document.querySelector('.standart__arrow--1')?.addEventListener('click', () => goToSlide(2)); */
+
+  goToSlide(0);
 });
-
-
 
 
 
@@ -1061,3 +1224,20 @@ window.addEventListener('scroll', () => {
     console.log('ScrollY:', window.scrollY, 'Class added:', window.scrollY > 0);
 });
  */
+// ← Добавь этот код
+
+const standartSection = document.querySelector('.standart');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // ← Когда на секции standart, меняем класс
+      header.classList.add('header--on-standart');
+    } else {
+      // ← Когда уходим, убираем класс
+      header.classList.remove('header--on-standart');
+    }
+  });
+}, { threshold: 0.1 });
+
+sectionObserver.observe(standartSection);
