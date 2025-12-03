@@ -1020,8 +1020,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const elementsToAnimate = [
     { selector: '.standart__first .title-anim-first ', visibleClass: 'title_visible', delay: 0 },
     { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
-    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
+    
     { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
+    { selector: '.standart__img_first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
     { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 200 },
     { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
     { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
@@ -1057,9 +1058,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
     });
+    
   }, observerOptions);
 
-  function observeSlideElements(slideIndex) {
+ /*  function observeSlideElements(slideIndex) {
     document.querySelectorAll('[data-observed]').forEach(el => {
       observer.unobserve(el);
       el.removeAttribute('data-observed');
@@ -1075,16 +1077,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     });
-  }
+  } */
+  function observeSlideElements(slideIndex) {
+  document.querySelectorAll('[data-observed]').forEach(el => {
+    observer.unobserve(el);
+    el.removeAttribute('data-observed');
+  });
 
+  const activeSlide = slides[slideIndex];
+  
+  elementsToAnimate.forEach(({ selector }) => {
+    activeSlide.querySelectorAll(selector).forEach(element => {
+      if (!element.hasAttribute('data-observed')) {
+        observer.observe(element);
+        element.setAttribute('data-observed', 'true');
+      }
+    });
+  });
+
+  // ← ДОБАВЬ ВОТ ЗДЕСЬ:
+  if (slideIndex === 0) {
+    const imgFirstElement = document.querySelector('.standart__img_first .standart__img__men');
+    if (imgFirstElement && !imgFirstElement.hasAttribute('data-observed')) {
+      observer.observe(imgFirstElement);
+      imgFirstElement.setAttribute('data-observed', 'true');
+    }
+  }
+}
   function goToSlide(index) {
-    slides.forEach((slide) => {
+   /*  slides.forEach((slide) => {
       elementsToAnimate.forEach(({ visibleClass }) => {
         slide.querySelectorAll('.' + visibleClass).forEach(el => {
           el.classList.remove(visibleClass);
         });
       });
-    });
+    }); */
 
     slides.forEach(slide => slide.classList.remove('standart_active'));
     slides[index].classList.add('standart_active');
