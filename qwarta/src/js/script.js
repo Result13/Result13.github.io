@@ -1228,6 +1228,45 @@ sectionObserver.observe(standartSection);
 }, { passive: false });
  */
 
+let touchStartY = 0;
+let touchEndY = 0;
+
+// ← TOUCH события для мобильных
+document.addEventListener('touchstart', (e) => {
+  if (!isOverSection) return;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchmove', (e) => {
+  if (!isOverSection || !scrollEnabled) return;
+  
+  touchEndY = e.touches[0].clientY;
+  const diff = touchStartY - touchEndY;
+
+  scrollAccumulator += Math.abs(diff);
+
+  if (scrollAccumulator < scrollThreshold) {
+    e.preventDefault();
+    return;
+  }
+
+  scrollAccumulator = 0;
+
+  // ← Свайп вниз (diff < 0)
+  if (diff < 0 && currentSlide < slides.length - 1) {
+    e.preventDefault();
+    goToSlide(currentSlide + 1);
+    touchStartY = touchEndY;
+  } 
+  // ← Свайп вверх (diff > 0)
+  else if (diff > 0 && currentSlide > 0) {
+    e.preventDefault();
+    goToSlide(currentSlide - 1);
+    touchStartY = touchEndY;
+  }
+}, { passive: false });
+
+// ← WHEEL события для ПК (оставляй старый код)
 window.addEventListener('wheel', (e) => {
   if (!isOverSection || !scrollEnabled) {
     return;
@@ -1249,18 +1288,15 @@ window.addEventListener('wheel', (e) => {
   scrollAccumulator = 0;
   lastScrollTime = now;
 
-  // ← ПРОСТО: Блокируем ТОЛЬКО при переключении слайдов
   if (e.deltaY > 0 && currentSlide < slides.length - 1) {
-    // Скролл вниз И не на последнем
     e.preventDefault();
     goToSlide(currentSlide + 1);
   } else if (e.deltaY < 0 && currentSlide > 0) {
-    // Скролл вверх И не на первом
     e.preventDefault();
     goToSlide(currentSlide - 1);
   }
-  // ← Если ни одно условие не выполнено - скролл работает свободно
 }, { passive: false });
+
 
 /*   document.addEventListener('keydown', (e) => {
     if (!isOverSection || !scrollEnabled) return;
