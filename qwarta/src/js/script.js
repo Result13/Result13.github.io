@@ -1157,7 +1157,7 @@ sectionObserver.observe(standartSection);
 
   sectionObserver.observe(standartSection);
 
-  window.addEventListener('wheel', (e) => {
+/*   window.addEventListener('wheel', (e) => {
     if (!isOverSection || !scrollEnabled) { // ← Проверяем оба флага
       return;
     }
@@ -1188,7 +1188,79 @@ sectionObserver.observe(standartSection);
         goToSlide(currentSlide - 1);
       }
     }
-  }, { passive: false });
+  }, { passive: false }); */
+
+
+// ← ДОБАВЬ: Вычисляем границы секции
+
+/*   window.addEventListener('wheel', (e) => {
+  if (!isOverSection || !scrollEnabled) {
+    return;
+  }
+
+  const now = Date.now();
+  if (now - lastScrollTime < scrollDebounce) {
+    e.preventDefault();  // ← ДОБАВЬ ЗДЕСЬ
+    return;
+  }
+
+  scrollAccumulator += Math.abs(e.deltaY);
+
+  if (scrollAccumulator < scrollThreshold) {
+    e.preventDefault();
+    return;
+  }
+
+  scrollAccumulator = 0;
+  lastScrollTime = now;
+
+  e.preventDefault();
+
+  if (e.deltaY > 0) {
+    if (currentSlide < slides.length - 1) {
+      goToSlide(currentSlide + 1);
+    }
+  } else {
+    if (currentSlide > 0) {
+      goToSlide(currentSlide - 1);
+    }
+  }
+}, { passive: false });
+ */
+
+window.addEventListener('wheel', (e) => {
+  if (!isOverSection || !scrollEnabled) {
+    return;
+  }
+
+  const now = Date.now();
+  if (now - lastScrollTime < scrollDebounce) {
+    e.preventDefault();
+    return;
+  }
+
+  scrollAccumulator += Math.abs(e.deltaY);
+
+  if (scrollAccumulator < scrollThreshold) {
+    e.preventDefault();
+    return;
+  }
+
+  scrollAccumulator = 0;
+  lastScrollTime = now;
+
+  // ← ПРОСТО: Блокируем ТОЛЬКО при переключении слайдов
+  if (e.deltaY > 0 && currentSlide < slides.length - 1) {
+    // Скролл вниз И не на последнем
+    e.preventDefault();
+    goToSlide(currentSlide + 1);
+  } else if (e.deltaY < 0 && currentSlide > 0) {
+    // Скролл вверх И не на первом
+    e.preventDefault();
+    goToSlide(currentSlide - 1);
+  }
+  // ← Если ни одно условие не выполнено - скролл работает свободно
+}, { passive: false });
 
 /*   document.addEventListener('keydown', (e) => {
     if (!isOverSection || !scrollEnabled) return;
