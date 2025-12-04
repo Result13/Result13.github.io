@@ -1227,45 +1227,46 @@ sectionObserver.observe(standartSection);
   }
 }, { passive: false });
  */
-
 let touchStartY = 0;
 let touchEndY = 0;
+let lastTouchTime = 0;
 
 // ← TOUCH события для мобильных
 document.addEventListener('touchstart', (e) => {
-  if (!isOverSection) return;
+  if (!isOverSection || !scrollEnabled) return;
   touchStartY = e.touches[0].clientY;
+  lastTouchTime = Date.now();
 }, { passive: true });
 
 document.addEventListener('touchmove', (e) => {
   if (!isOverSection || !scrollEnabled) return;
+  e.preventDefault();  // ← ДОБАВЬ: Блокируй скролл на смартфоне
+}, { passive: false });
+
+document.addEventListener('touchend', (e) => {
+  if (!isOverSection || !scrollEnabled) return;
   
-  touchEndY = e.touches[0].clientY;
-  const diff = touchStartY - touchEndY;
-
-  scrollAccumulator += Math.abs(diff);
-
-  if (scrollAccumulator < scrollThreshold) {
-    e.preventDefault();
+  const now = Date.now();
+  if (now - lastTouchTime < scrollDebounce) {
     return;
   }
 
-  scrollAccumulator = 0;
+  touchEndY = e.changedTouches[0].clientY;
+  const diff = touchStartY - touchEndY;
 
-  // ← Свайп вниз (diff < 0)
-  if (diff < 0 && currentSlide < slides.length - 1) {
-    e.preventDefault();
-    goToSlide(currentSlide + 1);
-    touchStartY = touchEndY;
-  } 
-  // ← Свайп вверх (diff > 0)
-  else if (diff > 0 && currentSlide > 0) {
-    e.preventDefault();
-    goToSlide(currentSlide - 1);
-    touchStartY = touchEndY;
+  if (Math.abs(diff) < scrollThreshold) {
+    return;
   }
-}, { passive: false });
 
+  lastTouchTime = now;
+
+  if (diff < 0 && currentSlide < slides.length - 1) {
+    goToSlide(currentSlide + 1);
+  } 
+  else if (diff > 0 && currentSlide > 0) {
+    goToSlide(currentSlide - 1);
+  }
+}, { passive: true });
 // ← WHEEL события для ПК (оставляй старый код)
 window.addEventListener('wheel', (e) => {
   if (!isOverSection || !scrollEnabled) {
