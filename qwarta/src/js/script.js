@@ -1,678 +1,364 @@
-const headerBg = document.querySelector('.header__bg');
-const header = document.querySelector('.header');
+const DOM = {
+  headerBg: document.querySelector('.header__bg'),
+  header: document.querySelector('.header'),
+  tabs: document.querySelectorAll('.intarface__tab'),
+  contents: document.querySelectorAll('.intarface__tab__content'),
+  promo: document.querySelectorAll('.promo'),
+  videoWrappers: document.querySelectorAll('.promo__video-wrapper'),
+  video: document.querySelector('.promo__video'),
+  enableSoundBtn: document.getElementById('enable-sound-btn'),
+  standartContainer: document.querySelector('.standart__container'),
+  standartSection: document.querySelector('.standartSec'),
+  headerBgVariants: document.querySelectorAll('.header__bg_mb, .header__bg_lap, .header__bg_desk'),
+  slides: document.querySelectorAll('.standart__first, .standart__second, .standart__third'),
+  standartFirstSlides: document.querySelectorAll('.standartSec__first, .standartSec__second, .standartSec__third')
+};
 
+// ============================================================================
+// 2. УПРАВЛЕНИЕ ТАЙМЕРАМИ
+// ============================================================================
+const TimerManager = {
+  timers: {},
+  
+  set(key, callback, delay) {
+    this.clear(key);
+    this.timers[key] = setTimeout(callback, delay);
+    return this.timers[key];
+  },
+  
+  clear(key) {
+    if (this.timers[key]) {
+      clearTimeout(this.timers[key]);
+      delete this.timers[key];
+    }
+  },
+  
+  clearAll() {
+    Object.keys(this.timers).forEach(key => {
+      clearTimeout(this.timers[key]);
+    });
+    this.timers = {};
+  }
+};
 
-/* const resizeObserver = new ResizeObserver(() => {
-  const bgHeight = headerBg.offsetHeight;
-  header.style.height = `${bgHeight}px`;
+// ============================================================================
+// 3. ИНИЦИАЛИЗАЦИЯ
+// ============================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  initTabs();
+  initSound();
+  initVideoLoop();
+  initVideoZoom();
+  initPromoHeight();
+  initSlides();
+  initStandartSlides();
+  initTextAnimations();
+  initElementAnimations();
+  initHeaderScroll();
+  initStandartSection();
 });
 
-resizeObserver.observe(headerBg); */
+// ============================================================================
+// 4. ТАБЫ
+// ============================================================================
+let currentTabIndex = 1;
 
-
-
-
-
-
-
-////
-
-/* let ticking = false;
-
-function updateHeaderHeight() {
-  const header = document.querySelector('.header');
-  const headerBg = document.querySelector('.header__bg_lap, .header__bg_mb , .header__bg_desc');
+function initTabs() {
+  if (DOM.tabs.length === 0) return;
   
-  if (!header || !headerBg) return;
-
-  // 600ms = длительность анимации + буфер
-  setTimeout(() => {
-    header.style.height = `${headerBg.offsetHeight}px`;
-  }, 600);
+  DOM.tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectTab(index));
+  });
 }
 
-window.addEventListener('load', updateHeaderHeight);
-window.addEventListener('resize', updateHeaderHeight); */
-
-/* window.addEventListener('load', updateHeight); */
-
-
-
-////tabs
-
-document.addEventListener('DOMContentLoaded', function () {
-  const tabs = document.querySelectorAll('.intarface__tab');
-  const contents = document.querySelectorAll('.intarface__tab__content');
-  let currentIndex = 1;
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', function () {
-      const previousIndex = currentIndex;
-
-      contents.forEach((content, i) => {
-        content.classList.remove('intarface__tab__content_active', 'exit-left', 'exit-right');
-
-        if (i === index) {
-
-          content.classList.add('intarface__tab__content_active');
-        } else {
-
-          if (i < index) {
-            content.classList.add('exit-left');
-          } else {
-            content.classList.add('exit-right');
-          }
-        }
-      });
-
-      tabs.forEach(t => t.classList.remove('intarface__tab_active'));
-      this.classList.add('intarface__tab_active');
-
-      currentIndex = index;
-    });
-  });
-});
-
-
-///
-document.addEventListener('DOMContentLoaded', () => {
-  const hoverSound = new Audio('./sound/sound.mp3');
-  hoverSound.volume = 0.8;
-
-  // Кнопка для разрешения звука
-  const enableSoundBtn = document.getElementById('enable-sound-btn');
-  if (enableSoundBtn) {
-    enableSoundBtn.addEventListener('click', () => {
-      hoverSound.play()
-        .then(() => {
-          hoverSound.pause();
-          hoverSound.currentTime = 0;
-          enableSoundBtn.style.display = 'none';
-          console.log('✅ Звук включён');
-        });
-    });
-  }
-
-  document.querySelectorAll('.promo__btn, .promo__link').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      hoverSound.currentTime = 0;
-      hoverSound.play().catch(() => {
-        // Звук не разрешён
-      });
-    });
-  });
-});
-
-
-
-
-
-const video = document.querySelector('.promo__video');
-video.addEventListener('ended', () => {
-  video.currentTime = 0;
-  video.play();
-});
-
-
-///
-document.addEventListener('DOMContentLoaded', () => {
-  const sectionsConfig = [
-  /*   {
-      selector: '.intarface',
-      activeClass: 'animate-intarface',
-      animateSelector: '.intarface__bottom__item',
-      animationDelay: 2000,
-      itemDelay: 200
-    }, */
-/*     {
-      selector: '.intarface__bottom__btn',
-      activeClass: 'start-btn-animation',
-      animateSelector: null, 
-      animationDelay: 2000,
-      itemDelay: 0
-    } */
-
-  ];
-
-  sectionsConfig.forEach(({ selector, activeClass, animateSelector, animationDelay = 0, itemDelay = 0 }) => {
-    const elements = document.querySelectorAll(selector);
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add(activeClass);
-          observer.unobserve(entry.target);
-          if (animateSelector) {
-            const items = entry.target.querySelectorAll(animateSelector);
-
-            setTimeout(() => {
-              items.forEach((item, idx) => {
-
-                setTimeout(() => {
-                  item.classList.add('start-animation');
-                }, idx * itemDelay);
-              });
-            }, animationDelay);
-          }
-        }
-      });
-    }, { threshold: 0.1 });
-
-    elements.forEach(el => observer.observe(el));
-  });
-});
-
-
-
-
-///scroll video
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // ==================== ВИДЕО ZOOM НА СКРОЛЛЕ (ДЛЯ ВСЕХ ВИДЕО) ====================
-/*   const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
-
-  if (videoWrappers.length === 0) {
+function selectTab(index) {
+  DOM.contents.forEach((content, i) => {
+    content.classList.remove('intarface__tab__content_active', 'exit-left', 'exit-right');
     
-    return;
-  }
-
-  videoWrappers.forEach(videoWrapper => {
-    const video = videoWrapper.querySelector('.promo__video');
-    
-    if (!video) return;
-
-    video.style.transition = 'transform 0.6s ease-out';
-    
-    let ticking = false;
-
-    function updateZoom() {
-      const rect = videoWrapper.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      console.log('rect.top:', rect.top, 'wrapper:', videoWrapper);
-
-      // ✅ Зум работает, пока видео на странице или выше
-      if (rect.bottom > 0) {
-        // Видео ещё видимо или прошло выше
-        let progress;
-        
-        if (rect.top <= 0) {
-          // Видео выше экрана - полный зум
-          progress = Math.min(1, Math.abs(rect.top) / (windowHeight / 2));
-        } else if (rect.top >= windowHeight) {
-          // Видео ещё не вошло - без зума
-          progress = 0;
-        } else {
-          // Видео на экране - плавный переход
-          progress = 1 - (rect.top / windowHeight);
-        }
-
-        const scale = 1 + Math.max(0, Math.min(progress, 1)) * 0.5;
-        video.style.transform = `scale(${scale})`;
-        
-        console.log('Progress:', progress, 'Scale:', scale);
-      }
-
-      ticking = false;
+    if (i === index) {
+      content.classList.add('intarface__tab__content_active');
+    } else {
+      content.classList.add(i < index ? 'exit-left' : 'exit-right');
     }
+  });
+  
+  DOM.tabs.forEach(t => t.classList.remove('intarface__tab_active'));
+  DOM.tabs[index].classList.add('intarface__tab_active');
+  
+  currentTabIndex = index;
+}
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateZoom);
-        ticking = true;
-      }
-    }, { passive: true });
+// ============================================================================
+// 5. ЗВУК
+// ============================================================================
+let hoverSound = null;
+let soundInitialized = false;
 
-    // ✅ Первый раз вызываем при загрузке
-    updateZoom();
-  }); */
+function initSound() {
+  if (!DOM.enableSoundBtn) return;
+  
+  hoverSound = new Audio('./sound/sound.mp3');
+  hoverSound.volume = 0.8;
+  
+  DOM.enableSoundBtn.addEventListener('click', enableSound, { once: true });
+  
+  const buttons = document.querySelectorAll('.promo__btn, .promo__link');
+  buttons.forEach(el => {
+    el.addEventListener('mouseenter', playHoverSound, { passive: true });
+  });
+}
 
-  const videoWrappers = document.querySelectorAll('.promo__video-wrapper');
+function enableSound() {
+  hoverSound.play()
+    .then(() => {
+      hoverSound.pause();
+      hoverSound.currentTime = 0;
+      soundInitialized = true;
+      DOM.enableSoundBtn.style.display = 'none';
+      console.log('✅ Звук включён');
+    })
+    .catch(() => console.log('Звук не разрешён'));
+}
 
-  if (videoWrappers.length === 0) {
-    return;
-  }
+function playHoverSound() {
+  if (!soundInitialized || !hoverSound) return;
+  
+  hoverSound.currentTime = 0;
+  hoverSound.play().catch(() => {});
+}
 
-  videoWrappers.forEach(videoWrapper => {
+// ============================================================================
+// 6. ВИДЕО LOOP
+// ============================================================================
+function initVideoLoop() {
+  if (!DOM.video) return;
+  
+  DOM.video.addEventListener('ended', () => {
+    DOM.video.currentTime = 0;
+    DOM.video.play().catch(() => {});
+  });
+}
+
+// ============================================================================
+// 7. ВИДЕО ZOOM НА СКРОЛЛЕ
+// ============================================================================
+function initVideoZoom() {
+  if (DOM.videoWrappers.length === 0) return;
+  
+  DOM.videoWrappers.forEach(videoWrapper => {
     const video = videoWrapper.querySelector('.promo__video');
-    
     if (!video) return;
-
-    video.style.transition = 'transform 0.6s ease-out';
     
+    video.style.transition = 'transform 0.6s ease-out';
     let ticking = false;
-
-    function updateZoom() {
+    
+    const updateZoom = () => {
       const rect = videoWrapper.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
-      // ✅ Зум работает, пока видео на странице или выше
+      
       if (rect.bottom > 0) {
         let progress = 0;
         
         if (rect.top <= 0) {
-          // Видео прошло выше экрана - полный зум
           progress = Math.min(1, Math.abs(rect.top) / (windowHeight / 2));
         } else if (rect.top < windowHeight) {
-          // Видео на экране - плавный зум от 0 к 1
           progress = 1 - (rect.top / windowHeight);
         }
-        // Если rect.top >= windowHeight (видео ещё не вошло) - progress остается 0
-
+        
         const scale = 1 + Math.max(0, Math.min(progress, 1)) * 0.5;
         video.style.transform = `scale(${scale})`;
       }
-
+      
       ticking = false;
-    }
-
+    };
+    
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(updateZoom);
         ticking = true;
       }
     }, { passive: true });
-
-    // ✅ Первый раз вызываем при загрузке
+    
     updateZoom();
   });
-
-
-
-
-
-  // ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
-// ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
-// ==================== МАГНИТНЫЙ ЭФФЕКТ (ДОСКРОЛЛИВАНИЕ) ====================
-/* let isScrolling = false;
-let lastScrollTop = 0;
-let lastManualScroll = 0;
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.pageYOffset;
-  const isScrollingDown = scrollTop > lastScrollTop;
-  
-  // 🔑 Если пользователь скроллит вручную, сбрасываем флаг
-  if (Math.abs(scrollTop - lastManualScroll) > 50) {
-    isScrolling = false;
-    lastManualScroll = scrollTop;
-  }
-
-  if (isScrolling) return;
-if (document.body.classList.contains('scroll-magic-active')) {
-    lastScrollTop = scrollTop; // Обновляем позицию, чтобы не дергало потом
-    return; // Выходим, не даем магниту сработать
 }
-  lastScrollTop = scrollTop;
 
-  // Находим центральную секцию
-  const windowCenter = window.innerHeight / 2;
-  let currentIndex = -1;
-
-  for (let i = 0; i < sections.length; i++) {
-    const rect = sections[i].getBoundingClientRect();
-    if (rect.top <= windowCenter && rect.bottom > windowCenter) {
-      currentIndex = i;
-      break;
-    }
-  }
-
-  if (currentIndex === -1) return;
-
-  const section = sections[currentIndex];
-  const rect = section.getBoundingClientRect();
-  const visibility = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
-
-  // 🔽 ВНИЗ
-  if (isScrollingDown && visibility >= 60 && currentIndex < sections.length - 1) {
-    console.log(`✅ Магнит: ${currentIndex} → ${currentIndex + 1}`);
-    isScrolling = true;
-
-    window.scrollTo({
-      top: sections[currentIndex + 1].offsetTop,
-      behavior: 'smooth'
-    });
-
-    // 🔑 Разблокируем после плавного скролла + время на реакцию
-    setTimeout(() => { 
-      isScrolling = false; 
-      console.log(`Разблокирован`);
-    }, 1800);
-  }
-}, { passive: true });
- */
-
-
-
-
-
-
-
-/* let isScrolling = false;
-let lastScrollTop = 0;
-let lastManualScroll = 0;
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.pageYOffset;
-  const isScrollingDown = scrollTop > lastScrollTop;
-  const isScrollingUp = scrollTop < lastScrollTop;
-  
-  // Сбрасываем флаг при ручном скролле
-  if (Math.abs(scrollTop - lastManualScroll) > 50) {
-    isScrolling = false;
-    lastManualScroll = scrollTop;
-  }
-
-  if (isScrolling) return;
-
-  lastScrollTop = scrollTop;
-
-  // Находим текущую секцию
-  const windowCenter = window.innerHeight / 2;
-  let currentIndex = -1;
-
-  for (let i = 0; i < sections.length; i++) {
-    const rect = sections[i].getBoundingClientRect();
-    if (rect.top <= windowCenter && rect.bottom > windowCenter) {
-      currentIndex = i;
-      break;
-    }
-  }
-
-  if (currentIndex === -1) return;
-
-  const section = sections[currentIndex];
-  const rect = section.getBoundingClientRect();
-  const visibility = ((window.innerHeight - rect.top) / (window.innerHeight + rect.height)) * 100;
-
-  console.log(`📍 Секция ${currentIndex}: ${visibility.toFixed(0)}%, скролл: ${isScrollingDown ? '🔽' : isScrollingUp ? '🔼' : '⏸'}`);
-
-  // 🔽 ВНИЗ - переходим если видна на 60%
-  if (isScrollingDown && visibility >= 60) {
-    if (currentIndex < sections.length - 1) {
-      console.log(`🔽 Переход: ${currentIndex} → ${currentIndex + 1}`);
-      isScrolling = true;
-
-      window.scrollTo({
-        top: sections[currentIndex + 1].offsetTop,
-        behavior: 'smooth'
-      });
-
-      setTimeout(() => { isScrolling = false; }, 1800);
-    }
-  }
-  
-  // 🔼 ВВЕРХ - переходим если видна на 60%
-  if (isScrollingUp && visibility >= 60) {
-    if (currentIndex > 0) {
-      console.log(`🔼 Переход: ${currentIndex} → ${currentIndex - 1}`);
-      isScrolling = true;
-
-      window.scrollTo({
-        top: sections[currentIndex - 1].offsetTop,
-        behavior: 'smooth'
-      });
-
-      setTimeout(() => { isScrolling = false; }, 1800);
-    }
-  }
-}, { passive: true }); */
-
-
-
-/* let isScrolling = false;
-const hasTriggered = new Set();
-const sections = document.querySelectorAll('section');
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', () => {
-  if (isScrolling) return;
-
-  const scrollTop = window.pageYOffset;
-  const isScrollingDown = scrollTop > lastScrollTop;
-  lastScrollTop = scrollTop;
-
-  sections.forEach((section, index) => {
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const visibilityPercent = Math.max(0, Math.min(100, 
-      ((windowHeight - rect.top) / (windowHeight + rect.height)) * 100
-    ));
-
-    // Сбросить при скролле вверх
-    if (!isScrollingDown && hasTriggered.has(index)) {
-      hasTriggered.delete(index);
-    }
-
-    // Активировать при скролле вниз на 60%
-    if (isScrollingDown && visibilityPercent >= 60 && !hasTriggered.has(index)) {
-      const nextSection = sections[index + 1];
-      if (nextSection) {
-        hasTriggered.add(index);
-        isScrolling = true;
-        
-        window.scrollTo({
-          top: nextSection.offsetTop,
-          behavior: 'smooth'
-        });
-
-        setTimeout(() => { isScrolling = false; }, 1500);
-      }
-    }
-  });
-}, { passive: true }); */
-
-});
-
-
-///header
-// ==================== BLUR HEADER НА СКРОЛЛ ====================
-
-///
-document.addEventListener('DOMContentLoaded', () => {
-  // ==================== ФИКСИРУЕМ ВЫСОТУ ЭКРАНА ====================
-  function setPromoHeight() {
-    const promos = document.querySelectorAll('.promo');
-    
-    promos.forEach(promo => {
-      // ✅ Фиксируем высоту один раз при загрузке
+// ============================================================================
+// 8. ФИКСИРОВАННАЯ ВЫСОТА PROMO
+// ============================================================================
+function initPromoHeight() {
+  const setPromoHeight = () => {
+    DOM.promo.forEach(promo => {
       const height = promo.offsetHeight;
       promo.style.minHeight = `${height}px`;
       promo.style.height = `${height}px`;
     });
-  }
-
-  // Вызываем после загрузки всех ресурсов
+  };
+  
   setPromoHeight();
-  window.addEventListener('load', setPromoHeight);
-  window.addEventListener('resize', setPromoHeight);
+  window.addEventListener('load', setPromoHeight, { once: false });
+  window.addEventListener('resize', setPromoHeight, { passive: true });
+}
 
- 
+// ============================================================================
+// 9. СЛАЙДЕР (простой)
+// ============================================================================
+const SlideManager = {
+  slides: DOM.slides,
+  currentSlide: 0,
+  autoSlideTimer: null,
   
-
-
-
-
-/* document.querySelectorAll('.standart__arrow').forEach((arrow, index) => {
-    arrow.addEventListener('mouseenter', () => {
-        document.querySelectorAll('.standart__arrow').forEach((a, i) => {
-            // ✅ Паузируем анимацию вместо остановки
-            a.style.animationPlayState = 'paused';
-            
-            const distance = Math.abs(i - index);
-            
-            if (i === index) {
-                a.style.transform = 'scale(1)';
-                a.style.opacity = '1';
-            } else if (distance === 1) {
-                a.style.transform = 'scale(0.698)';
-                a.style.opacity = '0.7';
-            } else {
-                a.style.transform = 'scale(0.358)';
-                a.style.opacity = '0.4';
-            }
-        });
-    });
+  init() {
+    if (this.slides.length === 0) return;
     
-    arrow.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.standart__arrow').forEach((a) => {
-            // ✅ Возобновляем анимацию
-            a.style.animationPlayState = 'running';
-            a.style.transform = '';
-            a.style.opacity = '';
-        });
-    });
-});
- */
-
-////
-
-/*  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
-    let currentSlide = 0;
-
-    function goToSlide(index) {
-        // Убираем активный класс со всех слайдов
-        slides.forEach(slide => {
-            slide.classList.remove('standart_active');
-        });
-        
-        // Добавляем активный класс нужному слайду
-        slides[index].classList.add('standart_active');
-        currentSlide = index;
+    this.goToSlide(0);
+    this.startAutoSlide();
+    
+    if (DOM.standartContainer) {
+      DOM.standartContainer.addEventListener('mouseenter', () => this.pauseAutoSlide());
+      DOM.standartContainer.addEventListener('mouseleave', () => this.startAutoSlide());
     }
-
-    // Обработчики на стрелки
-    document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
-    document.querySelector('.standart__arrow--2').addEventListener('click', () => goToSlide(1));
-    document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2));
-
-    // Клавиатурная навигация
-    document.addEventListener('keydown', (e) => {
-        if (e.key === '3') goToSlide(0);
-        if (e.key === '2') goToSlide(1);
-        if (e.key === '1') goToSlide(2);
-    });
-
-    // Инициализация
-    goToSlide(0); */
-const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
-let currentSlide = 0;
-let autoSlideTimer;
-
-function goToSlide(index) {
-    slides.forEach(slide => slide.classList.remove('standart_active'));
-    slides[index].classList.add('standart_active');
-    currentSlide = index;
-    resetAutoSlide();
-}
-
-function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-}
-
-/* function resetAutoSlide() {
-    clearInterval(autoSlideTimer);
-    autoSlideTimer = setInterval(nextSlide, 25000);
-}
- */
-// События
-/* document.querySelector('.standart__arrow--3').addEventListener('click', () => goToSlide(0));
-document.querySelector('.standart__arrow--2').addEventListener('click', () => goToSlide(1));
-document.querySelector('.standart__arrow--1').addEventListener('click', () => goToSlide(2)); */
-
-/* document.addEventListener('keydown', (e) => {
-    const keyMap = { '3': 0, '2': 1, '1': 2 };
-    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
-}); */
-
-// Пауза при наведении
-const container = document.querySelector('.standart__container');
-container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
-container?.addEventListener('mouseleave', resetAutoSlide);
-
-// Старт
-goToSlide(0);
-resetAutoSlide();
-
-
-
-
-
-
-
-
-
-  ////
-  ///animation
-
+  },
   
-});
-/* document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.title', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible', delay: 0 },
-    { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible', delay: 0 },
-    { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible', delay: 0 },
-    { selector: '.intarface__text', visibleClass: 'intarface__text_visible', delay: 0 },
-    { selector: '.intarface__fade-up', visibleClass: 'intarface__fade-up_visible', delay: 0 },
-    { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible', delay: 0 },
-    { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible', delay: 0 },
-    { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible', delay: 0 },
-    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: 0 },
-    { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible', delay: 0 }
-  ];
+  goToSlide(index) {
+    this.slides.forEach(slide => slide.classList.remove('standart_active'));
+    this.slides[index].classList.add('standart_active');
+    this.currentSlide = index;
+  },
+  
+  nextSlide() {
+    this.goToSlide((this.currentSlide + 1) % this.slides.length);
+  },
+  
+  startAutoSlide() {
+    if (this.autoSlideTimer) return;
+    
+    this.autoSlideTimer = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  },
+  
+  pauseAutoSlide() {
+    if (this.autoSlideTimer) {
+      clearInterval(this.autoSlideTimer);
+      this.autoSlideTimer = null;
+    }
+  },
+  
+  destroy() {
+    this.pauseAutoSlide();
+  }
+};
 
-  function checkVisibility() {
-    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        // Пропускаем, если уже добавлен класс
-        if (element.classList.contains(visibleClass)) return;
+function initSlides() {
+  SlideManager.init();
+}
 
-        const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isVisible) {
-          if (delay) {
-            setTimeout(() => element.classList.add(visibleClass), delay);
-          } else {
-            element.classList.add(visibleClass);
-          }
+// ============================================================================
+// 10. СЛАЙДЕР СО СЛОЖНОЙ АНИМАЦИЕЙ (standartSec)
+// ИСПРАВЛЕННО - ГАРАНТИРУЕТ ДОБАВЛЕНИЕ ВСЕХ КЛАССОВ
+// ============================================================================
+const StandartSlideManager = {
+  slides: DOM.standartFirstSlides,
+  currentSlide: 0,
+  observer: null,
+  activeSlide: null,
+  
+  init() {
+    if (this.slides.length === 0) return;
+    
+    this.setupObserver();
+    this.goToSlide(0);
+  },
+  
+  setupObserver() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px'
+    };
+    
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.activeSlide = entry.target;
+          entry.target.style.zIndex = '9';
+          
+          // ДОБАВЛЯЕМ КЛАССЫ ВИДИМОСТИ ВСЕМ ЭЛЕМЕНТАМ
+          this.animateAllElements(entry.target);
+        } else {
+          entry.target.style.zIndex = '';
+        }
+      });
+    }, observerOptions);
+    
+    this.slides.forEach(slide => {
+      this.observer.observe(slide);
+    });
+  },
+  
+  animateAllElements(slide) {
+    // КОНФИГУРАЦИЯ: Селектор класса + задержка
+    const animationConfig = [
+      { selector: '.title-anim-first', class: 'title_visible', delay: 0 },
+      { selector: '.title-anim-sec', class: 'title_visibleSec', delay: 200 },
+      { selector: '.title-anim-th', class: 'title_visible', delay: 500 },
+      
+      { selector: '.standart__subtitle', class: 'standart__subtitle_visible', delay: 500 },
+      
+      { selector: '.standart__interoco', class: 'standart__interoco_visible', delay: 1200 },
+      { selector: '.standart__garmon__block', class: 'standart__garmon__block_visible', delay: 1000 },
+      
+      { selector: '.standart__img__men', class: 'standart__img__men_visible', delay: 1000 },
+      
+      { selector: '.standart__wrapper', class: 'standart__wrapper_visible', delay: 300 },
+      
+      { selector: '.standart__natural__item', class: 'standart__natural__item_visible', delay: 2000 },
+      
+      { selector: '.standart__btn', class: 'standart__btn_visible', delay: 3400 }
+    ];
+    
+    // ГАРАНТИРУЕМ: Применяем классы ко всем найденным элементам
+    animationConfig.forEach(({ selector, class: className, delay }) => {
+      const elements = slide.querySelectorAll(selector);
+      
+      elements.forEach((element, index) => {
+        // Проверяем, не добавили ли уже этот класс
+        if (!element.classList.contains(className)) {
+          TimerManager.set(
+            `anim-${slide.className}-${selector}-${index}`,
+            () => {
+              element.classList.add(className);
+              console.log(`✅ Добавлен класс ${className} к ${selector}`);
+            },
+            delay
+          );
         }
       });
     });
+  },
+  
+  goToSlide(index) {
+    this.slides.forEach(slide => slide.classList.remove('standart_active'));
+    this.slides[index].classList.add('standart_active');
+    this.currentSlide = index;
+  },
+  
+  destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
+};
 
-  window.addEventListener('scroll', checkVisibility);
-  checkVisibility(); // Проверка при загрузке страницы
-});
- */
-document.addEventListener('DOMContentLoaded', () => {
-  function wrapWordsInSpans(selectors) {
-    selectors.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
+function initStandartSlides() {
+  StandartSlideManager.init();
+}
 
-      elements.forEach(el => {
-        const text = el.innerText;
-        const words = text.split(/(\s+)/);
-
-        const html = words.map((word, index) => {
-          // Возвращаем пробелы без спанов
-          if (/^\s+$/.test(word)) {
-            return word;
-          }
-          return `<span style="animation-delay:${(index * 0.1).toFixed(1)}s">${word}</span>`;
-          
-        }).join('');
-
-        el.innerHTML = html;
-      });
-    });
-  }
-
-  wrapWordsInSpans([
+// ============================================================================
+// 11. АНИМАЦИЯ ТЕКСТА - Оборачиваем слова в SPAN
+// ============================================================================
+function initTextAnimations() {
+  const selectors = [
     '.promo__subtitle__text_small',
     '.intarface__right__bottom',
     '.intarface__text',
@@ -682,481 +368,180 @@ document.addEventListener('DOMContentLoaded', () => {
     '.standart__subtitle',
     '.standart__interoco__desc',
     '.title-anim-th'
-    
-  ]);
-});
-document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.title', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible', delay: 0 },
-    { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible', delay: 0 },
-    { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible', delay: 0 },
-    { selector: '.intarface__text', visibleClass: 'intarface__text_visible', delay: 0 },
-    { selector: '.intarface__fade-up', visibleClass: 'intarface__fade-up_visible', delay: 0 },
-    { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible', delay: 0 },
-    { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible', delay: 0 },
-    { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible', delay: 0 },
-    { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible', delay: .3 },
-    { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible', delay: 0 }
   ];
+  
+  selectors.forEach(selector => {
+    wrapWordsInSpans(selector);
+  });
+}
 
-  const bottomItemsSet = new Set(); // Для отслеживания анимированных элементов
+function wrapWordsInSpans(selector) {
+  const elements = document.querySelectorAll(selector);
+  
+  elements.forEach(el => {
+    const text = el.innerText;
+    const words = text.split(/(\s+)/);
+    
+    const html = words.map((word, index) => {
+      if (/^\s+$/.test(word)) {
+        return word;
+      }
+      return `<span style="animation-delay:${(index * 0.1).toFixed(1)}s">${word}</span>`;
+    }).join('');
+    
+    el.innerHTML = html;
+  });
+}
 
-  function checkVisibility() {
-    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
+// ============================================================================
+// 12. ЭЛЕМЕНТЫ, ВИДИМЫЕ ПРИ СКРОЛЛЕ - ЕДИНЫЙ OBSERVER
+// ============================================================================
+const VisibilityManager = {
+  observer: null,
+  
+  init() {
+    const options = { threshold: 0.1 };
+    
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateElement(entry.target);
+        }
+      });
+    }, options);
+    
+    this.observeElements();
+  },
+  
+  observeElements() {
+    const elementsConfig = [
+      { selector: '.title', visibleClass: 'title_visible' },
+      { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible' },
+      { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible' },
+      { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible' },
+      { selector: '.intarface__text', visibleClass: 'intarface__text_visible' },
+      { selector: '.intarface__fade-up', visibleClass: 'intarface__fade-up_visible' },
+      { selector: '.intarface__fade-up_second', visibleClass: 'intarface__fade-up_second_visible' },
+      { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible' },
+      { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible' },
+      { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible' },
+      { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible' },
+      { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible' }
+    ];
+    
+    elementsConfig.forEach(({ selector, visibleClass }) => {
       const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        if (element.classList.contains(visibleClass)) return;
-
-        const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isVisible) {
-          if (delay) {
-            setTimeout(() => element.classList.add(visibleClass), delay);
-          } else {
-            element.classList.add(visibleClass);
-          }
+      elements.forEach(el => {
+        if (this.observer) {
+          el.dataset.visibleClass = visibleClass;
+          this.observer.observe(el);
         }
       });
     });
-  }
-
-  function animateBottomItems() {
-    const container = document.querySelector('.intarface__bottom');
-    if (!container) return;
-
-    const rect = container.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-    if (isVisible) {
-      const items = container.querySelectorAll('.intarface__bottom__item');
-      items.forEach((item, index) => {
-        // Пропускаем, если уже анимирован
-        if (bottomItemsSet.has(item)) return;
-
-        setTimeout(() => {
-          item.classList.add('intarface__bottom__item_visible');
-          bottomItemsSet.add(item); // Отмечаем как анимированный
-        }, index * 400); // 200ms между элементами
-      });
+  },
+  
+  animateElement(element) {
+    const visibleClass = element.dataset.visibleClass;
+    if (visibleClass && !element.classList.contains(visibleClass)) {
+      element.classList.add(visibleClass);
+      this.observer.unobserve(element);
+    }
+  },
+  
+  destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
     }
   }
+};
 
+function initElementAnimations() {
+  VisibilityManager.init();
+}
+
+// ============================================================================
+// 13. HEADER - Blur НА СКРОЛЛЕ
+// ============================================================================
+function initHeaderScroll() {
   window.addEventListener('scroll', () => {
-    checkVisibility();
-    animateBottomItems();
-  });
-
-  checkVisibility();
-  animateBottomItems();
-});
-/* document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.standart.title', visibleClass: 'standart, title_visible', delay: 0 },
-    { selector: '.standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
-    { selector: '.standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
-    { selector: '.standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
-    { selector: '.standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1200 },
-
-  ];
-
-  const bottomItemsSet = new Set(); // Для отслеживания анимированных элементов
-
-  function checkVisibility() {
-    elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        if (element.classList.contains(visibleClass)) return;
-
-        const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isVisible) {
-          if (delay) {
-            setTimeout(() => element.classList.add(visibleClass), delay);
-          } else {
-            element.classList.add(visibleClass);
-          }
-        }
-      });
-    });
-  }
-
-
-
-  window.addEventListener('scroll', () => {
-    checkVisibility();
-    animateBottomItems();
-  });
-
-  checkVisibility();
-  animateBottomItems();
-}); */
-
-/* document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.standart__first .title', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
-    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
-    { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
-    { selector: '.standart__second .title', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-    { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
-  ];
-
-  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
-  let currentSlide = 0;
-  let autoSlideTimer;
-  let observerActive = true;
-
-  // Intersection Observer для отслеживания видимости
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    if (!observerActive) return;
-
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Найти соответствующий элемент в конфигурации
-        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
-          if (entry.target.matches(selector) && !entry.target.classList.contains(visibleClass)) {
-            if (delay) {
-              setTimeout(() => entry.target.classList.add(visibleClass), delay);
-            } else {
-              entry.target.classList.add(visibleClass);
-            }
-          }
-        });
-      }
-    });
-  }, observerOptions);
-
-  // Функция для запуска наблюдения за элементами активного слайда
-  function observeSlideElements(slideIndex) {
-    // Остановить старое наблюдение
-    document.querySelectorAll('[data-observed]').forEach(el => {
-      observer.unobserve(el);
-      el.removeAttribute('data-observed');
-    });
-
-    // Получить активный слайд
-    const activeSlide = slides[slideIndex];
+    const isAtTop = window.scrollY === 0;
     
-    // Добавить наблюдение за всеми анимируемыми элементами в активном слайде
-    elementsToAnimate.forEach(({ selector }) => {
-      activeSlide.querySelectorAll(selector).forEach(element => {
-        if (!element.hasAttribute('data-observed')) {
-          observer.observe(element);
-          element.setAttribute('data-observed', 'true');
-        }
-      });
-    });
-  }
-
-  function goToSlide(index) {
-    slides.forEach(slide => slide.classList.remove('standart_active'));
-    slides[index].classList.add('standart_active');
-    currentSlide = index;
-    
-    // Очистить классы анимации в неактивных слайдах
-    slides.forEach((slide, i) => {
-      if (i !== index) {
-        elementsToAnimate.forEach(({ visibleClass }) => {
-          slide.querySelectorAll('.' + visibleClass).forEach(el => {
-            el.classList.remove(visibleClass);
-          });
-        });
-      }
-    });
-
-    // Запустить наблюдение для активного слайда
-    observeSlideElements(index);
-    resetAutoSlide();
-  }
-
-  function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-  }
-
-  /// function resetAutoSlide() {
-   // clearInterval(autoSlideTimer);
-   // autoSlideTimer = setInterval(nextSlide, 25000);
-  //} 
-
-  // События кликов по стрелкам
-  document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
-  document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
-  document.querySelector('.standart__arrow--1')?.addEventListener('click', () => goToSlide(2));
-
-  // Клавиатурное управление
-  document.addEventListener('keydown', (e) => {
-    const keyMap = { '3': 0, '2': 1, '1': 2 };
-    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
-  });
-
-  // Пауза при наведении
-  const container = document.querySelector('.standart__container');
-  container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
-  container?.addEventListener('mouseleave', resetAutoSlide);
-
-  // Старт
-  goToSlide(0);
-});
- */
-/* document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.standart__first .title-anim-first ', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.standart__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
-    { selector: '.standart__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
-    { selector: '.standart__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
-    { selector: '.standart__second .title-anim-sec', visibleClass: 'title_visible', delay: 200 },
-    { selector: '.standart__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-    { selector: '.standart__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
-    { selector: '.standart__third .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-     { selector: '.standart__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 300 },
-     { selector: '.standart__third .title-anim-th', visibleClass: 'title_visible', delay: 500 },
-       { selector: '.standart__third .standart__natural__item', visibleClass: 'standart__natural__item_visible', delay: 2000 },
-       { selector: '.standart__third .standart__btn', visibleClass: 'standart__btn_visible', delay: 3400 },
-  ];
-
-  const slides = document.querySelectorAll('.standart__first, .standart__second, .standart__third');
-  let currentSlide = 0;
-  let autoSlideTimer;
-
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
-          if (entry.target.matches(selector) && !entry.target.classList.contains(visibleClass)) {
-            if (delay) {
-              setTimeout(() => {
-                entry.target.classList.add(visibleClass);
-              }, delay);
-            } else {
-              entry.target.classList.add(visibleClass);
-            }
-          }
-        });
-      }
-    });
-  }, observerOptions);
-
-  function observeSlideElements(slideIndex) {
-    document.querySelectorAll('[data-observed]').forEach(el => {
-      observer.unobserve(el);
-      el.removeAttribute('data-observed');
-    });
-
-    const activeSlide = slides[slideIndex];
-    
-    elementsToAnimate.forEach(({ selector }) => {
-      activeSlide.querySelectorAll(selector).forEach(element => {
-        if (!element.hasAttribute('data-observed')) {
-          observer.observe(element);
-          element.setAttribute('data-observed', 'true');
-        }
-      });
-    });
-  }
-
-  function resetAnimation(element) {
-    // Клонировать элемент для полного сброса анимации
-    const clone = element.cloneNode(true);
-    element.parentNode.replaceChild(clone, element);
-    return clone;
-  }
-
-  function goToSlide(index) {
-    // Очистить ВСЕ классы анимации ВО ВСЕХ слайдах
-    slides.forEach((slide) => {
-      elementsToAnimate.forEach(({ visibleClass }) => {
-        slide.querySelectorAll('.' + visibleClass).forEach(el => {
-          el.classList.remove(visibleClass);
-          // Клонируем элемент для полного сброса
-          resetAnimation(el);
-        });
-      });
-    });
-
-    // Переключить активный слайд
-    slides.forEach(slide => slide.classList.remove('standart_active'));
-    slides[index].classList.add('standart_active');
-    currentSlide = index;
-
-    // Запустить наблюдение для активного слайда
-    setTimeout(() => {
-      observeSlideElements(index);
-    }, 10);
-
-    resetAutoSlide();
-  }
-
-  function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideTimer);
-    autoSlideTimer = setInterval(nextSlide, 25000);
-  }
-
-  document.querySelector('.standart__arrow--3')?.addEventListener('click', () => goToSlide(0));
-  document.querySelector('.standart__arrow--2')?.addEventListener('click', () => goToSlide(1));
-  document.querySelector('.standart__arrow--1')?.addEventListener('click', () => goToSlide(2));
-
-  document.addEventListener('keydown', (e) => {
-    const keyMap = { '3': 0, '2': 1, '1': 2 };
-    if (keyMap[e.key] !== undefined) goToSlide(keyMap[e.key]);
-  });
-
-  const container = document.querySelector('.standart__container');
-  container?.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
-  container?.addEventListener('mouseleave', resetAutoSlide);
-
-  goToSlide(0);
-}); */
-
-document.addEventListener('DOMContentLoaded', function () {
-  const elementsToAnimate = [
-    { selector: '.standartSec__first .title-anim-first', visibleClass: 'title_visible', delay: 0 },
-    { selector: '.standartSec__first .standart__subtitle', visibleClass: 'standart__subtitle_visible', delay: 500 },
-    { selector: '.standartSec__first .standart__interoco', visibleClass: 'standart__interoco_visible', delay: 1200 },
-    { selector: '.standartSec__first .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 1000 },
-    
-    { selector: '.standartSec__second .title-anim-sec', visibleClass: 'title_visibleSec', delay: 200 },
-    { selector: '.standartSec__second .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-    { selector: '.standartSec__second .standart__garmon__block', visibleClass: 'standart__garmon__block_visible', delay: 1000 },
-    
-    { selector: '.standartSec__third .standart__img__men', visibleClass: 'standart__img__men_visible', delay: 0 },
-    { selector: '.standartSec__third .standart__wrapper', visibleClass: 'standart__wrapper_visible', delay: 300 },
-    { selector: '.standartSec__third .title-anim-th', visibleClass: 'title_visible', delay: 500 },
-    { selector: '.standartSec__third .standart__natural__item', visibleClass: 'standart__natural__item_visible', delay: 2000 },
-    { selector: '.standartSec__third .standart__btn', visibleClass: 'standart__btn_visible', delay: 3400 },
-  ];
-
-  const slides = document.querySelectorAll('.standartSec__first, .standartSec__second, .standartSec__third');
-  let currentSlide = 0;
-
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px'
-  };
-
-  // ← ГЛАВНЫЙ OBSERVER: Наблюдает за слайдами
-  const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // ← Когда слайд видна - добавляй классы всем элементам внутри
-        elementsToAnimate.forEach(({ selector, visibleClass, delay }) => {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(element => {
-            // Проверяем, находится ли элемент внутри видимого слайда
-            if (entry.target.contains(element) && !element.classList.contains(visibleClass)) {
-              setTimeout(() => {
-                element.classList.add(visibleClass);
-              }, delay);
-            }
-          });
-        });
+    DOM.headerBgVariants.forEach(element => {
+      if (isAtTop) {
+        element.classList.remove('scrolled');
       } else {
-        // ← Когда слайд не видна - убираем классы
-        elementsToAnimate.forEach(({ selector, visibleClass }) => {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(element => {
-            if (entry.target.contains(element)) {
-              element.classList.remove(visibleClass);
-            }
-          });
-        });
+        element.classList.add('scrolled');
       }
     });
-  }, observerOptions);
+  }, { passive: true });
+}
 
-  // ← Наблюдаем за каждым слайдом
-  slides.forEach(slide => {
-    slideObserver.observe(slide);
-  });
-
-  function goToSlide(index) {
-    slides.forEach(slide => slide.classList.remove('standart_active'));
-    slides[index].classList.add('standart_active');
-    currentSlide = index;
-  }
-
-  // Инициализация
+// ============================================================================
+// 14. HEADER - СМЕНА КЛАССА НА STANDART СЕКЦИИ
+// ============================================================================
+function initStandartSection() {
+  if (!DOM.standartSection || !DOM.header) return;
   
-  goToSlide(0);
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const slides = document.querySelectorAll('.standartSec__first, .standartSec__second, .standartSec__third');
+  const options = { threshold: 0.1 };
   
-  const slideObserver = new IntersectionObserver((entries) => {
+  const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // ← Убираем z-index у всех
-        slides.forEach(slide => {
-          slide.style.zIndex = '';
-        });
-        // ← Добавляем z-index активному слайду
-        entry.target.style.zIndex = '9';
+        DOM.header.classList.add('header--on-standart');
+      } else {
+        DOM.header.classList.remove('header--on-standart');
       }
     });
-  }, { threshold: 0.5 });
+  }, options);
+  
+  sectionObserver.observe(DOM.standartSection);
+}
 
-  slides.forEach(slide => {
-    slideObserver.observe(slide);
+// ============================================================================
+// 15. ОЧИСТКА (для SPA)
+// ============================================================================
+function cleanupAll() {
+  TimerManager.clearAll();
+  SlideManager.destroy();
+  StandartSlideManager.destroy();
+  VisibilityManager.destroy();
+  console.log('✅ Все ресурсы очищены');
+}
+
+// ============================================================================
+// ОТЛАДКА - ФУНКЦИИ ПРОВЕРКИ
+// ============================================================================
+function debugAnimationClasses() {
+  console.log('=== ПРОВЕРКА КЛАССОВ ВИДИМОСТИ ===');
+  
+  const checkSelectors = [
+    '.standart__natural__item',
+    '.standart__garmon__block',
+    '.standart__btn',
+    '.standart__img__men',
+    '.standart__wrapper',
+    '.standart__subtitle'
+  ];
+  
+  checkSelectors.forEach(selector => {
+    const elements = document.querySelectorAll(selector);
+    console.log(`${selector}: найдено ${elements.length} элементов`);
+    
+    elements.forEach((el, index) => {
+      const hasClass = el.className;
+      console.log(`  [${index}] классы: ${hasClass}`);
+    });
   });
-});
+}
 
-
-
-
-/////
-let scrolled = false;
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const selectors = ['.header__bg_mb', '.header__bg_lap', '.header__bg_desk'];
-    const elements = selectors.map(selector => document.querySelector(selector)).filter(Boolean);
-
-    window.addEventListener('scroll', () => {
-        const isAtTop = window.scrollY === 0;
-        
-        elements.forEach(element => {
-            if (isAtTop) {
-                element.classList.remove('scrolled');
-            } else {
-                element.classList.add('scrolled');
-            }
-        });
-    }, { passive: true });
-});
-
-
-const standartSection = document.querySelector('.standartSec');
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // ← Когда на секции standart, меняем класс
-      header.classList.add('header--on-standart');
-    } else {
-      // ← Когда уходим, убираем класс
-      header.classList.remove('header--on-standart');
-    }
-  });
-}, { threshold: 0.1 });
-
-sectionObserver.observe(standartSection);
+// ============================================================================
+// ЭКСПОРТИРУЕМ ГЛОБАЛЬНО
+// ============================================================================
+window.AppManager = {
+  cleanup: cleanupAll,
+  timerManager: TimerManager,
+  slideManager: SlideManager,
+  standartSlideManager: StandartSlideManager,
+  visibilityManager: VisibilityManager,
+  debug: debugAnimationClasses
+};

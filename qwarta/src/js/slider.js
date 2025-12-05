@@ -4,38 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.standartSec');
   const panels = document.querySelectorAll('.screen');
 
-  // Используем xPercent для надежности (как обсуждали ранее)
   const percentMove = -100 * (panels.length - 1) / panels.length;
 
-  const tween = gsap.to(container, {
+  // Создаём таймлайн вместо простого tween'а для большей контроля
+  const timeline = gsap.timeline();
+  
+  // 0-30% времени: контент не движется (первая секция в центре)
+  timeline.to(container, {
+    xPercent: 0, 
+    ease: 'none',
+    duration: 0.3
+  }, 0);
+  
+  // 30-100% времени: контент движется влево
+  timeline.to(container, {
     xPercent: percentMove, 
-    ease: 'none'
-  });
+    ease: 'none',
+    duration: 0.7
+  }, 0.3);
 
   const scene = new ScrollMagic.Scene({
     triggerElement: wrapper,
     triggerHook: "onLeave",
-    duration: "200%"
+    duration: "250%"
   })
   .setPin(wrapper)
-  .setTween(tween)
+  .setTween(timeline)
   .addTo(controller);
 
-  // --- 📱 ФИКС ДЛЯ МОБИЛЬНЫХ ---
-  
-  // Запоминаем начальную ширину
   let wWidth = window.innerWidth;
-
   window.addEventListener('resize', () => {
-    // Если текущая ширина совпадает с прошлой, значит это
-    // просто скачет адресная строка. ИГНОРИРУЕМ это событие.
-    if (window.innerWidth === wWidth) {
-        return; 
-    }
-    
-    // Если ширина реально изменилась (поворот экрана), обновляем переменную
+    if (window.innerWidth === wWidth) return;
     wWidth = window.innerWidth;
-    // И обновляем сцену
     controller.update(true);
   });
 });
