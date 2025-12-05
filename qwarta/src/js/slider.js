@@ -160,24 +160,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 1. ПАУЗА НА 1-М ЭКРАНЕ ---
   // Пользователь скроллит, но ничего не происходит (задержка)
-  timeline.to({}, { duration: 0.4 });
+  timeline.to({}, { duration: 0.7 });
 
   // --- 2. ПЕРЕХОД 1 -> 2 ---
   // Теперь начинаем движение
   timeline
     .to(container, { xPercent: stepPercent, ease: 'none', duration: 1 }, 'move1')
     .to(panels[0], { opacity: 0, ease: 'none', duration: 0.5 }, 'move1')      
-    .to(panels[1], { opacity: 1, ease: 'none', duration: 0.5 }, 'move1+=0.5'); 
+    .to(panels[1], { opacity: 1, ease: 'none', duration: 0.5 }, 'move1+=0.7'); 
 
   // --- 3. ПАУЗА НА 2-М ЭКРАНЕ ---
   // Снова даем пользователю почитать второй экран
-  timeline.to({}, { duration: 0.4 });
+  timeline.to({}, { duration: 0.7 });
 
   // --- 4. ПЕРЕХОД 2 -> 3 ---
   timeline
     .to(container, { xPercent: stepPercent * 2, ease: 'none', duration: 1 }, 'move2')
     .to(panels[1], { opacity: 0, ease: 'none', duration: 0.5 }, 'move2')     
-    .to(panels[2], { opacity: 1, ease: 'none', duration: 0.5 }, 'move2+=0.5')
+    .to(panels[2], { opacity: 1, ease: 'none', duration: 0.5 }, 'move2+=0.7')
     
     // Скрываем стрелки во время перехода к 3 экрану
     .to(arrows, { autoAlpha: 0, duration: 0.3 }, 'move2+=0.2');
@@ -191,6 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
   .setPin(wrapper)
   .setTween(timeline)
   .addTo(controller);
+
+
+
+  
 });
 
 
