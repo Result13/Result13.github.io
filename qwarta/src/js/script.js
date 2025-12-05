@@ -425,8 +425,9 @@ const VisibilityManager = {
       { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible' },
       { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible' },
       { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible' },
-      { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible' },
-      { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible' }
+      { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible' }, 
+      { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible' },
+      { selector: '.intarface__tab', visibleClass: 'intarface__tab_visible' }
     ];
     
     elementsConfig.forEach(({ selector, visibleClass }) => {

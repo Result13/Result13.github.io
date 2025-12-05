@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 1. ПАУЗА НА 1-М ЭКРАНЕ ---
   // Пользователь скроллит, но ничего не происходит (задержка)
-  timeline.to({}, { duration: 0.3 });
+  timeline.to({}, { duration: 0.4 });
 
   // --- 2. ПЕРЕХОД 1 -> 2 ---
   // Теперь начинаем движение
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 3. ПАУЗА НА 2-М ЭКРАНЕ ---
   // Снова даем пользователю почитать второй экран
-  timeline.to({}, { duration: 0.3 });
+  timeline.to({}, { duration: 0.4 });
 
   // --- 4. ПЕРЕХОД 2 -> 3 ---
   timeline
@@ -192,3 +192,90 @@ document.addEventListener('DOMContentLoaded', () => {
   .setTween(timeline)
   .addTo(controller);
 });
+
+
+/*   document.addEventListener('DOMContentLoaded', function () {
+
+
+    const controller = new ScrollMagic.Controller();
+
+    const sections = Array.from(document.querySelectorAll('section'));
+
+    sections.forEach((section, index) => {
+      const next = sections[index + 1];
+      if (!next) return; // для последней секции ничего не делаем
+
+      // Стартовое положение следующей — под текущей
+      gsap.set(next, { yPercent: 100 });
+
+      const sectionHeight = section.offsetHeight;
+
+      const tl = gsap.timeline();
+      tl.to(next, {
+        yPercent: 0,
+        ease: 'power2.out'
+      });
+
+      new ScrollMagic.Scene({
+        triggerElement: section,
+        triggerHook: 0,                     // триггер у верхнего края вьюпорта
+        offset: sectionHeight * 0.7,        // старт анимации на 70% высоты секции
+        duration: sectionHeight * 0.3       // на сколько скролла растянуть анимацию
+      })
+        .setTween(tl)
+        // .addIndicators() // если подключён debug-плагин
+        .addTo(controller);
+    });
+  }); */
+////magnit
+  const sections = document.querySelectorAll('section');
+
+// Настройки: 70% видимости (threshold)
+const options = {
+  root: null, // Относительно области просмотра
+  rootMargin: '0px',
+  threshold: 0.5 // Запуск, когда 70% секции видно
+};
+
+// Храним таймер для предотвращения множественных быстрых прокруток
+let isScrolling = false;
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    // Проверяем, что прокрутка не активна и секция стала видима на 70%
+    if (entry.isIntersecting && !isScrolling) {
+      isScrolling = true;
+      
+      // Находим текущую видимую секцию
+      const currentSection = entry.target;
+      
+      // Плавно прокручиваем к ней
+      currentSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Снимаем блокировку через небольшой промежуток времени 
+      // (больше, чем время прокрутки)
+      setTimeout(() => {
+        isScrolling = false;
+      }, 1000); 
+    }
+  });
+}, options);
+
+// Наблюдаем за каждой секцией
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+/* document.addEventListener('DOMContentLoaded', (event) => {
+        
+        new fullpage('#fullpage', {
+            // Ваши настройки для "довдчика"
+            autoScrolling: true,
+            scrollingSpeed: 700, 
+            scrollThreshold: 0.7, // Активация на 70% прокрутки
+            
+            // Дополнительные настройки
+            navigation: true, 
+            navigationTooltips: ['Промо', 'Интерфейс', 'Стандарт'],
+        });
+    }); */
