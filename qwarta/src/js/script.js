@@ -19,20 +19,20 @@ const DOM = {
 // ============================================================================
 const TimerManager = {
   timers: {},
-  
+
   set(key, callback, delay) {
     this.clear(key);
     this.timers[key] = setTimeout(callback, delay);
     return this.timers[key];
   },
-  
+
   clear(key) {
     if (this.timers[key]) {
       clearTimeout(this.timers[key]);
       delete this.timers[key];
     }
   },
-  
+
   clearAll() {
     Object.keys(this.timers).forEach(key => {
       clearTimeout(this.timers[key]);
@@ -65,7 +65,7 @@ let currentTabIndex = 1;
 
 function initTabs() {
   if (DOM.tabs.length === 0) return;
-  
+
   DOM.tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => selectTab(index));
   });
@@ -74,17 +74,17 @@ function initTabs() {
 function selectTab(index) {
   DOM.contents.forEach((content, i) => {
     content.classList.remove('intarface__tab__content_active', 'exit-left', 'exit-right');
-    
+
     if (i === index) {
       content.classList.add('intarface__tab__content_active');
     } else {
       content.classList.add(i < index ? 'exit-left' : 'exit-right');
     }
   });
-  
+
   DOM.tabs.forEach(t => t.classList.remove('intarface__tab_active'));
   DOM.tabs[index].classList.add('intarface__tab_active');
-  
+
   currentTabIndex = index;
 }
 
@@ -96,12 +96,12 @@ let soundInitialized = false;
 
 function initSound() {
   if (!DOM.enableSoundBtn) return;
-  
+
   hoverSound = new Audio('./sound/sound.mp3');
   hoverSound.volume = 0.8;
-  
+
   DOM.enableSoundBtn.addEventListener('click', enableSound, { once: true });
-  
+
   const buttons = document.querySelectorAll('.promo__btn, .promo__link');
   buttons.forEach(el => {
     el.addEventListener('mouseenter', playHoverSound, { passive: true });
@@ -122,9 +122,9 @@ function enableSound() {
 
 function playHoverSound() {
   if (!soundInitialized || !hoverSound) return;
-  
+
   hoverSound.currentTime = 0;
-  hoverSound.play().catch(() => {});
+  hoverSound.play().catch(() => { });
 }
 
 // ============================================================================
@@ -132,10 +132,10 @@ function playHoverSound() {
 // ============================================================================
 function initVideoLoop() {
   if (!DOM.video) return;
-  
+
   DOM.video.addEventListener('ended', () => {
     DOM.video.currentTime = 0;
-    DOM.video.play().catch(() => {});
+    DOM.video.play().catch(() => { });
   });
 }
 
@@ -144,41 +144,41 @@ function initVideoLoop() {
 // ============================================================================
 function initVideoZoom() {
   if (DOM.videoWrappers.length === 0) return;
-  
+
   DOM.videoWrappers.forEach(videoWrapper => {
     const video = videoWrapper.querySelector('.promo__video');
     if (!video) return;
-    
+
     video.style.transition = 'transform 0.6s ease-out';
     let ticking = false;
-    
+
     const updateZoom = () => {
       const rect = videoWrapper.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       if (rect.bottom > 0) {
         let progress = 0;
-        
+
         if (rect.top <= 0) {
           progress = Math.min(1, Math.abs(rect.top) / (windowHeight / 2));
         } else if (rect.top < windowHeight) {
           progress = 1 - (rect.top / windowHeight);
         }
-        
+
         const scale = 1 + Math.max(0, Math.min(progress, 1)) * 0.5;
         video.style.transform = `scale(${scale})`;
       }
-      
+
       ticking = false;
     };
-    
+
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(updateZoom);
         ticking = true;
       }
     }, { passive: true });
-    
+
     updateZoom();
   });
 }
@@ -194,7 +194,7 @@ function initPromoHeight() {
       promo.style.height = `${height}px`;
     });
   };
-  
+
   setPromoHeight();
   window.addEventListener('load', setPromoHeight, { once: false });
   window.addEventListener('resize', setPromoHeight, { passive: true });
@@ -207,44 +207,44 @@ const SlideManager = {
   slides: DOM.slides,
   currentSlide: 0,
   autoSlideTimer: null,
-  
+
   init() {
     if (this.slides.length === 0) return;
-    
+
     this.goToSlide(0);
     this.startAutoSlide();
-    
+
     if (DOM.standartContainer) {
       DOM.standartContainer.addEventListener('mouseenter', () => this.pauseAutoSlide());
       DOM.standartContainer.addEventListener('mouseleave', () => this.startAutoSlide());
     }
   },
-  
+
   goToSlide(index) {
     this.slides.forEach(slide => slide.classList.remove('standart_active'));
     this.slides[index].classList.add('standart_active');
     this.currentSlide = index;
   },
-  
+
   nextSlide() {
     this.goToSlide((this.currentSlide + 1) % this.slides.length);
   },
-  
+
   startAutoSlide() {
     if (this.autoSlideTimer) return;
-    
+
     this.autoSlideTimer = setInterval(() => {
       this.nextSlide();
     }, 5000);
   },
-  
+
   pauseAutoSlide() {
     if (this.autoSlideTimer) {
       clearInterval(this.autoSlideTimer);
       this.autoSlideTimer = null;
     }
   },
-  
+
   destroy() {
     this.pauseAutoSlide();
   }
@@ -263,26 +263,26 @@ const StandartSlideManager = {
   currentSlide: 0,
   observer: null,
   activeSlide: null,
-  
+
   init() {
     if (this.slides.length === 0) return;
-    
+
     this.setupObserver();
     this.goToSlide(0);
   },
-  
+
   setupObserver() {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px'
     };
-    
+
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.activeSlide = entry.target;
           entry.target.style.zIndex = '9';
-          
+
           // ДОБАВЛЯЕМ КЛАССЫ ВИДИМОСТИ ВСЕМ ЭЛЕМЕНТАМ
           this.animateAllElements(entry.target);
         } else {
@@ -290,37 +290,37 @@ const StandartSlideManager = {
         }
       });
     }, observerOptions);
-    
+
     this.slides.forEach(slide => {
       this.observer.observe(slide);
     });
   },
-  
+
   animateAllElements(slide) {
     // КОНФИГУРАЦИЯ: Селектор класса + задержка
     const animationConfig = [
       { selector: '.title-anim-first', class: 'title_visible', delay: 0 },
       { selector: '.title-anim-sec', class: 'title_visibleSec', delay: 200 },
       { selector: '.title-anim-th', class: 'title_visible', delay: 500 },
-      
+
       { selector: '.standart__subtitle', class: 'standart__subtitle_visible', delay: 500 },
-      
+
       { selector: '.standart__interoco', class: 'standart__interoco_visible', delay: 1200 },
       { selector: '.standart__garmon__block', class: 'standart__garmon__block_visible', delay: 1000 },
-      
+
       { selector: '.standart__img__men', class: 'standart__img__men_visible', delay: 1000 },
-      
+
       { selector: '.standart__wrapper', class: 'standart__wrapper_visible', delay: 300 },
-      
+
       { selector: '.standart__natural__item', class: 'standart__natural__item_visible', delay: 2000 },
-      
+
       { selector: '.standart__btn', class: 'standart__btn_visible', delay: 3400 }
     ];
-    
+
     // ГАРАНТИРУЕМ: Применяем классы ко всем найденным элементам
     animationConfig.forEach(({ selector, class: className, delay }) => {
       const elements = slide.querySelectorAll(selector);
-      
+
       elements.forEach((element, index) => {
         // Проверяем, не добавили ли уже этот класс
         if (!element.classList.contains(className)) {
@@ -336,13 +336,13 @@ const StandartSlideManager = {
       });
     });
   },
-  
+
   goToSlide(index) {
     this.slides.forEach(slide => slide.classList.remove('standart_active'));
     this.slides[index].classList.add('standart_active');
     this.currentSlide = index;
   },
-  
+
   destroy() {
     if (this.observer) {
       this.observer.disconnect();
@@ -369,7 +369,7 @@ function initTextAnimations() {
     '.standart__interoco__desc',
     '.title-anim-th'
   ];
-  
+
   selectors.forEach(selector => {
     wrapWordsInSpans(selector);
   });
@@ -377,18 +377,18 @@ function initTextAnimations() {
 
 function wrapWordsInSpans(selector) {
   const elements = document.querySelectorAll(selector);
-  
+
   elements.forEach(el => {
     const text = el.innerText;
     const words = text.split(/(\s+)/);
-    
+
     const html = words.map((word, index) => {
       if (/^\s+$/.test(word)) {
         return word;
       }
       return `<span style="animation-delay:${(index * 0.1).toFixed(1)}s">${word}</span>`;
     }).join('');
-    
+
     el.innerHTML = html;
   });
 }
@@ -398,10 +398,10 @@ function wrapWordsInSpans(selector) {
 // ============================================================================
 const VisibilityManager = {
   observer: null,
-  
+
   init() {
     const options = { threshold: 0.1 };
-    
+
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -409,13 +409,15 @@ const VisibilityManager = {
         }
       });
     }, options);
-    
+
     this.observeElements();
   },
-  
+
   observeElements() {
     const elementsConfig = [
-      { selector: '.title', visibleClass: 'title_visible' },
+      { selector: '.title-anim', visibleClass: 'title_visible' },
+      { selector: '.title-power', visibleClass: 'title_visible' },
+
       { selector: '.intarface__right__bottom', visibleClass: 'intarface__right__bottom_visible' },
       { selector: '.intarface__subtitle', visibleClass: 'intarface__subtitle_visible' },
       { selector: '.intarfave__tab-text', visibleClass: 'intarfave__tab-text_visible' },
@@ -425,11 +427,16 @@ const VisibilityManager = {
       { selector: '.intarface__svg-center', visibleClass: 'intarface__svg-center_visible' },
       { selector: '.intarface__svg-up', visibleClass: 'intarface__svg-up_visible' },
       { selector: '.intarface__svg-down', visibleClass: 'intarface__svg-down_visible' },
-      { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible' }, 
+      { selector: '.intarface__bottom__btn', visibleClass: 'intarface__bottom__btn_visible' },
       { selector: '.intarface__bottom__item', visibleClass: 'intarface__bottom__item_visible' },
-      { selector: '.intarface__tab', visibleClass: 'intarface__tab_visible' }
+      { selector: '.intarface__tab', visibleClass: 'intarface__tab_visible' },
+      { selector: '.power__block_grey', visibleClass: 'power__block_grey_visible' },
+      { selector: '.power__block_blue', visibleClass: 'power__block_blue_visible' },
+      { selector: '.power__right', visibleClass: 'power__right_visible' },
+      { selector: '.power__graph', visibleClass: 'power__graph_visible' },
+      { selector: '.power__bottom__btn', visibleClass: 'power__bottom__btn_visible' },
     ];
-    
+
     elementsConfig.forEach(({ selector, visibleClass }) => {
       const elements = document.querySelectorAll(selector);
       elements.forEach(el => {
@@ -440,7 +447,7 @@ const VisibilityManager = {
       });
     });
   },
-  
+
   animateElement(element) {
     const visibleClass = element.dataset.visibleClass;
     if (visibleClass && !element.classList.contains(visibleClass)) {
@@ -448,7 +455,7 @@ const VisibilityManager = {
       this.observer.unobserve(element);
     }
   },
-  
+
   destroy() {
     if (this.observer) {
       this.observer.disconnect();
@@ -466,7 +473,7 @@ function initElementAnimations() {
 function initHeaderScroll() {
   window.addEventListener('scroll', () => {
     const isAtTop = window.scrollY === 0;
-    
+
     DOM.headerBgVariants.forEach(element => {
       if (isAtTop) {
         element.classList.remove('scrolled');
@@ -482,9 +489,9 @@ function initHeaderScroll() {
 // ============================================================================
 function initStandartSection() {
   if (!DOM.standartSection || !DOM.header) return;
-  
+
   const options = { threshold: 0.1 };
-  
+
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -494,7 +501,7 @@ function initStandartSection() {
       }
     });
   }, options);
-  
+
   sectionObserver.observe(DOM.standartSection);
 }
 
@@ -514,7 +521,7 @@ function cleanupAll() {
 // ============================================================================
 function debugAnimationClasses() {
   console.log('=== ПРОВЕРКА КЛАССОВ ВИДИМОСТИ ===');
-  
+
   const checkSelectors = [
     '.standart__natural__item',
     '.standart__garmon__block',
@@ -523,11 +530,11 @@ function debugAnimationClasses() {
     '.standart__wrapper',
     '.standart__subtitle'
   ];
-  
+
   checkSelectors.forEach(selector => {
     const elements = document.querySelectorAll(selector);
     console.log(`${selector}: найдено ${elements.length} элементов`);
-    
+
     elements.forEach((el, index) => {
       const hasClass = el.className;
       console.log(`  [${index}] классы: ${hasClass}`);
