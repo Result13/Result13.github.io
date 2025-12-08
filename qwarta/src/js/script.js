@@ -435,6 +435,8 @@ const VisibilityManager = {
       { selector: '.power__right', visibleClass: 'power__right_visible' },
       { selector: '.power__graph', visibleClass: 'power__graph_visible' },
       { selector: '.power__bottom__btn', visibleClass: 'power__bottom__btn_visible' },
+      { selector: '.intarface__right__name', visibleClass: 'intarface__right__name_visible' },
+      { selector: '.intarface__right__perc', visibleClass: 'intarface__right__perc_visible' },
     ];
 
     elementsConfig.forEach(({ selector, visibleClass }) => {
