@@ -367,7 +367,8 @@ function initTextAnimations() {
     '.title',
     '.standart__subtitle',
     '.standart__interoco__desc',
-    '.title-anim-th'
+    '.title-anim-th',
+    '.title-scale'
   ];
 
   selectors.forEach(selector => {
@@ -396,6 +397,24 @@ function wrapWordsInSpans(selector) {
 // ============================================================================
 // 12. ЭЛЕМЕНТЫ, ВИДИМЫЕ ПРИ СКРОЛЛЕ - ЕДИНЫЙ OBSERVER
 // ============================================================================
+function animateNumber(el, from = 0, to = 300, duration = 1200) {
+  const start = performance.now();
+  el.textContent = from + '%'; // стартовое значение
+
+  function frame(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const value = Math.round(from + (to - from) * progress);
+    el.textContent = value + '%';
+
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+
 const VisibilityManager = {
   observer: null,
 
@@ -437,6 +456,9 @@ const VisibilityManager = {
       { selector: '.power__bottom__btn', visibleClass: 'power__bottom__btn_visible' },
       { selector: '.intarface__right__name', visibleClass: 'intarface__right__name_visible' },
       { selector: '.intarface__right__perc', visibleClass: 'intarface__right__perc_visible' },
+      { selector: '.scale__interactive', visibleClass: 'scale__interactive_visible' },
+      { selector: '.power__desc__title', visibleClass: 'power__desc__title_visible' },
+      { selector: '.power__text', visibleClass: 'power__text_visible' },
     ];
 
     elementsConfig.forEach(({ selector, visibleClass }) => {
@@ -451,12 +473,21 @@ const VisibilityManager = {
   },
 
   animateElement(element) {
-    const visibleClass = element.dataset.visibleClass;
-    if (visibleClass && !element.classList.contains(visibleClass)) {
-      element.classList.add(visibleClass);
-      this.observer.unobserve(element);
+  const visibleClass = element.dataset.visibleClass;
+  if (visibleClass && !element.classList.contains(visibleClass)) {
+    element.classList.add(visibleClass);
+
+    if (visibleClass === 'intarface__right__perc_visible') {
+      // задержка 2.2 секунды перед числовой анимацией
+      setTimeout(() => {
+        animateNumber(element, 0, 300, 1200);
+      }, 2200);
     }
-  },
+
+    this.observer.unobserve(element);
+  }
+}
+,
 
   destroy() {
     if (this.observer) {
@@ -468,6 +499,7 @@ const VisibilityManager = {
 function initElementAnimations() {
   VisibilityManager.init();
 }
+
 
 // ============================================================================
 // 13. HEADER - Blur НА СКРОЛЛЕ
