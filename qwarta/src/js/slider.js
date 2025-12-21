@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Скрываем стрелки во время перехода к 3 экрану
     .to(arrows, { autoAlpha: 0, duration: 0.3 }, 'move2+=0.2');
-
+  timeline.to({}, { duration: 0.7 });
 
   new ScrollMagic.Scene({
     triggerElement: wrapper,

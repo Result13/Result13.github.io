@@ -368,7 +368,8 @@ function initTextAnimations() {
     '.standart__subtitle',
     '.standart__interoco__desc',
     '.title-anim-th',
-    '.title-scale'
+    '.title-scale',
+    '.power__bottom__img__text'
   ];
 
   selectors.forEach(selector => {
@@ -459,6 +460,24 @@ const VisibilityManager = {
       { selector: '.scale__interactive', visibleClass: 'scale__interactive_visible' },
       { selector: '.power__desc__title', visibleClass: 'power__desc__title_visible' },
       { selector: '.power__text', visibleClass: 'power__text_visible' },
+      { selector: '.power__right__central', visibleClass: 'power__right__central_visible' },
+      { selector: '.power__bottom__img-ai', visibleClass: 'power__bottom__img-ai_visible' },
+      { selector: '.power__bottom__img__text', visibleClass: 'power__bottom__img__text_visible' },
+      { selector: '.power__bottom__img__wave', visibleClass: 'power__bottom__img__wave_visible' },
+      { selector: '.power__bottom__value__profile', visibleClass: 'power__bottom__value__profile_visible' },
+      { selector: '.power__bottom__long-wave', visibleClass: 'power__bottom__long-wave_visible' },
+      { selector: '.power__bottom__card', visibleClass: 'power__bottom__card_visible' },
+      { selector: '.power__right__line', visibleClass: 'power__right__line_visible' },
+      { selector: '.power__right__people', visibleClass: 'power__right__people_visible' },
+      { selector: '.power__right-graph', visibleClass: 'power__right-graph_visible' },
+      { selector: '.power__right__lines', visibleClass: 'power__right__lines_visible' },
+      { selector: '.power__bottom__first-btn', visibleClass: 'power__bottom__first-btn_visible' },
+      { selector: '.power__right__central__line', visibleClass: 'power__right__central__line_visible' },
+     { selector: '.power__right__second', visibleClass: 'power__right__second_visible' },
+     { selector: '.scale', visibleClass: 'scale_visible' },
+     { selector: '.scale__interactive', visibleClass: 'scale__interactive_visible' },
+     { selector: '.title-scale', visibleClass: 'title-scale_visible' },
+     { selector: '.scale__subtitle', visibleClass: 'scale__subtitle_visible' }
     ];
 
     elementsConfig.forEach(({ selector, visibleClass }) => {
@@ -472,22 +491,146 @@ const VisibilityManager = {
     });
   },
 
-  animateElement(element) {
-  const visibleClass = element.dataset.visibleClass;
-  if (visibleClass && !element.classList.contains(visibleClass)) {
-    element.classList.add(visibleClass);
+  /* animateElement(element) {
+    const visibleClass = element.dataset.visibleClass;
+    if (visibleClass && !element.classList.contains(visibleClass)) {
+      element.classList.add(visibleClass);
 
-    if (visibleClass === 'intarface__right__perc_visible') {
-      // задержка 2.2 секунды перед числовой анимацией
+      if (visibleClass === 'intarface__right__perc_visible') {
+        // задержка 2.2 секунды перед числовой анимацией
+        setTimeout(() => {
+          animateNumber(element, 0, 300, 1200);
+        }, 2200);
+      }
+      if (visibleClass === 'power__bottom__value__profile_visible') {
+        const waveElement = document.querySelector('.power__bottom__img__wave');
+        if (waveElement) {
+          element.addEventListener('animationend', function handler() {
+            // Убираем visible и добавляем fadeout
+            waveElement.classList.remove('power__bottom__img__wave_visible');
+            waveElement.classList.add('power__bottom__img__wave_fadeout');
+
+            // Удаляем слушатель после срабатывания
+            element.removeEventListener('animationend', handler);
+          }, { once: true });
+        }
+      }
+      if (visibleClass === 'power__bottom__value__profile_visible') {
+        const backElement = document.querySelector('.power__bottom__value__back');
+        if (backElement) {
+          backElement.classList.add('power__bottom__value__back_visible');
+        }
+      }
       setTimeout(() => {
-        animateNumber(element, 0, 300, 1200);
-      }, 2200);
-    }
+        document.querySelector('.power__bottom__value__back').classList.add('exit');
+      }, 5000); // 5 сек после появления
 
-    this.observer.unobserve(element);
+
+      this.observer.unobserve(element);
+    }
+  } */
+  animateElement(element) {
+    const visibleClass = element.dataset.visibleClass;
+    if (visibleClass && !element.classList.contains(visibleClass)) {
+      element.classList.add(visibleClass);
+
+      if (visibleClass === 'intarface__right__perc_visible') {
+        setTimeout(() => {
+          animateNumber(element, 0, 300, 1200);
+        }, 2200);
+      }
+      if (visibleClass === 'power__bottom__card_visible') {
+        setTimeout(() => {
+          const cardFlip = element.querySelector('.power__bottom__card__img-flip');
+          const text1 = element.querySelector('.power__bottom__card__text_1');
+          const text2 = element.querySelector('.power__bottom__card__text_2');
+
+          // Переворот картинок
+          cardFlip.classList.add('flipped');
+
+          // Анимация текста
+          text1.classList.add('fade-out');
+          text2.classList.add('fade-in');
+        }, 5000); // 5 секунд ожидания
+      }
+
+      if (visibleClass === 'power__right__central_visible') {
+        // Через 13 секунд добавляем класс exit
+        setTimeout(() => {
+          element.classList.add('power__right__central_exit');
+        }, 13000); // 13 секунд
+      }
+       if (visibleClass === 'power__right__central__line_visible') {
+        // Через 13 секунд добавляем класс exit
+        setTimeout(() => {
+          element.classList.add('power__right__central_exit');
+        }, 13000); // 13 секунд
+      }
+  
+
+      if (visibleClass === 'power__bottom__value__profile_visible') {
+        // 1. Синхронизация wave с окончанием profile
+        const waveElement = document.querySelector('.power__bottom__img__wave');
+        if (waveElement) {
+          element.addEventListener('animationend', function handler() {
+            waveElement.classList.remove('power__bottom__img__wave_visible');
+            waveElement.classList.add('power__bottom__img__wave_fadeout');
+            element.removeEventListener('animationend', handler);
+          }, { once: true });
+        }
+
+        // 2. Добавляем back элемент
+        const backElement = document.querySelector('.power__bottom__value__back');
+        if (backElement) {
+          backElement.classList.add('power__bottom__value__back_visible');
+
+          // 3. Слушатель на ::after анимацию (через родителя back__item)
+          const backItem = backElement.querySelector('.power__bottom__value__back__item');
+          if (backItem) {
+            backItem.addEventListener('animationend', function handler(e) {
+              if (e.animationName === 'backFlip') {
+                // Через 2 секунды после окончания borderRotate
+                setTimeout(() => {
+                  // Исчезает изображение
+                  const imgElement = document.querySelector('.power__bottom__value__profile__img');
+                  if (imgElement) {
+                    imgElement.style.opacity = '0';
+                    imgElement.style.animation = 'fadeOut 1s ease-in forwards';
+                  }
+
+                  // Откатываем profile назад
+                  setTimeout(() => {
+                    const imgElement = document.querySelector('.power__bottom__value__profile__img');
+                    if (imgElement) {
+                      imgElement.style.animation = 'fadeOut 1s ease-in forwards';
+                    }
+
+                    setTimeout(() => {
+                      // Установите текущее состояние element в начало resetProfile
+                      element.style.animation = 'none'; // Отключите profileSequence
+                      backElement.classList.add('power__bottom__value__back_exit');
+                      // Даёте браузеру время обновить стили
+                      requestAnimationFrame(() => {
+                        element.style.animation = 'resetProfile 2s ease-in forwards';
+                      });
+
+                      backElement.classList.remove('power__bottom__value__back_visible');
+                    }, 400);
+                  }, 2000);
+
+
+                }, 2000);
+              }
+            }, { once: true });
+          }
+        }
+      }
+
+      this.observer.unobserve(element);
+    }
   }
-}
-,
+
+  ,
 
   destroy() {
     if (this.observer) {
@@ -495,6 +638,7 @@ const VisibilityManager = {
     }
   }
 };
+
 
 function initElementAnimations() {
   VisibilityManager.init();
