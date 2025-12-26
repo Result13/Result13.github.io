@@ -477,7 +477,11 @@ const VisibilityManager = {
      { selector: '.scale', visibleClass: 'scale_visible' },
      { selector: '.scale__interactive', visibleClass: 'scale__interactive_visible' },
      { selector: '.title-scale', visibleClass: 'title-scale_visible' },
-     { selector: '.scale__subtitle', visibleClass: 'scale__subtitle_visible' }
+     { selector: '.scale__subtitle', visibleClass: 'scale__subtitle_visible' },
+     { selector: '.intellect__title', visibleClass: 'intellect__title_visible' },
+     { selector: '.intellect__arrows', visibleClass: 'intellect__arrows_visible' },
+     { selector: '.intellect__desc__text', visibleClass: 'intellect__desc__text_visible' },
+     { selector: '.intellect__block', visibleClass: 'intellect__block_visible' }
     ];
 
     elementsConfig.forEach(({ selector, visibleClass }) => {

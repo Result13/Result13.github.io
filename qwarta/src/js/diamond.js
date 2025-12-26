@@ -11,7 +11,7 @@ let isNumberAnimatedMob = false;
 let lastScrollUpdate = 0;
 let cachedRects = new Map();
 let needsCacheUpdate = false;
-
+const mapItems = document.querySelectorAll('.scale__map__item');
 const TRANSFORM_THRESHOLD = 85;
 const VISIBLE_THRESHOLD = 0.02;
 const SCROLL_DELAY = 150;
@@ -154,13 +154,30 @@ function updateScaleInteractive(settings, isMobileLayout, blockProgress, delayPr
 // ============ DIAMONDS RENDERING (OPTIMIZED) ============
 function updateDiamonds() {
     const isMobileLayout = window.innerWidth <= 992;
+    // Предварительно находим все элементы карты (лучше вынести в глобальные переменные)
+    const mapItems = document.querySelectorAll('.scale__map__item');
     
-    diamonds.forEach((diamond) => {
+    diamonds.forEach((diamond, index) => {
         const baseOffset = parseFloat(diamond.getAttribute('data-offset')) || 0;
         let pos = (currentScroll * 100) + baseOffset;
         if (pos > 100) pos = 100;
 
         diamond.style.offsetDistance = `${pos}%`;
+
+        // --- ЛОГИКА КАРТЫ (МАРКЕРОВ) ---
+        const currentMapItem = mapItems[index];
+        if (currentMapItem) {
+            // Перемещаем полоску вслед за ромбом по горизонтали
+            currentMapItem.style.left = `${pos}%`;
+            
+            // Активируем, когда ромб начинает раскрываться
+            if (pos > TRANSFORM_THRESHOLD) {
+                currentMapItem.classList.add('scale__map__item_active');
+            } else {
+                currentMapItem.classList.remove('scale__map__item_active');
+            }
+        }
+        // ------------------------------
 
         if (currentScroll > VISIBLE_THRESHOLD) {
             diamond.classList.add('is-visible');
