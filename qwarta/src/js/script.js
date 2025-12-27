@@ -364,7 +364,7 @@ function initTextAnimations() {
     '.intarface__text',
     '.intarface__subtitle',
     '.intarfave__tab-text',
-    '.title',
+  //  '.title',
     '.standart__subtitle',
     '.standart__interoco__desc',
     '.title-anim-th',
