@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое Delta</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="css/style.min.css">
+
+</head>
+<body>
+    <div class="dashboard">
+
+
+        <div class="table-container">
+            <div class="table__row">
+                <div class="table__cell">Показатели</div>
+                <div class="table__cell">Текущий день</div>
+                <div class="table__cell">Вчера</div>
+                <div class="table__cell">Этот день недели</div>
+            </div>
+
+            <div class="table__row" data-metric="cash">
+                <div class="table__cell table__cell--label">Выручка, руб</div>
+                <div class="table__cell table__cell--number">500 521</div>
+                <div class="table__cell table__cell--number table__cell_green">480 521 <span class="badge ">4%</span></div>
+                <div class="table__cell table__cell--number table__cell_red">4 805 121</div>
+            </div>
+
+            <div class="table__row">
+                <div id="chartContainer" class="dashboard__chart"></div>
+            </div>
+
+            <div class="table__row" data-metric="noneCash">
+                <div class="table__cell table__cell--label">Наличные</div>
+                <div class="table__cell table__cell--number">300 000</div>
+                <div class="table__cell table__cell--number table__cell_green">300 000 <span class="badge ">0%</span></div>
+                <div class="table__cell table__cell--number">300 000</div>
+            </div>
+
+            <div class="table__row" data-metric="credit">
+                <div class="table__cell table__cell--label">Безналичный расчет</div>
+                <div class="table__cell table__cell--number">100 000</div>
+                <div class="table__cell table__cell--number table__cell_green">100 000 <span class="badge ">0%</span></div>
+                <div class="table__cell table__cell--number">100 000</div>
+            </div>
+
+            <div class="table__row" data-metric="credit">
+                <div class="table__cell table__cell--label">Кредитные карты</div>
+                <div class="table__cell table__cell--number">100 521</div>
+                <div class="table__cell table__cell--number table__cell_green">100 521 <span class="badge">0%</span></div>
+                <div class="table__cell table__cell--number">100 521</div>
+            </div>
+
+            <div class="table__row" data-metric="mediumChek">
+                <div class="table__cell table__cell--label">Средний чек</div>
+                <div class="table__cell table__cell--number">1 300</div>
+                <div class="table__cell table__cell--number table__cell_green">900 <span class="badge">44%</span></div>
+                <div class="table__cell table__cell--number table__cell_green">900</div>
+            </div>
+
+            <div class="table__row" data-metric="mediumGuest">
+                <div class="table__cell table__cell--label">Средний Гость</div>
+                <div class="table__cell table__cell--number">1 200</div>
+                <div class="table__cell table__cell--number table__cell_green">800 <span class="badge ">50%</span></div>
+                <div class="table__cell table__cell--number table__cell_green">800</div>
+            </div>
+
+            <div class="table__row" data-metric="delAfter">
+                <div class="table__cell table__cell--label">Удаление (после оплаты), руб</div>
+                <div class="table__cell table__cell--number">1 000</div>
+                <div class="table__cell table__cell--number table__cell_red">1 100 <span class="badge">-9%</span></div>
+                <div class="table__cell table__cell--number table__cell_green">900</div>
+            </div>
+
+            <div class="table__row" data-metric="delBefore">
+                <div class="table__cell table__cell--label">Удаление (перед оплатой), руб</div>
+                <div class="table__cell table__cell--number">1 300</div>
+                <div class="table__cell table__cell--number">1 300 <span class="badge">0%</span></div>
+                <div class="table__cell table__cell--number table__cell_green">900</div>
+            </div>
+
+            <div class="table__row" data-metric="cheks">
+                <div class="table__cell table__cell--label">Количество чеков</div>
+                <div class="table__cell table__cell--number">34</div>
+                <div class="table__cell table__cell--number table__cell_red">36 <span class="badge">-6%</span></div>
+                <div class="table__cell table__cell--number">34</div>
+            </div>
+
+            <div class="table__row" data-metric="guests">
+                <div class="table__cell table__cell--label">Количество гостей</div>
+                <div class="table__cell table__cell--number">34</div>
+                <div class="table__cell table__cell--number table__cell_red">36 <span class="badge">-6%</span></div>
+                <div class="table__cell table__cell--number table__cell_green">34</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js">
+
+    </script>
+</body>
+</html>
