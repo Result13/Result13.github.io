@@ -56,13 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function(){
     function initRoadmapSlider() {
         const slider = $('.promo__wrapper');
-        
+
         if ($(window).width() < 768) {
-            // Инициализация, если еще не создан
             if (!slider.hasClass('slick-initialized')) {
                 slider.slick({
-                    centerMode: true,      // Ключевой параметр для центровки
-                    centerPadding: '20px', // На сколько выглядывают соседние слайды
+                    centerMode: true,
+                    centerPadding: '20px',
                     slidesToShow: 1,
                     infinite: false,
                     dots: false,
@@ -73,17 +72,12 @@ $(document).ready(function(){
                 });
             }
         } else {
-            // Разрушаем слайдер на десктопе
             if (slider.hasClass('slick-initialized')) {
                 slider.slick('unslick');
             }
         }
     }
-
-    // Запуск при загрузке
     initRoadmapSlider();
-
-    // Запуск при ресайзе
     $(window).on('resize', function() {
         initRoadmapSlider();
     });
