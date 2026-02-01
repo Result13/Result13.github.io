@@ -79,4 +79,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+
+});
+document.addEventListener('DOMContentLoaded', () => {
+
+    const elementsToAnimate = [
+        '.promo__logo',
+        '.promo__time',
+        '.promo__title',
+        '.promo__desc',
+        '.promo__features__item', 
+        '.promo__btn',
+        '.promo__img_big',
+        '.promo__img_small',
+        '.location__desc',
+        '.title',
+        '.location__item',
+        '.location__text',
+        '.about__desc',
+        '.about__iframe',
+        '.about__video__desc',
+        '.about__system',
+        '.about__system__item',
+        '.about__steps__desc',
+        '.about__steps__item',
+        '.btn',
+        '.aud__desc',
+        '.aud__item',
+        '.aud__notice',
+        '.program__desc',
+        '.program__item',
+        '.program__notice',
+        '.outcome__desc',
+        '.outcome__item',
+        '.form__inner'
+
+    ];
+
+    // 2. Настройка наблюдателя
+    const observerOptions = {
+        root: null, // следим относительно окна браузера
+        threshold: 0.15 // класс добавится, когда 15% элемента показалось на экране
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Добавляем класс visible
+                entry.target.classList.add('visible');
+                // Если хочешь, чтобы анимация была только один раз — "отписываемся":
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // 3. Запуск: ищем все элементы по списку селекторов
+    elementsToAnimate.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => observer.observe(el));
+    });
 });
