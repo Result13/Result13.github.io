@@ -325,13 +325,21 @@
         const dots = [...dotsContainer.querySelectorAll('.slide-dot')];
 
         function updateSlides() {
+            const topZ = slides.length + 10;
+
             slides.forEach((slide, i) => {
                 slide.classList.remove('active', 'past', 'future');
-                slide.style.zIndex = i + 1;
 
-                if (i < current) slide.classList.add('past');
-                else if (i === current) slide.classList.add('active');
-                else slide.classList.add('future');
+                if (i < current) {
+                    slide.classList.add('past');
+                    slide.style.zIndex = String(i + 1);
+                } else if (i === current) {
+                    slide.classList.add('active');
+                    slide.style.zIndex = String(topZ);
+                } else {
+                    slide.classList.add('future');
+                    slide.style.zIndex = String(i + 1);
+                }
             });
 
             dots.forEach((dot, i) => {
