@@ -31,7 +31,7 @@ html, body {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    background: linear-gradient(160deg, var(--rose-50) 0%, var(--rose-100) 50%, #ffd6e0 100%);
+    background: var(--slide-bg);
     color: var(--text);
     -webkit-font-smoothing: antialiased;
 }
@@ -210,6 +210,9 @@ body {
 .slide {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -219,7 +222,7 @@ body {
     transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     overflow: hidden;
     box-sizing: border-box;
-    min-height: 0;
+    background: var(--slide-bg);
 }
 
 .slide.active,
@@ -240,10 +243,22 @@ body.is-mobile .slide {
     transition-duration: 0.5s;
 }
 
+body.is-mobile .slide .card,
+body.is-mobile .slide .panel,
+body.is-mobile .slide .footer-note,
+body.is-mobile .slide .particle-heart-stage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
 body.is-mobile .card,
 body.is-mobile .panel,
 body.is-mobile .particle-heart-stage {
     box-shadow: 0 0 12px rgba(244, 0, 233, 0.55);
+    flex: 0 1 auto;
+    height: auto;
+    max-height: calc(100svh - 10vh - var(--safe-bottom));
 }
 
 .slide .card,
@@ -301,7 +316,8 @@ body.is-mobile .particle-heart-stage {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     touch-action: pan-y;
-    flex-shrink: 1;
+    flex: 0 1 auto;
+    height: auto;
     position: relative;
 }
 
