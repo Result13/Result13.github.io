@@ -1,0 +1,759 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --rose-50: #fff0f3;
+    --rose-100: #ffe0e8;
+    --rose-200: #ffb3c6;
+    --rose-300: #ff8fab;
+    --rose-400: #fb6f92;
+    --rose-500: #e84a7a;
+    --rose-600: #c9184a;
+    --rose-700: #a4133c;
+    --text: #2d1020;
+    --text-muted: #7a4a5e;
+    --white: #ffffff;
+    --shadow: 0 8px 32px rgba(201, 24, 74, 0.15);
+    --radius: 20px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --slide-bg: linear-gradient(205deg, #0a0708 9%, #f82d61 100%);
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: none;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: linear-gradient(160deg, var(--rose-50) 0%, var(--rose-100) 50%, #ffd6e0 100%);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ─── Экраны-оверлеи ─── */
+.screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #1a0a12 0%, #3d1028 40%, #6b1a3a 100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.screen.leaving {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ─── Экран 1: летающие сердечки ─── */
+.floating-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -40px;
+    font-size: var(--size, 16px);
+    color: var(--rose-300);
+    opacity: 0;
+    animation: floatUp var(--duration, 4s) var(--delay, 0s) ease-in infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 143, 171, 0.6));
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--peak-opacity, 0.8);
+    }
+    90% {
+        opacity: var(--peak-opacity, 0.6);
+    }
+    100% {
+        transform: translateY(-110vh) translateX(var(--drift, 30px)) rotate(var(--rotate, 20deg)) scale(1);
+        opacity: 0;
+    }
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.intro-subtitle {
+    font-size: 1.1rem;
+    color: var(--rose-200);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeInDown 1s 0.3s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.btn-start {
+    appearance: none;
+    border: none;
+    background: linear-gradient(135deg, var(--rose-400), var(--rose-600));
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 16px 48px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(232, 74, 122, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    opacity: 0;
+    animation: fadeInUp 1s 0.6s ease forwards;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-start:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 12px rgba(232, 74, 122, 0.4);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Экран 2: сердце из сердечек ─── */
+.heart-canvas {
+    position: relative;
+    width: min(90vw, 340px);
+    height: min(80vw, 300px);
+}
+
+.heart-particle {
+    position: absolute;
+    font-size: var(--size, 14px);
+    color: var(--rose-300);
+    opacity: 0;
+    transform: scale(0) rotate(var(--rot, 0deg));
+    filter: drop-shadow(0 0 4px rgba(255, 143, 171, 0.8));
+    transition: none;
+}
+
+.heart-particle.appear {
+    animation: heartPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes heartPop {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(var(--rot, 0deg));
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.3) rotate(calc(var(--rot, 0deg) + 10deg));
+    }
+    100% {
+        opacity: 0.9;
+        transform: scale(1) rotate(var(--rot, 0deg));
+    }
+}
+
+.heart-caption {
+    margin-top: 24px;
+    color: var(--rose-200);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 0.8s ease 2s;
+}
+
+.heart-caption.visible {
+    opacity: 1;
+}
+
+/* ─── Основной контент: слайды поверх друг друга ─── */
+#main-content {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+.slide {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px calc(24px + var(--safe-bottom));
+    transform: translateY(100%);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+    overflow: hidden;
+}
+
+.slide.active,
+.slide.past {
+    transform: translateY(0);
+}
+
+.slide.future {
+    transform: translateY(100%);
+}
+
+.slide .card,
+.slide .panel,
+.slide .footer-note,
+.slide .particle-heart-stage {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.55s ease 0.15s, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.slide.active .card,
+.slide.active .panel,
+.slide.active .footer-note,
+.slide.active .particle-heart-stage {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide.past .card,
+.slide.past .panel,
+.slide.past .footer-note,
+.slide.past .particle-heart-stage {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+}
+
+/* ─── Общий фон и раскладка слайдов ─── */
+.slide-card,
+.slide-panel {
+    background: var(--slide-bg);
+    justify-content: center;
+    padding-top: max(1.5vh, 10px);
+    padding-bottom: calc(2.5vh + var(--safe-bottom));
+    padding-left: clamp(12px, 4vw, 20px);
+    padding-right: clamp(12px, 4vw, 20px);
+}
+
+/* ─── Карточка и панели: скролл при переполнении ─── */
+.card,
+.panel {
+    width: 100%;
+    max-width: min(400px, 92vw);
+    max-height: calc(100dvh - 12vh - var(--safe-bottom));
+    background: var(--white);
+    border-radius: clamp(14px, 4vw, var(--radius));
+    box-shadow: 0 0 19px #f400e9;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    flex-shrink: 1;
+    position: relative;
+}
+
+.card {
+    padding: clamp(12px, 3vh, 20px) clamp(14px, 4vw, 20px);
+}
+
+.panel {
+    padding: clamp(16px, 3vh, 28px) clamp(16px, 4vw, 24px);
+}
+
+.slide-last .panel {
+    max-height: calc(100dvh - 16vh - var(--safe-bottom));
+}
+
+.card::-webkit-scrollbar,
+.panel::-webkit-scrollbar {
+    width: 3px;
+}
+
+.card::-webkit-scrollbar-thumb,
+.panel::-webkit-scrollbar-thumb {
+    background: var(--rose-300);
+    border-radius: 3px;
+}
+
+.card-photo-wrap {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto clamp(8px, 1.8vh, 14px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: clamp(2px, 0.8vw, 4px) solid var(--rose-200);
+    box-shadow: 0 4px 16px rgba(232, 74, 122, 0.2);
+    background: linear-gradient(135deg, var(--rose-100), var(--rose-200));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.panel-pictures {
+    width: 100%;
+    max-height: 200px;
+    margin: 0 auto clamp(8px, 1.8vh, 14px);
+    overflow: hidden;
+    border-radius: 10px;
+    border: clamp(2px, 0.8vw, 4px) solid var(--rose-200);
+    box-shadow: 0 4px 16px rgba(232, 74, 122, 0.2);
+    background: linear-gradient(135deg, var(--rose-100), var(--rose-200));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.panel-pictures img{
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.panel-pictures.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(6px, 2vw, 10px);
+    width: min(240px, 72vw);
+    max-height: none;
+    margin: clamp(10px, 2vh, 16px) auto 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+    overflow: visible;
+}
+
+.panel-pictures.grid-2 a {
+    display: block;
+    border-radius: clamp(6px, 2vw, 10px);
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.panel-pictures.grid-2 .panel-picture {
+    aspect-ratio: 1;
+    border-radius: clamp(6px, 2vw, 10px);
+    border: clamp(2px, 0.6vw, 3px) solid var(--rose-200);
+    box-shadow: 0 3px 12px rgba(232, 74, 122, 0.2);
+    background: linear-gradient(135deg, var(--rose-100), var(--rose-200));
+}
+.card-photo-wrap.no-photo::before {
+    content: '♥';
+    font-size: clamp(1.6rem, 6vw, 2.5rem);
+    color: var(--rose-400);
+    line-height: 1;
+}
+
+.card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-name {
+    text-align: center;
+    font-size: clamp(1rem, 5.2vw, 1.45rem);
+    font-weight: 700;
+    color: var(--rose-700);
+    margin-bottom: clamp(2px, 0.6vh, 4px);
+    line-height: 1.2;
+}
+
+.card-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: clamp(8px, 1.8vh, 14px);
+    line-height: 1.35;
+}
+
+.card-info {
+    list-style: none;
+    margin-bottom: clamp(6px, 1.5vh, 12px);
+}
+
+.card-info li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(6px, 2vw, 12px);
+    padding: clamp(5px, 1.2vh, 9px) 0;
+    border-bottom: 1px solid var(--rose-100);
+}
+
+.card-info li:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    max-width: 50%;
+}
+
+.info-value {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: right;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1.3;
+}
+
+a.info-value:hover {
+    color: var(--rose-500);
+}
+
+/* ─── Аккордеон ─── */
+.slide-card .accordion {
+    border: 1px solid var(--rose-100);
+    border-radius: clamp(8px, 2.5vw, 12px);
+    margin-bottom: clamp(4px, 1vh, 8px);
+    overflow: hidden;
+}
+
+.slide-card .accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(9px, 2.2vh, 13px) clamp(10px, 3vw, 14px);
+    background: var(--rose-50);
+    border: none;
+    cursor: pointer;
+    font-size: clamp(0.78rem, 2.8vw, 0.92rem);
+    font-weight: 600;
+    color: var(--rose-700);
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s;
+}
+
+.accordion {
+    border: 1px solid var(--rose-100);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--rose-50);
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--rose-700);
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s;
+}
+
+.accordion-header:active {
+    background: var(--rose-100);
+}
+
+.accordion-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 16px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.slide-card .accordion-body {
+    padding: 0 clamp(10px, 3vw, 14px);
+    font-size: clamp(0.72rem, 2.6vw, 0.85rem);
+    line-height: 1.45;
+}
+
+.accordion-body.open {
+    max-height: 200px;
+    padding: 12px 16px 16px;
+}
+
+.slide-card .accordion-body.open {
+    max-height: 30vh;
+    padding: clamp(8px, 1.5vh, 12px) clamp(10px, 3vw, 14px) clamp(10px, 2vh, 14px);
+}
+
+.accordion-body a {
+    color: var(--rose-500);
+    text-decoration: none;
+}
+
+.scroll-hint {
+    margin-top: clamp(6px, 1.5vh, 12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: #fff;
+    font-size: clamp(0.68rem, 2.4vw, 0.8rem);
+    animation: bounce 2s ease infinite;
+    transition: opacity 0.4s ease;
+    flex-shrink: 0;
+}
+
+.scroll-hint svg {
+    width: clamp(16px, 4vw, 20px);
+    height: clamp(16px, 4vw, 20px);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(6px); }
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rose-400), var(--rose-600));
+}
+
+.panel-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--rose-400);
+    margin-bottom: 8px;
+}
+
+.panel h2 {
+    font-size: 1.5rem;
+    color: var(--rose-700);
+    margin-bottom: 20px;
+}
+
+.panel-list {
+    list-style: none;
+}
+
+.panel-list li {
+    position: relative;
+    padding: 10px 0 10px 24px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text);
+    border-bottom: 1px solid var(--rose-50);
+}
+
+.panel-list li::before {
+    content: '♥';
+    position: absolute;
+    left: 0;
+    color: var(--rose-400);
+    font-size: 0.75rem;
+    top: 13px;
+}
+
+.panel-list li:last-child {
+    border-bottom: none;
+}
+
+.panel-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* ─── Контакты ─── */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: var(--rose-50);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contact-item:active {
+    background: var(--rose-100);
+    transform: scale(0.96);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+}
+
+.slide-last {
+    padding-bottom: calc(40px + var(--safe-bottom));
+}
+
+.footer-note {
+    margin-top: clamp(8px, 1.5vh, 14px);
+    font-size: clamp(0.68rem, 2.4vw, 0.8rem);
+    color: #fff;
+    flex-shrink: 0;
+}
+
+/* ─── Индикатор слайдов ─── */
+.slide-dots {
+    position: fixed;
+    bottom: calc(12px + var(--safe-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 200;
+    pointer-events: auto;
+}
+
+.slide-dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--rose-300);
+    opacity: 0.35;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s, background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+}
+
+.slide-dot.active {
+    opacity: 1;
+    background: var(--rose-500);
+    transform: scale(1.3);
+}
+
+/* ─── Слайд 23: particle heart ─── */
+.slide-heart-particles {
+    padding-top: max(1vh, 8px);
+    padding-bottom: calc(3vh + var(--safe-bottom));
+}
+
+.particle-heart-stage {
+    position: relative;
+    width: 100%;
+    max-width: min(400px, 92vw);
+    height: calc(100dvh - 10vh - var(--safe-bottom));
+    max-height: calc(100dvh - 10vh - var(--safe-bottom));
+    border-radius: clamp(14px, 4vw, var(--radius));
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 19px #f400e9;
+    flex-shrink: 1;
+}
+
+.particle-heart-tag {
+    position: absolute;
+    top: clamp(10px, 2vh, 16px);
+    left: clamp(14px, 4vw, 20px);
+    z-index: 2;
+    color: var(--rose-300);
+    margin: 0;
+}
+
+#particle-heart-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.particle-heart-hint {
+    position: absolute;
+    bottom: clamp(10px, 2vh, 16px);
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+    color: var(--rose-200);
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+    letter-spacing: 0.08em;
+    pointer-events: none;
+}
+
+/* ─── Планшет и выше ─── */
+@media (min-width: 768px) {
+    .card, .panel {
+        max-width: 440px;
+    }
+
+    .card {
+        padding: clamp(16px, 3vh, 24px) clamp(18px, 4vw, 28px);
+    }
+
+    .panel {
+        padding: clamp(20px, 3vh, 32px) clamp(20px, 4vw, 28px);
+    }
+
+    .card-name {
+        font-size: 1.8rem;
+    }
+
+    .card-photo-wrap {
+        width: 140px;
+        height: 140px;
+    }
+}

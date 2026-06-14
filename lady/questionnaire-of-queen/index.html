@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Анкета</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Экран 1: летающие сердечки -->
+    <section id="intro-screen" class="screen active">
+        <div class="floating-hearts" id="floating-hearts"></div>
+        <div class="intro-content">
+            <p class="intro-subtitle">Добро пожаловать, моя госпожа ♥</p>
+            <button class="btn-start" id="btn-start">Начать</button>
+        </div>
+    </section>
+
+    <!-- Экран 2: сердце из сердечек -->
+    <section id="heart-screen" class="screen">
+        <div class="heart-canvas" id="heart-canvas"></div>
+        <p class="heart-caption">Ada Wong</p>
+    </section>
+
+    <!-- Основной контент -->
+    <main id="main-content" class="hidden">
+
+        <!-- Слайд 1: визитка -->
+        <section class="slide slide-card" id="slide-card">
+            <div class="card">
+                <div class="card-photo-wrap">
+                    <img src="img/Julia.jpg" alt="Фото" class="card-photo" id="card-photo">
+                </div>
+                <h1 class="card-name">Титенко Юлия Евгеньевна</h1>
+                <p class="card-subtitle"><b>Хакасский государственный университет</b> <br> Институт менеджмента,
+                    экономики и агротехнологий</p>
+                <p class="card-subtitle"><i><b>"Погрузить весь мир в хаос? Это у меня уж точно не на первом месте"</b></i></p>
+                <ul class="card-info">
+                    <li>
+                        <span class="info-label">Дата рождения и время</span>
+                        <span class="info-value">16 января 2004, 3:35</span>
+
+                    </li>
+                    <li>
+                        <span class="info-label">Знак зодиака</span>
+                        <span class="info-value">Козерог</span>
+
+                    </li>
+                    <li>
+                        <span class="info-label">Вес и рост (при рождении)</span>
+                        <span class="info-value">3380 гр., 50 см.</span>
+
+                    </li>
+                    <li>
+                        <span class="info-label">Место рождения</span>
+                        <span class="info-value">Реп. Хакасия, г. Черногорск</span>
+                    </li>
+                    <li>
+                        <span class="info-label">Телефон</span>
+                        <a class="info-value">*********</a>
+                    </li>
+                </ul>
+
+                <div class="accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span>Подробная информация</span>
+                        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="accordion-body">
+                        <p><strong>Карта таро:</strong> 14 Аркан («Умеренность», «Искусство»)</p>
+                        <p><strong>Любимые цвета:</strong> Чёрный, бежевый, розовый</p>
+                        <p><strong>Размер одежды:</strong> Платья: xs, брюки: 26 (42-44), футболки, кофты: M</p>
+                        <p><strong>Размер пальчика:</strong> 15 мм. (керамика - 14.5)</p>
+                        <p><strong>Размер ноги:</strong> туфли - 34, остальное - 36</p>
+                        <p><strong>Вес:</strong> 42.200 кг.</p>
+                        <p><strong>Рост:</strong> 152,4 см.</p>
+                        <p><strong>Адрес:</strong>*********</p><br>
+                        <p><strong>Заветное место жительства:</strong> Токио/ Паттайя</strong> </p>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="scroll-hint">
+                <span>Листай вниз</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Слайд 2: увлечения -->
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">01</span>
+                <h2>Семья</h2>
+                <ul class="card-info">
+                    <li>
+                        <span class="info-label">Мама:</span>
+                        <span class="info-value">Титенко Гузель Тайшибековна
+                            <br>
+                            Телефон: *********
+                        </span>
+
+                    </li>
+                    <li>
+                        <span class="info-label">Папа:</span>
+                        <span class="info-value">Титенко Евгений Иванович</span>
+
+                    </li>
+                    <li>
+                        <span class="info-label">Брат:</span>
+                        <span class="info-value">Титенко Антон Евгеньевич</span>
+                    </li>
+                    <li>
+                        <span class="info-label">Сестра:</span>
+                        <span class="info-value">Титенко Ирина Евгеньевна</span>
+                    </li>
+
+                    <li>
+                        <span class="info-label">Домашнее животное:</span>
+                        <span class="info-value">Котик - Дымка</span>
+                    </li>
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/Dimka.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+
+        <!-- Слайд 3: достижения -->
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">02</span>
+                <h2>Любимые предметы</h2>
+                <ul class="panel-list">
+                    <li>Школа - География</li>
+                    <li>Колледж - Психология</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Слайд 4: о себе -->
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">03</span>
+                <h2>Увлечения</h2>
+                <ul class="panel-list">
+                    <li>Любимая книга - Портрет Дориана Грея</li>
+                    <li>Любимый фильм - Красотка, дьявол носит прада</li>
+                    <li>Любимый сериал - Сумерки. Дорама - слава</li>
+                    <li>Любимый жанр - Триллер, комедия</li>
+                    <li>Любимые песни/ группы - Chase Atlantic, EMPTY, 5 second of summer, Teeth</li>
+
+                </ul>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">04</span>
+                <h2>Любимые актеры</h2>
+                <p class="panel-text">Актрисы</p>
+                <ul class="panel-list">
+                    <li> Эмма Робертс</li>
+
+
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/emma.webp" alt="Дымка" class="panel-picture">
+                </div>
+                <p class="panel-text">Актеры</p>
+                <ul class="panel-list">
+                    <li>Ли Чонсок</li>
+
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/li.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">05</span>
+                <h2>Мечты</h2>
+                <p class="panel-text">Кем хочу стать в детстве</p>
+                <ul class="panel-list">
+                    <li>Актрисой</li>
+
+
+                </ul>
+                <p class="panel-text">Кем хочу стать в настоящем</p>
+                <ul class="panel-list">
+                    <li><s>Не алкоголичкой желательно</s> шоурум и маркетплейс бизнесвумен</li>
+                    <li>Отркыть гостиницу в лесу</li>
+                    <li>Работать в Moontoon</li>
+                </ul>
+                <p class="panel-text">Заветные мечты</p>
+                <ul class="panel-list">
+                    <li>Не смотреть на цены, ни в чем не нуждаться</li>
+                    <li>Путешествовать</li>
+                    <li> <strong style="color: #f82d61;">Посетить концерт BTS</strong> </li>
+                </ul>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">06</span>
+                <h2>Стиль</h2>
+                <p class="panel-text">Любимый бренд одежды</p>
+                <ul class="panel-list">
+                    <li> <q>Мне неважно что носить, я не смотрю на бренд одежды</q></li>
+                    <li>Chanel</li>
+
+                </ul>
+                <p class="panel-text">Любимые бренды косметики</p>
+                <ul class="panel-list">
+                    <li>Chanel</li>
+
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/chanel.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">07</span>
+                <h2>Качества человека</h2>
+                <p class="panel-text">Презираю</p>
+                <ul class="panel-list">
+                    <li> Предательство</li>
+
+
+                </ul>
+                <p class="panel-text">Ценю</p>
+                <ul class="panel-list">
+                    <li>Умение слышать</li>
+                    <li>Умение прислушиваться</li>
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/kitty.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">08</span>
+                <h2>Любимая кухня</h2>
+                <p class="panel-text">Любимая кухня</p>
+                <ul class="panel-list">
+                    <li>Итальянская</li>
+
+                </ul>
+
+                <p class="panel-text">Любимые блюда</p>
+                <ul class="panel-list">
+                    <li>Сырные равиоли</li>
+                    <li>Паста</li>
+                    <li>Пельмешки</li>
+                    <li><b>Сыр</b></li>
+                </ul>
+                <p class="panel-text">Предпочтения</p>
+                <ul class="panel-list">
+                    <li>Солёное</li>
+                </ul>
+                <p class="panel-text">Любимые алкогольные напитки</p>
+
+                <ul class="panel-list">
+                    <li>Ликер</li>
+
+                </ul>
+                <p class="panel-text">Любимые напитки</p>
+
+                <ul class="panel-list">
+                    <li>Милкис</li>
+                </ul>
+                <div class="panel-pictures">
+                    <img src="img/italy.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">09</span>
+                <h2>Животные</h2>
+                <p class="panel-text">Любимые животные</p>
+                <ul class="panel-list">
+                    <li>Котята</li>
+
+                </ul>
+
+                <p class="panel-text">Кого бы завела</p>
+                <ul class="panel-list">
+                    <li>Змейка</li>
+
+                </ul>
+
+                <div class="panel-pictures">
+                    <img src="img/snake.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">10</span>
+                <h2>Любимое хобби</h2>
+
+                <ul class="panel-list">
+                    <li>Краситься</li>
+                    <li>Пикник</li>
+                    <li>Валяться на солнышке лениво</li>
+                    <li>Зимой под одеялом что нибудь смотреть или играть</li>
+                    <li>Читать книжку когда дымка рядом и свечка вкусная</li>
+                </ul>
+
+
+                <div class="panel-pictures">
+                    <img src="img/dimka2.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">11</span>
+                <h2>Любимый вид спорта</h2>
+
+                <ul class="panel-list">
+                    <li>Стрельба из лука</li>
+                    <li>Стрелковый</li>
+                    <li>Пилатес</li>
+                    <li>Йога</li>
+                </ul>
+
+
+                <div class="panel-pictures">
+                    <img src="img/look.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">12</span>
+                <h2>Любимый необычный запах</h2>
+
+                <ul class="panel-list">
+                    <li>Выпечка</li>
+                    <li>Книги</li>
+                    <li>Бензин</li>
+                    <li>Краска</li>
+                </ul>
+
+
+                <div class="panel-pictures grid-2">
+                    <img src="img/book.jpg" alt="Дымка" class="panel-picture">
+                    <img src="img/benzin.webp" alt="Дымка" class="panel-picture">
+                    <img src="img/paint.jpg" alt="Дымка" class="panel-picture">
+                    <img src="img/bread.jpg" alt="Дымка" class="panel-picture">
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">13</span>
+                <h2>Любимый фрукт</h2>
+
+                <ul class="panel-list">
+                    <li>Гранат</li>
+                    <li>Мандаринки</li>
+
+                </ul>
+
+
+                <div class="panel-pictures ">
+                    <img src="img/Granat.jpg" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">14</span>
+                <h2>Любимое событие</h2>
+
+                <ul class="panel-list">
+                    <li>Зоопарк с папой</li>
+
+
+                </ul>
+
+
+                <div class="panel-pictures ">
+                    <img src="img/zoo.jpg" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">15</span>
+                <h2>Способность, которой хотела бы обладать</h2>
+
+                <ul class="panel-list">
+                    <li>Управление временем, вселенной</li>
+
+
+                </ul>
+
+
+                <div class="panel-pictures ">
+                    <img src="img/strange.jpg" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">16</span>
+                <h2>Личные качества</h2>
+                <p class="panel-text">Достоинства</p>
+                <ul class="panel-list">
+                    <li><i>"Наверное честность (лучше горькая правда, чем сладкая ложь). Я многофункциональный человек -
+                            со мной обо всем на свете можно поговорить, как сейф с секретами. Не знаю, доброта некая(?)
+                            я жёсткий эмпат и лезу помогать даже когда это не нужно. Толерантный человек, никогда не
+                            буду осуждать ни за что кроме насилия, педофилии и подобного. Ну и ответственность перед
+                            семьёй, близкими родственниками. Ты знаешь же, что я как бухгалтер в семье, бегаю тут
+                            всегда. Это очень сложно, но это моё преимущество. Что я во многих сферах научилась
+                            разбираться и быстро реагировать на что-то. Из-за этого, возможно, у меня немного дёрганные
+                            движения и руки постоянно трясутся, потому что очень часто стресс, но можно и плюсы
+                            найти."</i></li>
+                </ul>
+
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">17</span>
+                <h2>Личные качества</h2>
+
+                <p class="panel-text">Недостатки</p>
+                <ul class="panel-list">
+                    <li><i>"Мой недостаток это моя лень. Ты бы знал какая я ленивая. Я сама ненавижу это. Активный отдых
+                            - лучше полежать дома. Выйти погулять - лучше дома. Спорт - о нет, не для меня. Я все это
+                            хочу, но лень сильнее меня, ненавижу её. Мне правда сложно, что моя семья так переживает и
+                            волнуется из-за того, что я вечно сижу дома. Я только последний год стала выбираться хоть
+                            куда-то. А до этого меня вообще не увидеть на улице... И ещё отнесу сюда смену настроения и
+                            агрессию в разные фазы цикла. Агрессия бывает у меня очень ярко выражена..."</i></li>
+                </ul>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">18</span>
+                <h2>Советы</h2>
+
+                <p class="panel-text">Себе маленький</p>
+                <ul class="panel-list">
+                    <li>Больше проводить время с семьёй и беречь родных</li>
+                </ul>
+                <div class="panel-pictures ">
+                    <img src="img/family.jpg" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">19</span>
+                <h2>Тотемное животное</h2>
+
+                <ul class="panel-list">
+                    <li>Феникс</li>
+                    <li>Сирена</li>
+                    <li>Пегас</li>
+                </ul>
+                <div class="panel-pictures ">
+                    <img src="img/fenix.webp" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">20</span>
+                <h2>Повод гордости</h2>
+
+                <ul class="panel-list">
+                    <li>Красный диплом</li>
+                    <li>Делаю из палок конфетку</li>
+                    <li>Окружение -  <i style="color: #f82d61;"><b>"У меня классные друзья все.
+                        Вообще как на подбор.
+                        Никому не хочу вас отдавать"  </b></i> - © Титенко Юлия Евгеньевна </li>
+                </ul>
+               
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">21</span>
+                <h2>Вдохновления</h2>
+
+                <ul class="panel-list">
+                    <li><i style="color: #f82d61;"><b>"Я не могу жить без бабл ти и хеллоу китти"</b></i> - © Титенко Юлия Евгеньевна </li>
+                    <li>Сыр <br>
+                        <i>"Это моя любимая закуска, в любом виде"</i> - © Титенко Юлия Евгеньевна</li>
+                
+                </ul>
+                <div class="panel-pictures ">
+                    <img src="img/kitti.png" alt="Дымка">
+
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel">
+            <div class="panel">
+                <span class="panel-tag">22</span>
+                <h2>Любимые фотографии </h2>
+                <p class="panel-text" style="text-align: center;">(нажмите на фотографии для увеличения)</p>
+                <div class="panel-pictures grid-2" id="slide-22-gallery">
+                    <a href="img/p1.jpg" data-fancybox="photos-22" data-caption="Фото 1">
+                        <img src="img/p1.jpg" alt="Фото 1" class="panel-picture">
+                    </a>
+                    <a href="img/p2.jpg" data-fancybox="photos-22" data-caption="Фото 2">
+                        <img src="img/p2.jpg" alt="Фото 2" class="panel-picture">
+                    </a>
+                    <a href="img/p3.jpg" data-fancybox="photos-22" data-caption="Фото 3">
+                        <img src="img/p3.jpg" alt="Фото 3" class="panel-picture">
+                    </a>
+                    <a href="img/p4.jpg" data-fancybox="photos-22" data-caption="Фото 4">
+                        <img src="img/p4.jpg" alt="Фото 4" class="panel-picture">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="slide slide-panel slide-heart-particles" id="slide-23">
+            <div class="particle-heart-stage">
+                <span class="panel-tag particle-heart-tag">23</span>
+                <canvas id="particle-heart-canvas"></canvas>
+             
+            </div>
+        </section>
+
+        <nav class="slide-dots" id="slide-dots" aria-label="Навигация по слайдам"></nav>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
