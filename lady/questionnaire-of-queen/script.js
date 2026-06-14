@@ -131,7 +131,7 @@
         const ctx = canvas.getContext('2d');
         const particles = [];
         const heartPoints = [];
-        const particleCount = 800;
+        const particleCount = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches ? 280 : 600;
         let animId = null;
         let assembleTimer = null;
         let phase = 'scatter';
@@ -308,11 +308,47 @@
         const dotsContainer = document.getElementById('slide-dots');
         const particleHeart = initParticleHeartSlide();
         const heartSlide = document.getElementById('slide-23');
+        const isMobile = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
         let current = 0;
         let isAnimating = false;
-        const TRANSITION_MS = 750;
+        const TRANSITION_MS = isMobile ? 500 : 750;
         const WHEEL_THRESHOLD = 40;
         const SWIPE_THRESHOLD = 50;
+
+        if (isMobile) document.body.classList.add('is-mobile');
+
+        /* Ленивая загрузка картинок — телефон не тянет 24 слайда сразу */
+        slides.forEach((slide, slideIndex) => {
+            slide.querySelectorAll('img[src]').forEach(img => {
+                if (img.id === 'card-photo') return;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                if (slideIndex > 1) {
+                    img.dataset.lazySrc = img.getAttribute('src');
+                    img.removeAttribute('src');
+                }
+            });
+        });
+
+        function syncSlideMedia() {
+            slides.forEach((slide, i) => {
+                const shouldLoad = Math.abs(i - current) <= 1;
+                slide.querySelectorAll('img[data-lazy-src]').forEach(img => {
+                    if (shouldLoad) {
+                        if (!img.getAttribute('src')) img.src = img.dataset.lazySrc;
+                    } else if (img.getAttribute('src')) {
+                        img.removeAttribute('src');
+                    }
+                });
+            });
+        }
+
+        function setSlideVisibility() {
+            slides.forEach((slide, i) => {
+                const visible = Math.abs(i - current) <= 1;
+                slide.hidden = !visible;
+            });
+        }
 
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
@@ -356,6 +392,9 @@
                     particleHeart.stop();
                 }
             }
+
+            setSlideVisibility();
+            syncSlideMedia();
         }
 
         function goTo(index) {

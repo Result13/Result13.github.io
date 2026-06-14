@@ -232,6 +232,20 @@ body {
     pointer-events: none;
 }
 
+.slide[hidden] {
+    display: none !important;
+}
+
+body.is-mobile .slide {
+    transition-duration: 0.5s;
+}
+
+body.is-mobile .card,
+body.is-mobile .panel,
+body.is-mobile .particle-heart-stage {
+    box-shadow: 0 0 12px rgba(244, 0, 233, 0.55);
+}
+
 .slide .card,
 .slide .panel,
 .slide .footer-note,
