@@ -2,7 +2,7 @@
     'use strict';
 
     // Временно true — сразу открывается визитка, без «Начать» и сердца
-    const SKIP_INTRO = true;
+    const SKIP_INTRO = false;
 
     const HEART_SVG_PATH = 'M 12 21 C 12 21 2 13 2 7.5 C 2 4.5 4.5 2 7.5 2 C 9.5 2 11 3.5 12 5 C 13 3.5 14.5 2 16.5 2 C 19.5 2 22 4.5 22 7.5 C 22 13 12 21 12 21 Z';
 
